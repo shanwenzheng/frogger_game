@@ -1,15 +1,15 @@
 package frogger;
 
 public class GameView {
-	private MyStage background;
+	private World background;
 	private Animal animal;
 	
 	public GameView() {
-		background = new MyStage();
+		background = new World();
 		animal = new Animal("images/froggerUp.png");
 	}
 	
-	public MyStage getBackground() {
+	public World getBackground() {
 		return background;
 	}
 

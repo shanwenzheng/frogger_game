@@ -7,10 +7,12 @@ import javafx.scene.control.Alert.AlertType;
 public class GameController {
 	private AnimationTimer timer;
 	private GameView gameView;
+	private MusicPlayer musicPlayer;
 	
 	public GameController(GameView gameView) {
 		createTimer();
 		this.gameView = gameView;
+		musicPlayer = new MusicPlayer();
 	}
 	
 	public void createTimer() {
@@ -22,7 +24,7 @@ public class GameController {
             	}
             	if (gameView.getAnimal().getStop()) {
             		System.out.print("STOPP:");
-            		gameView.getBackground().stopMusic();
+            		musicPlayer.stopMusic();
             		stop();
             		gameView.getBackground().stop();
             		Alert alert = new Alert(AlertType.INFORMATION);
@@ -35,7 +37,7 @@ public class GameController {
         };
     }
 	public void start() {
-		gameView.getBackground().playMusic();
+		musicPlayer.playMusic();
     	createTimer();
         timer.start();
     }
