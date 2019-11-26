@@ -1,6 +1,6 @@
 package view;
 
-import frogger.World;
+import javafx.scene.layout.Pane;
 import model.Animal;
 import model.BackgroundImage;
 import model.Digit;
@@ -11,15 +11,15 @@ import model.Turtle;
 import model.WetTurtle;
 
 public class GameView {
-	private World background;
+	private Pane background;
 	private Animal animal;
 	
 	public GameView() {
-		background = new World();
+		background = new Pane();
 		animal = new Animal("images/froggerUp.png");
 	}
 	
-	public World getBackground() {
+	public Pane getBackground() {
 		return background;
 	}
 

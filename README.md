@@ -6,11 +6,14 @@
 
 #### ① Model Refactor
 
+* Rmove `setOnKeyPressed` && `setOnKeyReleased` and add `handleKeyPressed` && `handleKeyReleased` method
+
 #### ② View Refactor
 
 * Split `gameView` from main class
-* Remove `MyStage` class
-* Remove Actor acts related code from World
+* Remove `MyStage` class (Change to `MusicPlayer` class)
+* Remove Actor acts related code from World (change to `Animation` class)
+* Remove `World` class (The function is implemented in `gameController`)
 
 #### ③ Util Refactor
 
@@ -24,3 +27,4 @@
 * Split `gameController` from main class
 * Split functoin in `gameController` to match single responsiblity
 * Rename Timer to EndDetecter to match single responsibility
+* Move scene eventHandler into `gameController`

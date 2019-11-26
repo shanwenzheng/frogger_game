@@ -3,7 +3,6 @@ package util;
 import java.util.ArrayList;
 import java.util.List;
 
-import frogger.World;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;

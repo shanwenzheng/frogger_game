@@ -1,9 +1,10 @@
 package controller;
 
 import javafx.animation.AnimationTimer;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import model.Digit;
+import javafx.scene.input.KeyEvent;
 import util.Animation;
 import util.MusicPlayer;
 import util.ScoreBoardUpdater;
@@ -15,11 +16,14 @@ public class GameController {
 	private Animation animation;
 	private ScoreBoardUpdater scoreBoardUpdater;
 	
-	public GameController(GameView gameView) {
+	public GameController(GameView gameView, Scene scene) {
 		createEndDetecter();
 		this.gameView = gameView;
 		animation = new Animation(gameView);
 		scoreBoardUpdater = new ScoreBoardUpdater(gameView);
+		
+		scene.addEventHandler(KeyEvent.KEY_PRESSED, event -> gameView.getAnimal().handleKeyPressed(event));
+		scene.addEventHandler(KeyEvent.KEY_RELEASED, event -> gameView.getAnimal().handleKeyReleased(event));
 	}
 	
 	public void startGame() {

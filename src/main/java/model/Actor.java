@@ -1,13 +1,12 @@
 package model;
 
+import javafx.scene.Node;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.InputEvent;
+import javafx.scene.layout.Pane;
 
 import java.util.ArrayList;
-
-import frogger.World;
-
-
+import java.util.List;
 
 public abstract class Actor extends ImageView{
 
@@ -16,8 +15,8 @@ public abstract class Actor extends ImageView{
         setY(getY() + dy);
     }
 
-    public World getWorld() {
-        return (World) getParent();
+    public Pane getWorld() {
+        return (Pane) getParent();
     }
 
     public double getWidth() {
@@ -30,7 +29,7 @@ public abstract class Actor extends ImageView{
 
     public <A extends Actor> java.util.List<A> getIntersectingObjects(java.lang.Class<A> cls){
         ArrayList<A> someArray = new ArrayList<A>();
-        for (A actor: getWorld().getObjects(cls)) {
+        for (A actor: getObjects(cls)) {
             if (actor != this && actor.intersects(this.getBoundsInLocal())) {
                 someArray.add(actor);
             }
@@ -44,13 +43,23 @@ public abstract class Actor extends ImageView{
 
     public <A extends Actor> A getOneIntersectingObject(java.lang.Class<A> cls) {
         ArrayList<A> someArray = new ArrayList<A>();
-        for (A actor: getWorld().getObjects(cls)) {
+        for (A actor: getObjects(cls)) {
             if (actor != this && actor.intersects(this.getBoundsInLocal())) {
                 someArray.add(actor);
                 break;
             }
         }
         return someArray.get(0);
+    }
+    
+    public <A extends Actor> List<A> getObjects(Class<A> cls) {
+        ArrayList<A> someArray = new ArrayList<A>();
+        for (Node n: getWorld().getChildren()) {
+            if (cls.isInstance(n)) {
+                someArray.add((A)n);
+            }
+        }
+        return someArray;
     }
 
     public abstract void act(long now);
