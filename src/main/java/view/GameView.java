@@ -63,6 +63,6 @@ public class GameView {
 		background.getChildren().add(new Obstacle("images/truck2Right.png", 0, 540, 1, 200, 200));
 		background.getChildren().add(new Obstacle("images/truck2Right.png", 500, 540, 1, 200, 200));
 		background.getChildren().add(new Obstacle("images/car1Left.png", 500, 490, -5, 50, 50));
-		background.getChildren().add(new Digit(0, 30, 360, 25));
+		background.getChildren().add(new Digit(0, 30, 565, 25));
 	}
 }

@@ -6,6 +6,7 @@ import javafx.scene.control.Alert.AlertType;
 import model.Digit;
 import util.Animation;
 import util.MusicPlayer;
+import util.ScoreBoardUpdater;
 import view.GameView;
 
 public class GameController {
@@ -13,21 +14,20 @@ public class GameController {
 	private GameView gameView;
 	private MusicPlayer musicPlayer;
 	private Animation animation;
+	private ScoreBoardUpdater scoreBoardUpdater;
 	
 	public GameController(GameView gameView) {
 		createTimer();
 		this.gameView = gameView;
 		musicPlayer = new MusicPlayer();
 		animation = new Animation(gameView);
+		scoreBoardUpdater = new ScoreBoardUpdater(gameView);
 	}
 	
 	public void createTimer() {
         timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
-            	if (gameView.getAnimal().changeScore()) {
-            		setNumber(gameView.getAnimal().getPoints());
-            	}
             	if (gameView.getAnimal().getStop()) {
             		System.out.print("STOPP:");
             		musicPlayer.stopMusic();
@@ -45,7 +45,7 @@ public class GameController {
 	public void start() {
 		musicPlayer.playMusic();
 		animation.getTimer().start();
-    	createTimer();
+		scoreBoardUpdater.getTimer().start();
         timer.start();
     }
 

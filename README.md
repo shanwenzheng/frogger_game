@@ -10,10 +10,13 @@
 
 * Split `gameView` from main class
 * Remove `MyStage` class
+* Remove Actor acts related code from World
 
 #### ③ Util Refactor
 
 * Create `MusicPlayer` class
+* Create `Animation` class for Actor acts
+* Create `ScoreBoardUpdater` class
 
 #### ④ Controller Refactor
 
