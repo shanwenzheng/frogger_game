@@ -1,8 +1,8 @@
-package frogger;
+package model;
 
 import java.util.ArrayList;
 
-
+import frogger.Main;
 import javafx.event.EventHandler;
 
 import javafx.scene.image.Image;

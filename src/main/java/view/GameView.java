@@ -1,4 +1,14 @@
-package frogger;
+package view;
+
+import frogger.World;
+import model.Animal;
+import model.BackgroundImage;
+import model.Digit;
+import model.End;
+import model.Log;
+import model.Obstacle;
+import model.Turtle;
+import model.WetTurtle;
 
 public class GameView {
 	private World background;

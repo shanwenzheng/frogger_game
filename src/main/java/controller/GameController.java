@@ -1,8 +1,11 @@
-package frogger;
+package controller;
 
 import javafx.animation.AnimationTimer;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import model.Digit;
+import util.MusicPlayer;
+import view.GameView;
 
 public class GameController {
 	private AnimationTimer timer;

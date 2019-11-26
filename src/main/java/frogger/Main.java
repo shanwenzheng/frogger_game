@@ -1,11 +1,10 @@
 package frogger;
 
-import javafx.animation.AnimationTimer;
+import controller.GameController;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import view.GameView;
 
 public class Main extends Application {
 	public static void main(String[] args) {

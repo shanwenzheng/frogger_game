@@ -1,6 +1,7 @@
-package frogger;
+package model;
 
 
+import frogger.Main;
 import javafx.scene.image.Image;
 
 public class End extends Actor{

@@ -9,8 +9,11 @@
 #### ② View Refactor
 
 * Split `gameView` from main class
+* Remove `MyStage` class
 
 #### ③ Util Refactor
+
+* Create `MusicPlayer` class
 
 #### ④ Controller Refactor
 
