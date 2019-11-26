@@ -1,4 +1,4 @@
-# <img src="http://b-ssl.duitang.com/uploads/item/201801/25/20180125131358_tVkML.thumb.1000_0.jpeg" alt="pacman logo" width="50"/> Frogger
+# <img src="http://b-ssl.duitang.com/uploads/item/201801/25/20180125131358_tVkML.thumb.1000_0.jpeg" alt="frog logo" width="50"/> Frogger
 
 > This is a Frogger game project written in JavaFX.<br>
 
@@ -13,3 +13,5 @@
 #### ③ Util Refactor
 
 #### ④ Controller Refactor
+
+* Split `gameController` from main class

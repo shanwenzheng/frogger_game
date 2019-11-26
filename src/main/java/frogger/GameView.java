@@ -54,5 +54,6 @@ public class GameView {
 		background.add(new Obstacle("images/truck2Right.png", 500, 540, 1, 200, 200));
 		background.add(new Obstacle("images/car1Left.png", 500, 490, -5, 50, 50));
 		background.add(new Digit(0, 30, 360, 25));
+		background.start();
 	}
 }
