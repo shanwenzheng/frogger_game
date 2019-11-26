@@ -6,10 +6,10 @@ import frogger.Main;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
-public class MusicPlayer{
-	MediaPlayer mediaPlayer;
+public enum MusicPlayer{
+	INSTANCE;
 	
-	public MusicPlayer() {}
+	MediaPlayer mediaPlayer;
 	
 	public void playMusic() {
 		URL musicFile = Main.class.getResource("music/Frogger Main Song Theme (loop).mp3");
