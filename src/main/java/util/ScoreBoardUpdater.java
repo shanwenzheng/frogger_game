@@ -9,27 +9,19 @@ import view.GameView;
 public class ScoreBoardUpdater {
 	
 	private AnimationTimer timer;
-	private Pane background;
-	private Animal animal;
+
 	
 	public ScoreBoardUpdater(GameView gameView) {
-		createTimer();
-		this.animal = gameView.getAnimal();
-		this.background = gameView.getBackground();
-	}
-	  
-	private void createTimer() {
 		timer = new AnimationTimer() {
 			@Override
 			public void handle(long now) {
-				if(animal.changeScore()) {
-					updateScore(animal.getPoints());
-				}
+				if(gameView.getAnimal().changeScore())
+					updateScore(gameView.getAnimal().getPoints(), gameView.getBackground());
 			}
 		};
 	}
 
-	public void updateScore(int n) {
+	public void updateScore(int n, Pane background) {
 		int shift = 0;
 		while (n > 0) {
 			  int d = n / 10;
