@@ -4,6 +4,7 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import model.Digit;
+import util.Animation;
 import util.MusicPlayer;
 import view.GameView;
 
@@ -11,11 +12,13 @@ public class GameController {
 	private AnimationTimer timer;
 	private GameView gameView;
 	private MusicPlayer musicPlayer;
+	private Animation animation;
 	
 	public GameController(GameView gameView) {
 		createTimer();
 		this.gameView = gameView;
 		musicPlayer = new MusicPlayer();
+		animation = new Animation(gameView);
 	}
 	
 	public void createTimer() {
@@ -29,7 +32,7 @@ public class GameController {
             		System.out.print("STOPP:");
             		musicPlayer.stopMusic();
             		stop();
-            		gameView.getBackground().stop();
+            		animation.getTimer().stop();
             		Alert alert = new Alert(AlertType.INFORMATION);
             		alert.setTitle("You Have Won The Game!");
             		alert.setHeaderText("Your High Score: "+gameView.getAnimal().getPoints()+"!");
@@ -41,6 +44,7 @@ public class GameController {
     }
 	public void start() {
 		musicPlayer.playMusic();
+		animation.getTimer().start();
     	createTimer();
         timer.start();
     }
@@ -55,7 +59,7 @@ public class GameController {
     		  int d = n / 10;
     		  int k = n - d * 10;
     		  n = d;
-    		  gameView.getBackground().add(new Digit(k, 30, 360 - shift, 25));
+    		  gameView.getBackground().getChildren().add(new Digit(k, 30, 360 - shift, 25));
     		  shift+=30;
     		}
     }

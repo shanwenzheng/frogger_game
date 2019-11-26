@@ -64,38 +64,7 @@ public class World extends Pane {
     		
 		});
     }
-
-    public void createTimer() {
-        timer = new AnimationTimer() {
-            @Override
-            public void handle(long now) {
-                List<Actor> actors = getObjects(Actor.class);
-                
-                for (Actor anActor: actors) {
-                	anActor.act(now);
-                }
-      
-            }
-        };
-    }
-
-    public void start() {
-    	createTimer();
-        timer.start();
-    }
-
-    public void stop() {
-        timer.stop();
-    }
     
-    public void add(Actor actor) {
-        getChildren().add(actor);
-    }
-
-    public void remove(Actor actor) {
-        getChildren().remove(actor);
-    }
-
     public <A extends Actor> List<A> getObjects(Class<A> cls) {
         ArrayList<A> someArray = new ArrayList<A>();
         for (Node n: getChildren()) {
