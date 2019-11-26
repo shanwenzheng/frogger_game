@@ -21,6 +21,6 @@ public class Main extends Application {
 		primaryStage.show();
 	
 		GameController gameController = new GameController(gameView);
-		gameController.start();
+		gameController.startGame();
 	}
 }

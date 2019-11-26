@@ -12,14 +12,12 @@ import view.GameView;
 public class GameController {
 	private AnimationTimer timer;
 	private GameView gameView;
-	private MusicPlayer musicPlayer;
 	private Animation animation;
 	private ScoreBoardUpdater scoreBoardUpdater;
 	
 	public GameController(GameView gameView) {
 		createTimer();
 		this.gameView = gameView;
-		musicPlayer = new MusicPlayer();
 		animation = new Animation(gameView);
 		scoreBoardUpdater = new ScoreBoardUpdater(gameView);
 	}
@@ -28,39 +26,58 @@ public class GameController {
         timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
-            	if (gameView.getAnimal().getStop()) {
-            		System.out.print("STOPP:");
-            		musicPlayer.stopMusic();
-            		stop();
-            		animation.getTimer().stop();
-            		Alert alert = new Alert(AlertType.INFORMATION);
-            		alert.setTitle("You Have Won The Game!");
-            		alert.setHeaderText("Your High Score: "+gameView.getAnimal().getPoints()+"!");
-            		alert.setContentText("Highest Possible Score: 800");
-            		alert.show();
-            	}
-            }
-        };
-    }
-	public void start() {
-		musicPlayer.playMusic();
-		animation.getTimer().start();
-		scoreBoardUpdater.getTimer().start();
-        timer.start();
-    }
+      	      	if (gameView.getAnimal().getStop()) {
+      	      		endGame();
+      	      	}
+      	      }
+      		};
+    	}
+	
+	public void startGame() {
+		musicStart();
+		timer.start();
+		animationStart();
+		scoreBoardUpdaterStart();
+	}
 
-    public void stop() {
-        timer.stop();
-    }
+	public void endGame() {
+		musicStop();
+		timer.stop();
+		animationStop();
+		scoreBoardUpdaterStop();
+		printEndGameInfo();
+	}
     
-    public void setNumber(int n) {
-    	int shift = 0;
-    	while (n > 0) {
-    		  int d = n / 10;
-    		  int k = n - d * 10;
-    		  n = d;
-    		  gameView.getBackground().getChildren().add(new Digit(k, 30, 360 - shift, 25));
-    		  shift+=30;
-    		}
-    }
+	public void musicStart() {
+		MusicPlayer.INSTANCE.playMusic();
+	}
+	
+	public void musicStop() {
+		MusicPlayer.INSTANCE.stopMusic();
+	}
+	
+	private void animationStart() {
+		animation.getTimer().start();	
+	}
+	
+	private void animationStop() {
+		animation.getTimer().stop();
+	}
+	
+	private void scoreBoardUpdaterStart() {
+		scoreBoardUpdater.getTimer().start();
+	}
+	
+	private void scoreBoardUpdaterStop() {
+		scoreBoardUpdater.getTimer().stop();
+	}
+	
+	public void printEndGameInfo() {
+		System.out.println("STOPP: ");
+  		Alert alert = new Alert(AlertType.INFORMATION);
+  		alert.setTitle("You Have Won The Game!");
+  		alert.setHeaderText("Your High Score: "+gameView.getAnimal().getPoints()+"!");
+  		alert.setContentText("Highest Possible Score: 800");
+  		alert.show();
+	}
 }

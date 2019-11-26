@@ -17,7 +17,9 @@
 * Create `MusicPlayer` class
 * Create `Animation` class for Actor acts
 * Create `ScoreBoardUpdater` class
+* Change `MusicPlayer` to singleton pattern
 
 #### ④ Controller Refactor
 
 * Split `gameController` from main class
+* Split functoin in `gameController` to match single responsiblity
