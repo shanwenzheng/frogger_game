@@ -23,3 +23,4 @@
 
 * Split `gameController` from main class
 * Split functoin in `gameController` to match single responsiblity
+* Rename Timer to EndDetecter to match single responsibility

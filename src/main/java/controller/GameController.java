@@ -10,42 +10,50 @@ import util.ScoreBoardUpdater;
 import view.GameView;
 
 public class GameController {
-	private AnimationTimer timer;
+	private AnimationTimer endDetecter;
 	private GameView gameView;
 	private Animation animation;
 	private ScoreBoardUpdater scoreBoardUpdater;
 	
 	public GameController(GameView gameView) {
-		createTimer();
+		createEndDetecter();
 		this.gameView = gameView;
 		animation = new Animation(gameView);
 		scoreBoardUpdater = new ScoreBoardUpdater(gameView);
 	}
 	
-	public void createTimer() {
-        timer = new AnimationTimer() {
-            @Override
-            public void handle(long now) {
-      	      	if (gameView.getAnimal().getStop()) {
-      	      		endGame();
-      	      	}
-      	      }
-      		};
-    	}
-	
 	public void startGame() {
 		musicStart();
-		timer.start();
+		endDetecterStart();
 		animationStart();
 		scoreBoardUpdaterStart();
 	}
-
+	
 	public void endGame() {
 		musicStop();
-		timer.stop();
+		endDetecterStop();
 		animationStop();
 		scoreBoardUpdaterStop();
 		printEndGameInfo();
+	}
+	
+	private void createEndDetecter() {
+		endDetecter = new AnimationTimer() {
+	      @Override
+	      public void handle(long now) {
+	      	if (gameView.getAnimal().getStop()) {
+	      		endGame();
+	      	}
+	      }
+		};
+	}
+	
+	public void endDetecterStart() {
+		endDetecter.start();
+	}
+	
+	public void endDetecterStop() {
+		endDetecter.stop();
 	}
     
 	public void musicStart() {
