@@ -1,4 +1,4 @@
-# <img src="https://www.google.com/imgres?imgurl=http%3A%2F%2Fstatic.shenyou.tv%2F20180127%2Fc51e3ad4b5c85d5cb00e56c36a5852bc.png-watermark&imgrefurl=https%3A%2F%2Fwww.shenyou.cn%2Farticle%2F317102.html&docid=Mm_L1rG1wdaI2M&tbnid=EpPK5xLODVDG6M%3A&vet=10ahUKEwi4w8jcuIvmAhVK6RoKHTrbAM4QMwguKAIwAg..i&w=446&h=432&hl=en-GB&bih=794&biw=1474&q=%E6%97%85%E8%A1%8C%20%E9%9D%92%E8%9B%99&ved=0ahUKEwi4w8jcuIvmAhVK6RoKHTrbAM4QMwguKAIwAg&iact=mrc&uact=8" alt="frog logo" width="50"/> Frogger
+# <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1574904535284&di=813c323d940e990abd930b9162c49178&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201802%2F06%2F20180206082802_nmqet.thumb.700_0.jpg" alt="frog logo" width="50"/> Frogger
 
 > This is a Frogger game project written in JavaFX.<br>
 
@@ -18,6 +18,7 @@
 * Refactor `Log` class
 * Refactor `End` class
 * Refactor `BackgroundImage` class
+* Refactor `Animal` Class
 
 #### ② View Refactor
 

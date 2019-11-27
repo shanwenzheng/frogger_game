@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
+import frogger.Main;
 import javafx.scene.image.Image;
 
 public class WetTurtle extends MovableActor{
@@ -12,10 +13,10 @@ public class WetTurtle extends MovableActor{
 	public WetTurtle(int size, double  xpos, double  ypos, double  s) {
 		super(xpos, ypos, s);
 		wetturtleImages = new ArrayList<Image>() {{
-			add(new Image("file:resources/images/TurtleAnimation2Wet.png", size, size, true, true));
-			add(new Image("file:resources/images/TurtleAnimation1.png", size, size, true, true));
-			add(new Image("file:resources/images/TurtleAnimation3Wet.png", size, size, true, true));
-			add(new Image("file:resources/images/TurtleAnimation4Wet.png", size, size, true, true));
+			add(new Image(Main.class.getResourceAsStream("images/TurtleAnimation2Wet.png"), size, size, true, true));
+			add(new Image(Main.class.getResourceAsStream("images/TurtleAnimation1.png"), size, size, true, true));
+			add(new Image(Main.class.getResourceAsStream("images/TurtleAnimation3Wet.png"), size, size, true, true));
+			add(new Image(Main.class.getResourceAsStream("images/TurtleAnimation4Wet.png"), size, size, true, true));
 		}};
 		setImage(wetturtleImages.get(0));
 	}

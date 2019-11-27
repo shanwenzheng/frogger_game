@@ -9,6 +9,8 @@ import javafx.scene.layout.Pane;
 import java.util.ArrayList;
 import java.util.List;
 
+import frogger.Main;
+
 
 public abstract class Actor extends ImageView{
 	
@@ -21,7 +23,7 @@ public abstract class Actor extends ImageView{
 	
 	public Actor(String imageLink, int size, double  x, double  y) {
 		this(x,y);
-		setImage(new Image(imageLink, size, size, true, true));
+		setImage(new Image(Main.class.getResourceAsStream(imageLink), size, size, true, true));
 	}
 
     public Pane getWorld() {

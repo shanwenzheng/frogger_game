@@ -1,5 +1,6 @@
 package model;
 
+import frogger.Main;
 import javafx.scene.image.Image;
 
 public class End extends StaticActor{
@@ -10,7 +11,7 @@ public class End extends StaticActor{
 	}
 	
 	public void setEnd() {
-		setImage(new Image("file:resources/images/FrogEnd.png", 70, 70, true, true));
+		setImage(new Image(Main.class.getResourceAsStream("images/FrogEnd.png"), 70, 70, true, true));
 		activated = true;
 	}
 	

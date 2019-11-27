@@ -1,7 +1,5 @@
 package model;
 
-import javafx.scene.image.Image;
-
 public class Log extends MovableActor {
 	
 	public Log(String imageLink, int size, double  xpos, double  ypos, double s) {

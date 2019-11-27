@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
+import frogger.Main;
 import javafx.scene.image.Image;
 
 public class Turtle extends MovableActor{
@@ -10,9 +11,9 @@ public class Turtle extends MovableActor{
 	public Turtle(int size, double  xpos, double  ypos, double  s) {
 		super(xpos, ypos, s);
 		turtleImages = new ArrayList<Image>() {{
-			add(new Image("file:resources/images/TurtleAnimation2.png", size, size, true, true));
-			add(new Image("file:resources/images/TurtleAnimation1.png", size, size, true, true));
-			add(new Image("file:resources/images/TurtleAnimation3.png", size, size, true, true));
+			add(new Image(Main.class.getResourceAsStream("images/TurtleAnimation2.png"), size, size, true, true));
+			add(new Image(Main.class.getResourceAsStream("images/TurtleAnimation1.png"), size, size, true, true));
+			add(new Image(Main.class.getResourceAsStream("images/TurtleAnimation3.png"), size, size, true, true));
 		}};
 		setImage(turtleImages.get(0));
 	}
