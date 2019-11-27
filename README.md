@@ -8,6 +8,7 @@
 
 * Rmove `setOnKeyPressed` && `setOnKeyReleased` and add `handleKeyPressed` && `handleKeyReleased` method
 * Create `Map` Abstract class
+* Create `SimpleMode` `NormalMode` `HardMode` class abstract from `Map` Class as game Level
 
 #### ② View Refactor
 

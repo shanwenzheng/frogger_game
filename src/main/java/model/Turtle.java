@@ -33,10 +33,10 @@ public class Turtle extends Actor{
 		if (getX() < -75 && speed<0)
 			setX(600);
 	}
-	public Turtle(int xpos, int ypos, int s, int w, int h) {
-		turtle1 = new Image(Main.class.getResourceAsStream("images/TurtleAnimation1.png"), w, h, true, true);
-		turtle2 = new Image(Main.class.getResourceAsStream("images/TurtleAnimation2.png"), w, h, true, true);
-		turtle3 = new Image(Main.class.getResourceAsStream("images/TurtleAnimation3.png"), w, h, true, true);
+	public Turtle(int xpos, int ypos, int s, int size) {
+		turtle1 = new Image(Main.class.getResourceAsStream("images/TurtleAnimation1.png"), size, size, true, true);
+		turtle2 = new Image(Main.class.getResourceAsStream("images/TurtleAnimation2.png"), size, size, true, true);
+		turtle3 = new Image(Main.class.getResourceAsStream("images/TurtleAnimation3.png"), size, size, true, true);
 		setX(xpos);
 		setY(ypos);
 		speed = s;

@@ -32,19 +32,19 @@ public abstract class Map {
 	}
 	
 	public void createBackgroundImage() {
-		backgroundImage = new BackgroundImage("file:resources/images/iKogsKW.png");	
+		backgroundImage = new BackgroundImage("images/iKogsKW.png");	
 	}
 	
 	public void createAnimal() {
-		animal = new Animal("file:resources/images/froggerUp.png",40);
+		animal = new Animal("images/froggerUp.png",40);
 	}
 	
 	public void createEnd() {
-		ends.add(new End("file:resources/images/end.png",60,13,96));
-		ends.add(new End("file:resources/images/end.png",60,141,96));
-		ends.add(new End("file:resources/images/end.png",60,141 + 141-13,96));
-		ends.add(new End("file:resources/images/end.png",60,141 + 141-13+141-13+1,96));
-		ends.add(new End("file:resources/images/end.png",60,141 + 141-13+141-13+141-13+3,96));
+		ends.add(new End("images/end.png",60,13,96));
+		ends.add(new End("images/end.png",60,141,96));
+		ends.add(new End("images/end.png",60,141 + 141-13,96));
+		ends.add(new End("images/end.png",60,141 + 141-13+141-13+1,96));
+		ends.add(new End("images/end.png",60,141 + 141-13+141-13+141-13+3,96));
 	}
 
 	public Set<Log> getLogs() {
