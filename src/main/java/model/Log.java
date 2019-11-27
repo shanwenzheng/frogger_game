@@ -1,29 +1,20 @@
 package model;
 
-
-import frogger.Main;
 import javafx.scene.image.Image;
 
 public class Log extends MovableActor {
-
-	private double speed;
-	@Override
-	public void act(long now) {
-		move(speed , 0);
-		if (getX()>600 && speed>0)
-			setX(-180);
-		if (getX()<-300 && speed<0)
-			setX(700);
+	
+	public Log(String imageLink, int size, double  xpos, double  ypos, double s) {
+		super(imageLink, size, xpos, ypos, s);
 	}
 	
-	public Log(String imageLink, int size, int xpos, int ypos, double s) {
-		setImage(new Image(Main.class.getResourceAsStream(imageLink), size,size, true, true));
-		setX(xpos);
-		setY(ypos);
-		speed = s;
-		
+	@Override
+	public void act(long now) {
+		move(getSpeed(), 0);
+		checkWall(getSpeed(),-300,-180,700);
 	}
+	
 	public boolean getLeft() {
-		return speed < 0;
+		return this.getSpeed() < 0;
 	}
 }
