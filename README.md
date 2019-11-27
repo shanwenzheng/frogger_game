@@ -12,6 +12,7 @@
 * Solve Digit Bug
 * Split `Actor` class into `StaticActor` and `MovableActor`
 * Split Model classes to inherit from different actor
+* Refactor `WetTurtle` class
 
 #### ② View Refactor
 
