@@ -16,7 +16,7 @@ public class GameView {
 	
 	public GameView() {
 		background = new Pane();
-		animal = new Animal("images/froggerUp.png");
+		animal = new Animal("images/froggerUp.png", 40);
 	}
 	
 	public Pane getBackground() {
@@ -47,11 +47,11 @@ public class GameView {
 		background.getChildren().add(new WetTurtle(600, 217, -1, 130, 130));
 		background.getChildren().add(new WetTurtle(400, 217, -1, 130, 130));
 		background.getChildren().add(new WetTurtle(200, 217, -1, 130, 130));
-		background.getChildren().add(new End(13,96));
-		background.getChildren().add(new End(141,96));
-		background.getChildren().add(new End(141 + 141-13,96));
-		background.getChildren().add(new End(141 + 141-13+141-13+1,96));
-		background.getChildren().add(new End(141 + 141-13+141-13+141-13+3,96));
+		background.getChildren().add(new End("images/end.png",60,13,96));
+		background.getChildren().add(new End("images/end.png",60,141,96));
+		background.getChildren().add(new End("images/end.png",60,141 + 141-13,96));
+		background.getChildren().add(new End("images/end.png",60,141 + 141-13+141-13+1,96));
+		background.getChildren().add(new End("images/end.png",60,141 + 141-13+141-13+141-13+3,96));
 		background.getChildren().add(animal);
 		background.getChildren().add(new Obstacle("images/truck1"+"Right.png", 0, 649, 1, 120, 120));
 		background.getChildren().add(new Obstacle("images/truck1"+"Right.png", 300, 649, 1, 120, 120));

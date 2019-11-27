@@ -11,10 +11,10 @@ public class End extends Actor{
 		// TODO Auto-generated method st
 	}
 	
-	public End(int x, int y) {
+	public End(String imageLink, int size, int x, int y) {
 		setX(x);
 		setY(y);
-		setImage(new Image(Main.class.getResourceAsStream("images/End.png"), 60, 60, true, true));
+		setImage(new Image(Main.class.getResourceAsStream(imageLink), size, size, true, true));
 	}
 	
 	public void setEnd() {

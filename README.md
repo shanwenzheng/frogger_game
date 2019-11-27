@@ -7,6 +7,7 @@
 #### ① Model Refactor
 
 * Rmove `setOnKeyPressed` && `setOnKeyReleased` and add `handleKeyPressed` && `handleKeyReleased` method
+* Create `Map` Abstract class
 
 #### ② View Refactor
 

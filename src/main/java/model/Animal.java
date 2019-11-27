@@ -33,7 +33,8 @@ public class Animal extends Actor {
 	int carD = 0;
 	double w = 800;
 	ArrayList<End> inter = new ArrayList<End>();
-	public Animal(String imageLink) {
+	public Animal(String imageLink, int size) {
+		this.imgSize = size;
 		setImage(new Image(Main.class.getResourceAsStream(imageLink), imgSize, imgSize, true, true));
 		setX(300);
 		setY(679.8+movement);
