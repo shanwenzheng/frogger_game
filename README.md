@@ -16,6 +16,7 @@
 * Refactor `Turtle` class
 * Refactor `Obstacle` class
 * Refactor `Log` class
+* Refactor `End` class
 
 #### ② View Refactor
 
