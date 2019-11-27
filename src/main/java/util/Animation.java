@@ -7,6 +7,7 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 import model.Actor;
+import model.MovableActor;
 import view.GameView;
 
 public class Animation {
@@ -22,9 +23,9 @@ public class Animation {
         timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
-                List<Actor> actors = getObjects(Actor.class);
+                List<MovableActor> actors = getObjects(MovableActor.class);
                 
-                for (Actor anActor: actors) {
+                for (MovableActor anActor: actors) {
                 	anActor.act(now);
                 }
       

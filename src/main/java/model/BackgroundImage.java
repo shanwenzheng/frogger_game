@@ -6,13 +6,8 @@ package model;
 import frogger.Main;
 import javafx.scene.image.Image;
 
-public class BackgroundImage extends Actor{
+public class BackgroundImage extends StaticActor{
 
-	@Override
-	public void act(long now) {
-		
-		
-	}
 	
 	public BackgroundImage(String imageLink) {
 		setImage(new Image(Main.class.getResourceAsStream(imageLink), 600, 800, true, true));

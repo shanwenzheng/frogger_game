@@ -4,7 +4,7 @@ package model;
 import frogger.Main;
 import javafx.scene.image.Image;
 
-public class Log extends Actor {
+public class Log extends MovableActor {
 
 	private double speed;
 	@Override

@@ -10,7 +10,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 
-public class Animal extends Actor {
+public class Animal extends MovableActor {
 	Image imgW1;
 	Image imgA1;
 	Image imgS1;

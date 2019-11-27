@@ -1,6 +1,7 @@
 package model;
 
 import javafx.scene.Node;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.InputEvent;
 import javafx.scene.layout.Pane;
@@ -8,12 +9,20 @@ import javafx.scene.layout.Pane;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Actor extends ImageView{
 
-    public void move(double dx, double dy) {
-        setX(getX() + dx);
-        setY(getY() + dy);
-    }
+public abstract class Actor extends ImageView{
+	
+	public Actor() {};
+	
+	public Actor(double  x, double  y) {
+		setX(x);
+		setY(y);
+	}
+	
+	public Actor(String imageLink, int size, double  x, double  y) {
+		this(x,y);
+		setImage(new Image(imageLink, size, size, true, true));
+	}
 
     public Pane getWorld() {
         return (Pane) getParent();
@@ -36,19 +45,9 @@ public abstract class Actor extends ImageView{
         }
         return someArray;
     }
-    
-    public void manageInput(InputEvent e) {
-        
-    }
 
     public <A extends Actor> A getOneIntersectingObject(java.lang.Class<A> cls) {
-        ArrayList<A> someArray = new ArrayList<A>();
-        for (A actor: getObjects(cls)) {
-            if (actor != this && actor.intersects(this.getBoundsInLocal())) {
-                someArray.add(actor);
-                break;
-            }
-        }
+    	ArrayList<A> someArray = (ArrayList<A>) getIntersectingObjects(cls);
         return someArray.get(0);
     }
     
@@ -61,7 +60,5 @@ public abstract class Actor extends ImageView{
         }
         return someArray;
     }
-
-    public abstract void act(long now);
 
 }

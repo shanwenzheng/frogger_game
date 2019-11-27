@@ -4,12 +4,8 @@ package model;
 import frogger.Main;
 import javafx.scene.image.Image;
 
-public class End extends Actor{
+public class End extends StaticActor{
 	boolean activated = false;
-	@Override
-	public void act(long now) {
-		// TODO Auto-generated method st
-	}
 	
 	public End(String imageLink, int size, int x, int y) {
 		setX(x);

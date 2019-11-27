@@ -4,7 +4,7 @@ package model;
 import frogger.Main;
 import javafx.scene.image.Image;
 
-public class Obstacle extends Actor {
+public class Obstacle extends MovableActor {
 	private int speed;
 	@Override
 	public void act(long now) {

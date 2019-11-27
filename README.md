@@ -10,6 +10,8 @@
 * Create `Map` Abstract class
 * Create `SimpleMode` `NormalMode` `HardMode` class abstract from `Map` Class as game Level
 * Solve Digit Bug
+* Split `Actor` class into `StaticActor` and `MovableActor`
+* Split Model classes to inherit from different actor
 
 #### ② View Refactor
 
