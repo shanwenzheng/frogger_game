@@ -49,5 +49,7 @@ public class GameView {
 	
 	public void drawDigit() {
 		background.getChildren().add(new Digit(0, 30, 565, 25));
+		background.getChildren().add(new Digit(0, 30, 535, 25));
+		background.getChildren().add(new Digit(0, 30, 505, 25));
 	}
 }

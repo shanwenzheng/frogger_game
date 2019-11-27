@@ -23,13 +23,18 @@ public class ScoreBoardUpdater {
 
 	public void updateScore(int n, Pane background) {
 		int shift = 0;
+		int count = 0;
 		while (n > 0) {
 			  int d = n / 10;
 			  int k = n - d * 10;
 			  n = d;			
 			  background.getChildren().add(new Digit(k, 30, 565 - shift, 25));
 			  shift+=30;
+			  count++;
 			}
+		if(count == 2) {
+			background.getChildren().add(new Digit(0, 30, 565-shift, 25));
+		}
 	  }
 	
 	public AnimationTimer getTimer() {
