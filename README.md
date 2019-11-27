@@ -17,6 +17,7 @@
 * Refactor `Obstacle` class
 * Refactor `Log` class
 * Refactor `End` class
+* Refactor `BackgroundImage` class
 
 #### ② View Refactor
 
