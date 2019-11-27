@@ -23,6 +23,8 @@
 * Create `Animation` class for Actor acts
 * Create `ScoreBoardUpdater` class
 * Change `MusicPlayer` to singleton pattern
+* Create `MapLoader` class to load view
+* Create `MapFactory` class to generate view
 
 #### ④ Controller Refactor
 

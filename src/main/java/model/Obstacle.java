@@ -15,7 +15,7 @@ public class Obstacle extends Actor {
 			setX(600);
 	}
 	
-	public Obstacle(String imageLink, int xpos, int ypos, int s, int size) {
+	public Obstacle(String imageLink, int size, int xpos, int ypos, int s) {
 		setImage(new Image(Main.class.getResourceAsStream(imageLink), size, size, true, true));
 		setX(xpos);
 		setY(ypos);

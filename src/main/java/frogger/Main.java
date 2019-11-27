@@ -4,6 +4,7 @@ import controller.GameController;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import util.MapLoader;
 import view.GameView;
 
 public class Main extends Application {
@@ -13,9 +14,9 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-	    GameView gameView = new GameView();
+		GameView gameView = new GameView("NormalMode");
 	    Scene scene  = new Scene(gameView.getBackground(),600,800);
-	    gameView.drawMap();
+	    MapLoader.mapLoad(gameView);
 	    
 		primaryStage.setScene(scene);
 		primaryStage.show();

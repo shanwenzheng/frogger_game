@@ -22,8 +22,8 @@ public class GameController {
 		animation = new Animation(gameView);
 		scoreBoardUpdater = new ScoreBoardUpdater(gameView);
 		
-		scene.addEventHandler(KeyEvent.KEY_PRESSED, event -> gameView.getAnimal().handleKeyPressed(event));
-		scene.addEventHandler(KeyEvent.KEY_RELEASED, event -> gameView.getAnimal().handleKeyReleased(event));
+		scene.addEventHandler(KeyEvent.KEY_PRESSED, event -> gameView.getMap().getAnimal().handleKeyPressed(event));
+		scene.addEventHandler(KeyEvent.KEY_RELEASED, event -> gameView.getMap().getAnimal().handleKeyReleased(event));
 	}
 	
 	public void startGame() {
@@ -45,7 +45,7 @@ public class GameController {
 		endDetecter = new AnimationTimer() {
 	      @Override
 	      public void handle(long now) {
-	      	if (gameView.getAnimal().getStop()) {
+	      	if (gameView.getMap().getAnimal().getStop()) {
 	      		endGame();
 	      	}
 	      }
@@ -88,7 +88,7 @@ public class GameController {
 		System.out.println("STOPP: ");
   		Alert alert = new Alert(AlertType.INFORMATION);
   		alert.setTitle("You Have Won The Game!");
-  		alert.setHeaderText("Your High Score: "+gameView.getAnimal().getPoints()+"!");
+  		alert.setHeaderText("Your High Score: "+gameView.getMap().getAnimal().getPoints()+"!");
   		alert.setContentText("Highest Possible Score: 800");
   		alert.show();
 	}

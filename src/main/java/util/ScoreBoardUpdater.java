@@ -15,8 +15,8 @@ public class ScoreBoardUpdater {
 		timer = new AnimationTimer() {
 			@Override
 			public void handle(long now) {
-				if(gameView.getAnimal().changeScore())
-					updateScore(gameView.getAnimal().getPoints(), gameView.getBackground());
+				if(gameView.getMap().getAnimal().changeScore())
+					updateScore(gameView.getMap().getAnimal().getPoints(), gameView.getBackground());
 			}
 		};
 	}
