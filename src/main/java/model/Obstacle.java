@@ -1,25 +1,14 @@
 package model;
 
-
-import frogger.Main;
-import javafx.scene.image.Image;
-
 public class Obstacle extends MovableActor {
-	private int speed;
-	@Override
-	public void act(long now) {
-		move(speed , 0);
-		if (getX() > 600 && speed>0)
-			setX(-200);
-		if (getX() < -50 && speed<0)
-			setX(600);
+	
+	public Obstacle(String imageLink, int size, double  xpos, double  ypos, double  s) {
+		super(imageLink, size, xpos, ypos, s);
 	}
 	
-	public Obstacle(String imageLink, int size, int xpos, int ypos, int s) {
-		setImage(new Image(Main.class.getResourceAsStream(imageLink), size, size, true, true));
-		setX(xpos);
-		setY(ypos);
-		speed = s;
+	@Override
+	public void act(long now) {
+		move(getSpeed(), 0);
+		checkWall(getSpeed(),-50,-200,600);
 	}
-
 }
