@@ -11,11 +11,14 @@ public enum MusicPlayer{
 	
 	MediaPlayer mediaPlayer;
 	
-	public void playMusic() {
+	public void init() {
 		URL musicFile = Main.class.getResource("music/Frogger Main Song Theme (loop).mp3");
 		Media sound = new Media(musicFile.toString());
 		mediaPlayer = new MediaPlayer(sound);
 		mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+	}
+	
+	public void playMusic() {
 	    mediaPlayer.play();
 	}
 	

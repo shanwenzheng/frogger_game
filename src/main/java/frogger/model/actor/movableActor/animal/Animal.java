@@ -11,6 +11,7 @@ import frogger.model.actor.movableActor.turtle.NormalTurtle;
 import frogger.model.actor.movableActor.turtle.WetTurtle;
 import frogger.model.actor.staticActor.End;
 import frogger.util.GameManager;
+import frogger.util.ScoreBoardUpdater;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 
@@ -78,7 +79,7 @@ public abstract class Animal extends MovableActor{
 			if(keyCode.equals("w") && getY() < w) {
 				w = getY();
 				points += 10;
-				GameManager.INSTANCE.getScoreBoardUpdater().updateScore(getPoints());
+				ScoreBoardUpdater.INSTANCE.updateScore(getPoints());
 			}
 			handleMove(keyCode);
 			setImage(animalImages.get(keyCode+"1"));
@@ -120,7 +121,7 @@ public abstract class Animal extends MovableActor{
 			noMove = false;
 			if (points>50) {
 				points-=50;
-				GameManager.INSTANCE.getScoreBoardUpdater().updateScore(getPoints());
+				ScoreBoardUpdater.INSTANCE.updateScore(getPoints());
 			}
 		}else if (carD > 0){
 			ArrayList<Image> temp =  carDeath ? carDeathImages : waterDeathImages;
@@ -170,7 +171,7 @@ public abstract class Animal extends MovableActor{
 			points-=50;
 		}
 		points+=50;
-		GameManager.INSTANCE.getScoreBoardUpdater().updateScore(getPoints());
+		ScoreBoardUpdater.INSTANCE.updateScore(getPoints());
 		w=800;
 		getIntersectingObjects(End.class).get(0).setEnd();
 		end++;

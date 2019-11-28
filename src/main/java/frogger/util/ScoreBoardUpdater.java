@@ -5,14 +5,15 @@ import java.util.ArrayList;
 import frogger.model.actor.staticActor.Digit;
 import frogger.view.GameView;
 
-public class ScoreBoardUpdater {
+public enum ScoreBoardUpdater {
+	INSTANCE;
 
 	private ArrayList<Digit> digits;
-
-	public ScoreBoardUpdater(GameView gameView) {
-		digits = gameView.getMap().getDigit();
+	
+	public void init(ArrayList<Digit> digits) {
+		this.digits = digits;
 	}
-
+	
 	public void updateScore(int n) {
 		for (Digit digit: digits) {
 			int d = n / 10;

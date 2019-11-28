@@ -14,12 +14,12 @@ public enum GameManager {
 	
 	private GameView gameView;
 	private Animation animation;
-	private ScoreBoardUpdater scoreBoardUpdater;
 	
 	public void init(GameView gameView, Scene scene) {
 		this.gameView = gameView;
 		animation = new Animation(gameView);
-		scoreBoardUpdater = new ScoreBoardUpdater(gameView);
+		MusicPlayer.INSTANCE.init();
+		ScoreBoardUpdater.INSTANCE.init(gameView.getMap().getDigit());
 		handleKeyEvent(scene);
 	}
 	
@@ -54,10 +54,6 @@ public enum GameManager {
 	
 	private void animationStop() {
 		animation.getActTimer().stop();
-	}
-	
-	public ScoreBoardUpdater getScoreBoardUpdater() {
-		return scoreBoardUpdater;
 	}
 	
 	public void printEndGameInfo() {
