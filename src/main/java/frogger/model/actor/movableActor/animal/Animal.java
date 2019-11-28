@@ -2,18 +2,21 @@ package frogger.model.actor.movableActor.animal;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import frogger.Main;
+import frogger.model.actor.Actor;
 import frogger.model.actor.movableActor.MovableActor;
 import frogger.model.actor.movableActor.log.Log;
 import frogger.model.actor.movableActor.obstacle.Obstacle;
 import frogger.model.actor.movableActor.turtle.NormalTurtle;
 import frogger.model.actor.movableActor.turtle.WetTurtle;
 import frogger.model.actor.staticActor.End;
-import frogger.util.GameManager;
 import frogger.util.ScoreBoardUpdater;
+import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Pane;
 
 public abstract class Animal extends MovableActor{
 	
@@ -32,7 +35,7 @@ public abstract class Animal extends MovableActor{
 	private boolean waterDeath = false;
 	private int carD = 0;
 	private double w = 800;
-
+    
 	public Animal(int size, double xpos, double ypos, double s) {
 		super(xpos, ypos, s);
 		this.initX = xpos;
@@ -176,10 +179,6 @@ public abstract class Animal extends MovableActor{
 		getIntersectingObjects(End.class).get(0).setEnd();
 		end++;
 		setOrigin();
-		
-		if(end == 5) {
-			GameManager.INSTANCE.endGame();
-		}
 	}
 	
 	public void handleLogTouch() {
@@ -194,6 +193,10 @@ public abstract class Animal extends MovableActor{
 		move(speed,0);
 	}
 	
+	public boolean getStop() {
+		return end == 5;
+	}
+	
 	public HashMap<String, Image> getAnimalImages(){
 		return animalImages;
 	}
@@ -206,4 +209,14 @@ public abstract class Animal extends MovableActor{
 		setX(initX);
 		setY(initY);
 	}
+
+    public <A extends Actor> java.util.List<A> getIntersectingObjects(java.lang.Class<A> cls){
+        ArrayList<A> someArray = new ArrayList<A>();
+        for(Node n : ((Pane)getParent()).getChildren()) {
+        	if(cls.isInstance(n) && n.intersects(this.getBoundsInLocal())) {
+        		someArray.add((A)n);
+        	}
+        }
+        return someArray;
+    }
 }

@@ -1,8 +1,6 @@
 package frogger;
 
 import frogger.controller.GameController;
-import frogger.util.GameManager;
-import frogger.util.MapLoader;
 import frogger.view.GameView;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -23,7 +21,7 @@ public class Main extends Application {
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	
-		GameManager.INSTANCE.init(gameView, scene);
-		GameManager.INSTANCE.startGame();
+		GameController gameController = new GameController(gameView, scene);
+		gameController.startGame();
 	}
 }

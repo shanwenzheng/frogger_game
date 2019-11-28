@@ -11,10 +11,10 @@ public abstract class MovableActor extends Actor{
 		speed = s;
 	}
 	
-    public void move(double dx, double dy) {
-        setX(getX() + dx);
-        setY(getY() + dy);
-    }
+	public void move(double dx, double dy) {
+	    setX(getX() + dx);
+	    setY(getY() + dy);
+	}
     
 	public void checkWall(double speed, int leftPos, int newLeftPos, int newRightPos){
 		if(getX() > 600 && speed > 0)
