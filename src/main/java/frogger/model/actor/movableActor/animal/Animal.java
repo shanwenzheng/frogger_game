@@ -10,6 +10,7 @@ import frogger.model.actor.movableActor.obstacle.Obstacle;
 import frogger.model.actor.movableActor.turtle.NormalTurtle;
 import frogger.model.actor.movableActor.turtle.WetTurtle;
 import frogger.model.actor.staticActor.End;
+import frogger.util.GameManager;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 
@@ -105,9 +106,9 @@ public class Animal extends MovableActor {
 	}
 	
 	
-	public boolean getStop() {
-		return end==5;
-	}
+//	public boolean getStop() {
+//		return end==5;
+//	}
 	
 	public int getPoints() {
 		return points;
@@ -212,5 +213,9 @@ public class Animal extends MovableActor {
 		end++;
 		setX(300);
 		setY(679.8+movement);
+		
+		if(end == 5) {
+			GameManager.INSTANCE.endGame();
+		}
 	}
 }

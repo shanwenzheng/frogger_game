@@ -13,13 +13,11 @@ import javafx.scene.input.KeyEvent;
 public enum GameManager {
 	INSTANCE;
 	
-	private AnimationTimer endDetecter;
 	private GameView gameView;
 	private Animation animation;
 	private ScoreBoardUpdater scoreBoardUpdater;
 	
 	public void init(GameView gameView, Scene scene) {
-		createEndDetecter();
 		this.gameView = gameView;
 		animation = new Animation(gameView);
 		scoreBoardUpdater = new ScoreBoardUpdater(gameView);
@@ -33,36 +31,15 @@ public enum GameManager {
 	
 	public void startGame() {
 		musicStart();
-		endDetecterStart();
 		animationStart();
 		scoreBoardUpdaterStart();
 	}
 	
 	public void endGame() {
 		musicStop();
-		endDetecterStop();
 		animationStop();
 		scoreBoardUpdaterStop();
 		printEndGameInfo();
-	}
-	
-	private void createEndDetecter() {
-		endDetecter = new AnimationTimer() {
-	      @Override
-	      public void handle(long now) {
-	      	if (gameView.getMap().getAnimal().getStop()) {
-	      		endGame();
-	      	}
-	      }
-		};
-	}
-	
-	public void endDetecterStart() {
-		endDetecter.start();
-	}
-	
-	public void endDetecterStop() {
-		endDetecter.stop();
 	}
     
 	public void musicStart() {
