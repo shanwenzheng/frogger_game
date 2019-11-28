@@ -1,34 +1,34 @@
 package model;
 
-import java.util.HashSet;
-import java.util.Set;
-
+import java.util.ArrayList;
 import model.actor.movableActor.animal.Animal;
 import model.actor.movableActor.log.Log;
 import model.actor.movableActor.obstacle.Obstacle;
-import model.actor.movableActor.turtle.NormalTurtle;
 import model.actor.movableActor.turtle.Turtle;
-import model.actor.movableActor.turtle.WetTurtle;
+import model.actor.staticActor.Digit;
 import model.actor.staticActor.End;
 
 public abstract class Map {
-	private Set<Log> logs;
-	private Set<Obstacle> obstacles;
-	private Set<Turtle> turtles;
-	private Set<End> ends;
+	private ArrayList<Log> logs;
+	private ArrayList<Obstacle> obstacles;
+	private ArrayList<Turtle> turtles;
+	private ArrayList<End> ends;
+	private ArrayList<Digit> digits;
 	private Animal animal;
 	
 	public Map() {
-		logs = new HashSet<>();
-		obstacles = new HashSet<>();
-		turtles = new HashSet<>();
-		ends = new HashSet<>();
+		logs = new ArrayList<>();
+		obstacles = new ArrayList<>();
+		turtles = new ArrayList<>();
+		ends = new ArrayList<>();
+		digits = new ArrayList<>();
 		initMap();
 	}
 	
 	public void initMap() {
 		createAnimal();
 		createEnd();
+		createDigit();
 		createObstacles();
 		createLogs();
 		createTurtles();
@@ -45,21 +45,31 @@ public abstract class Map {
 		ends.add(new End(60,141 + 141-13+141-13+1,96));
 		ends.add(new End(60,141 + 141-13+141-13+141-13+3,96));
 	}
+	
+	public void createDigit() {
+		digits.add(new Digit(0, 30, 565, 25));
+		digits.add(new Digit(0, 30, 535, 25));
+		digits.add(new Digit(0, 30, 505, 25));
+	}
 
-	public Set<Log> getLogs() {
+	public ArrayList<Log> getLogs() {
 		return logs;
 	}
 
-	public Set<Obstacle> getObstacles() {
+	public ArrayList<Obstacle> getObstacles() {
 		return obstacles;
 	}
 	
-	public Set<Turtle> getTurtles(){
+	public ArrayList<Turtle> getTurtles(){
 		return turtles;
 	}
 
-	public Set<End> getEnd() {
+	public ArrayList<End> getEnd() {
 		return ends;
+	}
+	
+	public ArrayList<Digit> getDigit(){
+		return digits;
 	}
 
 	public Animal getAnimal() {

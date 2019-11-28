@@ -11,7 +11,7 @@ import model.actor.movableActor.MovableActor;
 import view.GameView;
 
 public class Animation {
-    private AnimationTimer timer;
+    private AnimationTimer actTimer;
     private Pane background;
     
     public Animation(GameView gameView) {
@@ -20,7 +20,7 @@ public class Animation {
     }
     
     public void createTimer() {
-        timer = new AnimationTimer() {
+    	actTimer = new AnimationTimer() {
             @Override
             public void handle(long now) {
                 List<MovableActor> actors = getObjects(MovableActor.class);
@@ -28,7 +28,6 @@ public class Animation {
                 for (MovableActor anActor: actors) {
                 	anActor.act(now);
                 }
-      
             }
         };
     }
@@ -43,7 +42,7 @@ public class Animation {
         return someArray;
     }
     
-	public AnimationTimer getTimer() {
-		return this.timer;
+	public AnimationTimer getActTimer() {
+		return actTimer;
 	}
 }

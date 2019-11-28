@@ -69,19 +69,19 @@ public class GameController {
 	}
 	
 	private void animationStart() {
-		animation.getTimer().start();	
+		animation.getActTimer().start();	
 	}
 	
 	private void animationStop() {
-		animation.getTimer().stop();
+		animation.getActTimer().stop();
 	}
 	
 	private void scoreBoardUpdaterStart() {
-		scoreBoardUpdater.getTimer().start();
+		scoreBoardUpdater.getScoreUpdaterTimer().start();
 	}
 	
 	private void scoreBoardUpdaterStop() {
-		scoreBoardUpdater.getTimer().stop();
+		scoreBoardUpdater.getScoreUpdaterTimer().stop();
 	}
 	
 	public void printEndGameInfo() {

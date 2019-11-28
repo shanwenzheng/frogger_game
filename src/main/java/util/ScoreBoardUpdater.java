@@ -1,5 +1,7 @@
 package util;
 
+import java.util.ArrayList;
+
 import javafx.animation.AnimationTimer;
 import javafx.scene.layout.Pane;
 import model.actor.movableActor.animal.Animal;
@@ -8,37 +10,37 @@ import view.GameView;
 
 public class ScoreBoardUpdater {
 	
-	private AnimationTimer timer;
+	private AnimationTimer scoreUpdatertimer;
+	private Animal animal;
+	private ArrayList<Digit> digits;
 
-	
 	public ScoreBoardUpdater(GameView gameView) {
-		timer = new AnimationTimer() {
+		createScoreUpdaterTimer();
+		animal = gameView.getMap().getAnimal();
+		digits = gameView.getMap().getDigit();
+	}
+	
+	public void createScoreUpdaterTimer() {
+		scoreUpdatertimer = new AnimationTimer() {
 			@Override
 			public void handle(long now) {
-				if(gameView.getMap().getAnimal().changeScore())
-					updateScore(gameView.getMap().getAnimal().getPoints(), gameView.getBackground());
+				if(animal.changeScore())
+					updateScore(animal.getPoints(), digits);
 			}
 		};
 	}
 
-	public void updateScore(int n, Pane background) {
-		int shift = 0;
-		int count = 0;
-		while (n > 0) {
-			  int d = n / 10;
-			  int k = n - d * 10;
-			  n = d;			
-			  background.getChildren().add(new Digit(k, 30, 565 - shift, 25));
-			  shift+=30;
-			  count++;
-			}
-		if(count == 2) {
-			background.getChildren().add(new Digit(0, 30, 565-shift, 25));
+	public void updateScore(int n, ArrayList<Digit> digits) {
+		for (Digit digit: digits) {
+			int d = n / 10;
+			int k = n - d * 10;
+			n = d;
+			digit.changeScore(k);
 		}
 	  }
 	
-	public AnimationTimer getTimer() {
-		return this.timer;
+	public AnimationTimer getScoreUpdaterTimer() {
+		return scoreUpdatertimer;
 	}
 }
 

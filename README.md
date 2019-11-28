@@ -26,6 +26,7 @@
 * Delete `BackgroundImage` Class
 * Uniform `Digit` Class
 * Uniform `End` Class
+* Change digit as instance (Not create new digit everytime update score)
 
 #### ② View Refactor
 
