@@ -1,6 +1,6 @@
-package model.log;
+package model.actor.movableActor.log;
 
-import model.MovableActor;
+import model.actor.movableActor.MovableActor;
 
 public class Log extends MovableActor {
 	

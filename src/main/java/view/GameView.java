@@ -1,8 +1,8 @@
 package view;
 
 import javafx.scene.layout.Pane;
-import model.Digit;
 import model.Map;
+import model.actor.staticActor.Digit;
 import util.MapFactory;
 
 public class GameView {

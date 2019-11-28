@@ -1,4 +1,4 @@
-package model.log;
+package model.actor.movableActor.log;
 
 import frogger.Main;
 import javafx.scene.image.Image;

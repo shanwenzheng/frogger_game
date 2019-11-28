@@ -1,4 +1,4 @@
-package model;
+package model.actor.staticActor;
 
 import javafx.scene.image.Image;
 import frogger.Main;

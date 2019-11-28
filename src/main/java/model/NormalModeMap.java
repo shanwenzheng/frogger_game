@@ -1,13 +1,13 @@
 package model;
 
 
-import model.log.LongLog;
-import model.log.ShortLog;
-import model.obstacle.car;
-import model.obstacle.longTruck;
-import model.obstacle.shortTruck;
-import model.turtle.NormalTurtle;
-import model.turtle.WetTurtle;
+import model.actor.movableActor.log.LongLog;
+import model.actor.movableActor.log.ShortLog;
+import model.actor.movableActor.obstacle.car;
+import model.actor.movableActor.obstacle.longTruck;
+import model.actor.movableActor.obstacle.shortTruck;
+import model.actor.movableActor.turtle.NormalTurtle;
+import model.actor.movableActor.turtle.WetTurtle;
 
 public class NormalModeMap extends Map{
 

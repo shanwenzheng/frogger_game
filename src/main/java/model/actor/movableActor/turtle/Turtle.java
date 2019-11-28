@@ -1,9 +1,9 @@
-package model.turtle;
+package model.actor.movableActor.turtle;
 
 import java.util.ArrayList;
 
 import javafx.scene.image.Image;
-import model.MovableActor;
+import model.actor.movableActor.MovableActor;
 
 public abstract class Turtle extends MovableActor {
 	private ArrayList<Image> turtleImages;

@@ -1,4 +1,4 @@
-package model.obstacle;
+package model.actor.movableActor.obstacle;
 
 import frogger.Main;
 import javafx.scene.image.Image;

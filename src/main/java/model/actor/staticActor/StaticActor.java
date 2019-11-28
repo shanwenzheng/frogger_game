@@ -1,4 +1,6 @@
-package model;
+package model.actor.staticActor;
+
+import model.actor.Actor;
 
 public abstract class StaticActor extends Actor{
 	

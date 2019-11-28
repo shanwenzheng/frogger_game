@@ -3,11 +3,14 @@ package model;
 import java.util.HashSet;
 import java.util.Set;
 
-import model.log.Log;
-import model.obstacle.Obstacle;
-import model.turtle.NormalTurtle;
-import model.turtle.Turtle;
-import model.turtle.WetTurtle;
+import model.actor.movableActor.animal.Animal;
+import model.actor.movableActor.log.Log;
+import model.actor.movableActor.obstacle.Obstacle;
+import model.actor.movableActor.turtle.NormalTurtle;
+import model.actor.movableActor.turtle.Turtle;
+import model.actor.movableActor.turtle.WetTurtle;
+import model.actor.staticActor.BackgroundImage;
+import model.actor.staticActor.End;
 
 public abstract class Map {
 	private Set<Log> logs;

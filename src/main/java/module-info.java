@@ -2,10 +2,15 @@ module frogger {
 	exports frogger;
 	exports controller;
 	exports view;
-	exports model.turtle;
 	exports util;
+	exports model.actor.movableActor.animal;
+	exports model.actor.movableActor.obstacle;
+	exports model.actor.movableActor.turtle;
+	exports model.actor.movableActor.log;
+	exports model.actor.movableActor;
 	exports model;
-	exports model.obstacle;
+	exports model.actor.staticActor;
+	exports model.actor;
 
 	requires javafx.base;
 	requires javafx.controls;

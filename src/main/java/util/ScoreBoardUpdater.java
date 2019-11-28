@@ -2,8 +2,8 @@ package util;
 
 import javafx.animation.AnimationTimer;
 import javafx.scene.layout.Pane;
-import model.Animal;
-import model.Digit;
+import model.actor.movableActor.animal.Animal;
+import model.actor.staticActor.Digit;
 import view.GameView;
 
 public class ScoreBoardUpdater {

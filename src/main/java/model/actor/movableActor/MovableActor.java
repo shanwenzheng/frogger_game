@@ -1,4 +1,6 @@
-package model;
+package model.actor.movableActor;
+
+import model.actor.Actor;
 
 public abstract class MovableActor extends Actor{
 	

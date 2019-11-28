@@ -1,6 +1,6 @@
-package model.obstacle;
+package model.actor.movableActor.obstacle;
 
-import model.MovableActor;
+import model.actor.movableActor.MovableActor;
 
 public abstract class Obstacle extends MovableActor {
 	

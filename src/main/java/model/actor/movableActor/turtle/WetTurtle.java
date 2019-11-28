@@ -1,4 +1,4 @@
-package model.turtle;
+package model.actor.movableActor.turtle;
 
 import frogger.Main;
 import javafx.scene.image.Image;

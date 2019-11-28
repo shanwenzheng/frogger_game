@@ -1,4 +1,4 @@
-package model;
+package model.actor.movableActor.animal;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,10 +7,12 @@ import frogger.Main;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import model.log.Log;
-import model.obstacle.Obstacle;
-import model.turtle.NormalTurtle;
-import model.turtle.WetTurtle;
+import model.actor.movableActor.MovableActor;
+import model.actor.movableActor.log.Log;
+import model.actor.movableActor.obstacle.Obstacle;
+import model.actor.movableActor.turtle.NormalTurtle;
+import model.actor.movableActor.turtle.WetTurtle;
+import model.actor.staticActor.End;
 
 
 public class Animal extends MovableActor {

@@ -6,8 +6,8 @@ import java.util.List;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
-import model.Actor;
-import model.MovableActor;
+import model.actor.Actor;
+import model.actor.movableActor.MovableActor;
 import view.GameView;
 
 public class Animation {
