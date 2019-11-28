@@ -18,11 +18,6 @@ public abstract class Actor extends ImageView{
 		setX(x);
 		setY(y);
 	}
-	
-	public Actor(String imageLink, int size, double  x, double  y) {
-		this(x,y);
-		setImage(new Image(Main.class.getResourceAsStream(imageLink), size, size, true, true));
-	}
 
     public Pane getWorld() {
         return (Pane) getParent();

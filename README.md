@@ -24,6 +24,8 @@
 * Uniform `Obstacle` Class
 * Uniform `Log` Class
 * Delete `BackgroundImage` Class
+* Uniform `Digit` Class
+* Uniform `End` Class
 
 #### ② View Refactor
 

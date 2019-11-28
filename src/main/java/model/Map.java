@@ -39,11 +39,11 @@ public abstract class Map {
 	}
 	
 	public void createEnd() {
-		ends.add(new End("images/end.png",60,13,96));
-		ends.add(new End("images/end.png",60,141,96));
-		ends.add(new End("images/end.png",60,141 + 141-13,96));
-		ends.add(new End("images/end.png",60,141 + 141-13+141-13+1,96));
-		ends.add(new End("images/end.png",60,141 + 141-13+141-13+141-13+3,96));
+		ends.add(new End(60,13,96));
+		ends.add(new End(60,141,96));
+		ends.add(new End(60,141 + 141-13,96));
+		ends.add(new End(60,141 + 141-13+141-13+1,96));
+		ends.add(new End(60,141 + 141-13+141-13+141-13+3,96));
 	}
 
 	public Set<Log> getLogs() {
