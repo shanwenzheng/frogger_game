@@ -15,7 +15,7 @@ public abstract class Turtle extends MovableActor {
 
 	@Override
 	public void act(long now) {
-		changeWetturtleImage((int) (now/900000000  % turtleImages.size()));
+		changeTurtleImage((int) (now/900000000  % turtleImages.size()));
 		move(getSpeed(), 0);
 		checkWall(getSpeed(),-75,-200,600);
 	}
@@ -24,5 +24,5 @@ public abstract class Turtle extends MovableActor {
 		return turtleImages;
 	}
 	
-	public abstract void changeWetturtleImage(int index);
+	public abstract void changeTurtleImage(int index);
 }

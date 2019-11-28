@@ -14,7 +14,7 @@ public class NormalTurtle extends Turtle{
 	}
 
 	@Override
-	public void changeWetturtleImage(int index) {
+	public void changeTurtleImage(int index) {
 		setImage(this.getTurtleImages().get(index));
 	}
 }

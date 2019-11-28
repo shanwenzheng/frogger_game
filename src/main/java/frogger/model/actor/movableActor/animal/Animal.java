@@ -47,14 +47,18 @@ public class Animal extends MovableActor {
 	}
 	
 	public void handleMove(String str) {
-		if(str.equals("w")) {
-			move(0, -movement);
-		}else if(str.equals("a")) {
-			move(-movementX, 0);
-		}else if(str.equals("s")) {
-			move(0, movement);
-		}else if(str.equals("d")) {
-			move(movementX, 0);
+		if (noMove) {}
+		else
+		{
+			if(str.equals("w")) {
+				move(0, -movement);
+			}else if(str.equals("a")) {
+				move(-movementX, 0);
+			}else if(str.equals("s")) {
+				move(0, movement);
+			}else if(str.equals("d")) {
+				move(movementX, 0);
+			}
 		}
 	}
 	

@@ -16,7 +16,8 @@ public class WetTurtle extends Turtle{
 		setImage(getTurtleImages().get(0));
 	}
 	
-	public void changeWetturtleImage(int index) {
+	@Override
+	public void changeTurtleImage(int index) {
 		setImage(getTurtleImages().get(index));
 		sunk = index == 3 ? true : false;
 	}
