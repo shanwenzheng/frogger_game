@@ -14,36 +14,39 @@ import frogger.util.GameManager;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 
-
-public class Animal extends MovableActor {
-	private HashMap<String, Image> frogImages;
-	int points = 0;							
-	int end = 0;
-	private boolean second = false;			
-	boolean noMove = false;					
-	double movement = 13.3333333*2;			
-	double movementX = 10.666666*2;			
-	int imgSize;						
-	boolean carDeath = false;
-	boolean waterDeath = false;
-	boolean changeScore = false;
-	int carD = 0;
-	double w = 800;
-	ArrayList<End> inter = new ArrayList<End>();
+public abstract class Animal extends MovableActor{
 	
-	public Animal(int size) {
-		super(300, 706.5, 10.666666*2);
-		this.imgSize = size;
-		setImage(new Image(Main.class.getResourceAsStream("images/froggerUp.png"), imgSize, imgSize, true, true));
-		frogImages= new HashMap<String, Image>() {{
-			put("w1",new Image(Main.class.getResourceAsStream("images/froggerUp.png"), imgSize, imgSize, true, true));
-			put("a1",new Image(Main.class.getResourceAsStream("images/froggerLeft.png"), imgSize, imgSize, true, true));
-			put("s1",new Image(Main.class.getResourceAsStream("images/froggerDown.png"), imgSize, imgSize, true, true));
-			put("d1",new Image(Main.class.getResourceAsStream("images/froggerRight.png"), imgSize, imgSize, true, true));
-			put("w2",new Image(Main.class.getResourceAsStream("images/froggerUpJump.png"), imgSize, imgSize, true, true));
-			put("a2",new Image(Main.class.getResourceAsStream("images/froggerLeftJump.png"), imgSize, imgSize, true, true));
-			put("s2",new Image(Main.class.getResourceAsStream("images/froggerDownJump.png"), imgSize, imgSize, true, true));
-			put("d2",new Image(Main.class.getResourceAsStream("images/froggerRightJump.png"), imgSize, imgSize, true, true));
+	private HashMap<String, Image> animalImages;
+	private ArrayList<Image> carDeathImages;
+	private ArrayList<Image> waterDeathImages;
+	private int points = 0;							
+	private int end = 0;
+	private boolean second = false;			
+	private boolean noMove = false;					
+	private double movement = 13.3333333*2;			
+	private double movementX = 10.666666*2;	
+	private double initX;
+	private double initY;						
+	private boolean carDeath = false;
+	private boolean waterDeath = false;
+	private int carD = 0;
+	private double w = 800;
+
+	public Animal(int size, double xpos, double ypos, double s) {
+		super(xpos, ypos, s);
+		this.initX = xpos;
+		this.initY = ypos;
+		animalImages = new HashMap<String, Image>();
+		carDeathImages = new ArrayList<Image>() {{
+			add(new Image(Main.class.getResourceAsStream("images/cardeath1.png"), size,size , true, true));
+			add(new Image(Main.class.getResourceAsStream("images/cardeath2.png"), size,size , true, true));
+			add(new Image(Main.class.getResourceAsStream("images/cardeath3.png"), size,size , true, true));
+		}};
+		waterDeathImages = new ArrayList<Image>() {{
+			add(new Image(Main.class.getResourceAsStream("images/waterdeath1.png"), size,size , true, true));
+			add(new Image(Main.class.getResourceAsStream("images/waterdeath2.png"), size,size , true, true));
+			add(new Image(Main.class.getResourceAsStream("images/waterdeath3.png"), size,size , true, true));
+			add(new Image(Main.class.getResourceAsStream("images/waterdeath4.png"), size,size , true, true));
 		}};
 	}
 	
@@ -51,15 +54,10 @@ public class Animal extends MovableActor {
 		if (noMove) {}
 		else
 		{
-			if(str.equals("w")) {
-				move(0, -movement);
-			}else if(str.equals("a")) {
-				move(-movementX, 0);
-			}else if(str.equals("s")) {
-				move(0, movement);
-			}else if(str.equals("d")) {
-				move(movementX, 0);
-			}
+			if(str.equals("w")) {move(0, -movement);}
+			else if(str.equals("a")) {move(-movementX, 0);}
+			else if(str.equals("s")) {move(0, movement);}
+			else if(str.equals("d")) {move(movementX, 0);}
 		}
 	}
 	
@@ -67,13 +65,8 @@ public class Animal extends MovableActor {
 		if (noMove) {}
 		else {
 			String keyCode = event.getText();
-			if (second) {
-				setImage(frogImages.get(keyCode+"1"));
-				second = false;
-			}else {
-				setImage(frogImages.get(keyCode+"2"));
-				second = true;
-			}
+			setImage(animalImages.get(keyCode + (second ? "1" : "2")));
+			second = !second;
 			handleMove(keyCode);
 		}
 	}
@@ -83,12 +76,12 @@ public class Animal extends MovableActor {
 		else {
 			String keyCode = event.getText();
 			if(keyCode.equals("w") && getY() < w) {
-				changeScore = true;
 				w = getY();
 				points += 10;
+				GameManager.INSTANCE.getScoreBoardUpdater().updateScore(getPoints());
 			}
 			handleMove(keyCode);
-			setImage(frogImages.get(keyCode+"1"));
+			setImage(animalImages.get(keyCode+"1"));
 			second = false;
 		}
 	}
@@ -96,126 +89,120 @@ public class Animal extends MovableActor {
 	@Override
 	public void act(long now) {
 		checkAnimalWall();
-		
 		if(waterDeath || carDeath) {
 			handleDeath(now);
 		}
-		
-		handleRoadCondition();
-		handleWaterCondition();
+		handleTouch();
 	}
-	
-	
-//	public boolean getStop() {
-//		return end==5;
-//	}
-	
-	public int getPoints() {
-		return points;
-	}
-	
-	public boolean changeScore() {
-		if (changeScore) {
-			changeScore = false;
-			return true;
-		}
-		return false;
-	}
-	
+
 	public void checkAnimalWall() {
 		if (getY()<0 || getY()>734) {
-			setX(300);
-			setY(679.8+movement);
+			setOrigin();
 		} else if (getX()<0) {
 			move(movement*2, 0);
-		} if (getX()>600) {
+		} else if (getX()>600) {
 			move(-movement*2, 0);
 		}
 	}
 	
-	public void handleDeath(long now) {
+	public void handleDeath(long now){
 		noMove = true;
 		if((now)%11 == 0) {
 			carD++;
 		}
 		
-		String deathType = carDeath ? "cardeath" : "waterdeath";
-		if(carD == 1) {
-			setImage(new Image(Main.class.getResourceAsStream("images/" + deathType + carD + ".png"), imgSize,imgSize , true, true));
-		}
-		if(carD == 2) {
-			setImage(new Image(Main.class.getResourceAsStream("images/" + deathType + carD + ".png"), imgSize,imgSize , true, true));
-		}
-		if(carD == 3) {
-			setImage(new Image(Main.class.getResourceAsStream("images/" + deathType + carD + ".png"), imgSize,imgSize , true, true));
-		}
-		if(waterDeath && carD == 4) {
-			setImage(new Image(Main.class.getResourceAsStream("images/waterdeath4.png"), imgSize,imgSize , true, true));
-		}
 		if(carD == 5 || (carD == 4 && carDeath)) {
-			setX(300);
-			setY(679.8+movement);
+			setOrigin();
 			waterDeath = false;
 			carDeath = false;
 			carD = 0;
-			setImage(new Image(Main.class.getResourceAsStream("images/froggerUp.png"), imgSize, imgSize, true, true));
+			setImage(animalImages.get("w1"));
 			noMove = false;
 			if (points>50) {
 				points-=50;
-				changeScore = true;
+				GameManager.INSTANCE.getScoreBoardUpdater().updateScore(getPoints());
 			}
+		}else if (carD > 0){
+			ArrayList<Image> temp =  carDeath ? carDeathImages : waterDeathImages;
+			setImage(temp.get(carD-1));
 		}
 	}
 
-	public void handleRoadCondition() {
-		if (getIntersectingObjects(Obstacle.class).size() >= 1) {		
-			carDeath = true;
-		}
-	}
-	
-	public void handleWaterCondition() {
+	public void handleTouch() {		
 		if(getIntersectingObjects(Log.class).size() >= 1 && !noMove) {
-			moveWithSpeed(getIntersectingObjects(Log.class).get(0).getSpeed());
+			handleLogTouch();
 		}
 		else if (getIntersectingObjects(NormalTurtle.class).size() >= 1 && !noMove) {			
-			moveWithSpeed(getIntersectingObjects(NormalTurtle.class).get(0).getSpeed());
+			handleNormalTurtleTouch();
 		}
 		else if (getIntersectingObjects(End.class).size() >= 1) {
-			handleEndCondition();
+			handleEndTouch();
 		}
 		else if (getIntersectingObjects(WetTurtle.class).size() >= 1) {				
-			if (getIntersectingObjects(WetTurtle.class).get(0).isSunk()) {
-				waterDeath = true;
-			} 
-			else {
-				moveWithSpeed(getIntersectingObjects(WetTurtle.class).get(0).getSpeed());
-			}
+			handleWetturtleTouch();
 		}
-		else if (getY()<413){
-			waterDeath = true;
+		else {
+			handleObstacleTouch();
+			handlePoolTouch();
 		}
 	}
 	
-	public void moveWithSpeed(double speed) {
-		move(speed,0);
+	public void handleObstacleTouch() {
+		carDeath = getIntersectingObjects(Obstacle.class).size() >= 1;
+	}
+	
+	public void handlePoolTouch() {
+		waterDeath = getY()<413;
+	}
+	
+	public void handleWetturtleTouch() {
+		if (getIntersectingObjects(WetTurtle.class).get(0).isSunk()) {
+			waterDeath = true;
+		} 
+		else {
+			moveWithSpeed(getIntersectingObjects(WetTurtle.class).get(0).getSpeed());
+		}
 	}
 
-	public void handleEndCondition() {
-		inter = (ArrayList<End>) getIntersectingObjects(End.class);
+	public void handleEndTouch() {
 		if (getIntersectingObjects(End.class).get(0).isActivated()) {
 			end--;
 			points-=50;
 		}
 		points+=50;
-		changeScore = true;
+		GameManager.INSTANCE.getScoreBoardUpdater().updateScore(getPoints());
 		w=800;
 		getIntersectingObjects(End.class).get(0).setEnd();
 		end++;
-		setX(300);
-		setY(679.8+movement);
+		setOrigin();
 		
 		if(end == 5) {
 			GameManager.INSTANCE.endGame();
 		}
+	}
+	
+	public void handleLogTouch() {
+		moveWithSpeed(getIntersectingObjects(Log.class).get(0).getSpeed());
+	}
+	
+	public void handleNormalTurtleTouch() {
+		moveWithSpeed(getIntersectingObjects(NormalTurtle.class).get(0).getSpeed());
+	}
+	
+	public void moveWithSpeed(double speed) {
+		move(speed,0);
+	}
+	
+	public HashMap<String, Image> getAnimalImages(){
+		return animalImages;
+	}
+	
+	public int getPoints() {
+		return points;
+	}
+
+	public void setOrigin() {
+		setX(initX);
+		setY(initY);
 	}
 }

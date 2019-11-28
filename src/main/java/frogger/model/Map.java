@@ -3,6 +3,7 @@ package frogger.model;
 import java.util.ArrayList;
 
 import frogger.model.actor.movableActor.animal.Animal;
+import frogger.model.actor.movableActor.animal.Frog;
 import frogger.model.actor.movableActor.log.Log;
 import frogger.model.actor.movableActor.obstacle.Obstacle;
 import frogger.model.actor.movableActor.turtle.Turtle;
@@ -36,7 +37,7 @@ public abstract class Map {
 	}
 	
 	public void createAnimal() {
-		animal = new Animal(40);
+		animal = new Frog(40, 300, 706.5);
 	}
 	
 	public void createEnd() {

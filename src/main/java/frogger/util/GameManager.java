@@ -4,7 +4,6 @@ import frogger.util.Animation;
 import frogger.util.MusicPlayer;
 import frogger.util.ScoreBoardUpdater;
 import frogger.view.GameView;
-import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -30,15 +29,14 @@ public enum GameManager {
 	}
 	
 	public void startGame() {
+	    MapLoader.mapLoad(gameView);
 		musicStart();
 		animationStart();
-		scoreBoardUpdaterStart();
 	}
 	
 	public void endGame() {
 		musicStop();
 		animationStop();
-		scoreBoardUpdaterStop();
 		printEndGameInfo();
 	}
     
@@ -58,12 +56,8 @@ public enum GameManager {
 		animation.getActTimer().stop();
 	}
 	
-	private void scoreBoardUpdaterStart() {
-		scoreBoardUpdater.getScoreUpdaterTimer().start();
-	}
-	
-	private void scoreBoardUpdaterStop() {
-		scoreBoardUpdater.getScoreUpdaterTimer().stop();
+	public ScoreBoardUpdater getScoreBoardUpdater() {
+		return scoreBoardUpdater;
 	}
 	
 	public void printEndGameInfo() {

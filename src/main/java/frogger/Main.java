@@ -17,7 +17,6 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		GameView gameView = new GameView("NormalMode");
 	    Scene scene  = new Scene(gameView.getBackground(),600,800);
-	    MapLoader.mapLoad(gameView);
 	    
 	    primaryStage.setTitle("Frogger Game");
 		primaryStage.setResizable(false);
