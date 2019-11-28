@@ -7,6 +7,7 @@ import frogger.Main;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import model.log.Log;
 import model.obstacle.Obstacle;
 import model.turtle.NormalTurtle;
 import model.turtle.WetTurtle;
@@ -28,9 +29,10 @@ public class Animal extends MovableActor {
 	double w = 800;
 	ArrayList<End> inter = new ArrayList<End>();
 	
-	public Animal(String imageLink, int size) {
-		super(imageLink, size, 300, 706.5, 10.666666*2);
+	public Animal(int size) {
+		super(300, 706.5, 10.666666*2);
 		this.imgSize = size;
+		setImage(new Image(Main.class.getResourceAsStream("images/froggerUp.png"), imgSize, imgSize, true, true));
 		frogImages= new HashMap<String, Image>() {{
 			put("w1",new Image(Main.class.getResourceAsStream("images/froggerUp.png"), imgSize, imgSize, true, true));
 			put("a1",new Image(Main.class.getResourceAsStream("images/froggerLeft.png"), imgSize, imgSize, true, true));

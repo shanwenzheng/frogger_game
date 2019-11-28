@@ -1,9 +1,11 @@
-package model;
+package model.log;
+
+import model.MovableActor;
 
 public class Log extends MovableActor {
 	
-	public Log(String imageLink, int size, double  xpos, double  ypos, double s) {
-		super(imageLink, size, xpos, ypos, s);
+	public Log(double  xpos, double  ypos, double s) {
+		super(xpos, ypos, s);
 	}
 	
 	@Override

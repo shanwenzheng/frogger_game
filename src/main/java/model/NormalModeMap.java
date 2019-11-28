@@ -1,7 +1,8 @@
 package model;
 
 
-import model.obstacle.Obstacle;
+import model.log.LongLog;
+import model.log.ShortLog;
 import model.obstacle.car;
 import model.obstacle.longTruck;
 import model.obstacle.shortTruck;
@@ -26,14 +27,14 @@ public class NormalModeMap extends Map{
 
 	@Override
 	public void createLogs() {
-		getLogs().add(new Log("images/log3.png", 150, 0, 166, 0.75));
-		getLogs().add(new Log("images/log3.png", 150, 220, 166, 0.75));
-		getLogs().add(new Log("images/log3.png", 150, 440, 166, 0.75));
-		getLogs().add(new Log("images/logs.png", 300, 0, 276, -2));
-		getLogs().add(new Log("images/logs.png", 300, 400, 276, -2));
-		getLogs().add(new Log("images/log3.png", 150, 50, 329, 0.75));
-		getLogs().add(new Log("images/log3.png", 150, 270, 329, 0.75));
-		getLogs().add(new Log("images/log3.png", 150, 490, 329, 0.75));
+		getLogs().add(new ShortLog(150, 0, 166, 0.75));
+		getLogs().add(new ShortLog(150, 220, 166, 0.75));
+		getLogs().add(new ShortLog(150, 440, 166, 0.75));
+		getLogs().add(new LongLog(300, 0, 276, -2));
+		getLogs().add(new LongLog(300, 400, 276, -2));
+		getLogs().add(new ShortLog(150, 50, 329, 0.75));
+		getLogs().add(new ShortLog(150, 270, 329, 0.75));
+		getLogs().add(new ShortLog(150, 490, 329, 0.75));
 	}
 
 	@Override

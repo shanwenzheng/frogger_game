@@ -11,11 +11,6 @@ public abstract class MovableActor extends Actor{
 		speed = s;
 	}
 	
-	public MovableActor(String imageLink, int size, double xpos, double ypos, double s) {
-		super(imageLink, size, xpos, ypos);
-		speed = s;
-	}
-	
     public void move(double dx, double dy) {
         setX(getX() + dx);
         setY(getY() + dy);

@@ -22,6 +22,7 @@
 
 * Uniform `Turtle` Class
 * Uniform `Obstacle` Class
+* Uniform `Log` Class
 
 #### ② View Refactor
 

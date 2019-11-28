@@ -3,6 +3,7 @@ package model;
 import java.util.HashSet;
 import java.util.Set;
 
+import model.log.Log;
 import model.obstacle.Obstacle;
 import model.turtle.NormalTurtle;
 import model.turtle.Turtle;
@@ -38,7 +39,7 @@ public abstract class Map {
 	}
 	
 	public void createAnimal() {
-		animal = new Animal("images/froggerUp.png",40);
+		animal = new Animal(40);
 	}
 	
 	public void createEnd() {
