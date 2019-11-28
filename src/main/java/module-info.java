@@ -5,6 +5,7 @@ module frogger {
 	exports model.turtle;
 	exports util;
 	exports model;
+	exports model.obstacle;
 
 	requires javafx.base;
 	requires javafx.controls;

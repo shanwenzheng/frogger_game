@@ -3,6 +3,7 @@ package model;
 import java.util.HashSet;
 import java.util.Set;
 
+import model.obstacle.Obstacle;
 import model.turtle.NormalTurtle;
 import model.turtle.Turtle;
 import model.turtle.WetTurtle;

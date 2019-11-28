@@ -1,6 +1,10 @@
 package model;
 
 
+import model.obstacle.Obstacle;
+import model.obstacle.car;
+import model.obstacle.longTruck;
+import model.obstacle.shortTruck;
 import model.turtle.NormalTurtle;
 import model.turtle.WetTurtle;
 
@@ -8,16 +12,16 @@ public class NormalModeMap extends Map{
 
 	@Override
 	public void createObstacles() {
-		getObstacles().add(new Obstacle("images/truck1"+"Right.png", 120, 0, 649, 1));
-		getObstacles().add(new Obstacle("images/truck1"+"Right.png", 120, 300, 649, 1));
-		getObstacles().add(new Obstacle("images/truck1"+"Right.png", 120, 600, 649, 1));
-		getObstacles().add(new Obstacle("images/car1Left.png", 50, 100, 597, -1));
-		getObstacles().add(new Obstacle("images/car1Left.png", 50, 250, 597, -1));
-		getObstacles().add(new Obstacle("images/car1Left.png", 50, 400, 597, -1));
-		getObstacles().add(new Obstacle("images/car1Left.png", 50, 550, 597, -1));
-		getObstacles().add(new Obstacle("images/truck2Right.png", 200, 0, 540, 1));
-		getObstacles().add(new Obstacle("images/truck2Right.png", 200, 500, 540, 1));
-		getObstacles().add(new Obstacle("images/car1Left.png", 50, 500, 490, -5));
+		getObstacles().add(new shortTruck(120, 0, 649, 1));
+		getObstacles().add(new shortTruck(120, 300, 649, 1));
+		getObstacles().add(new shortTruck(120, 600, 649, 1));
+		getObstacles().add(new car(50, 100, 597, -1));
+		getObstacles().add(new car(50, 250, 597, -1));
+		getObstacles().add(new car(50, 400, 597, -1));
+		getObstacles().add(new car(50, 550, 597, -1));
+		getObstacles().add(new longTruck(200, 0, 540, 1));
+		getObstacles().add(new longTruck(200, 500, 540, 1));
+		getObstacles().add(new car(50, 500, 490, -5));
 	}
 
 	@Override

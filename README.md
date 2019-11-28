@@ -21,6 +21,7 @@
 * Refactor `Animal` Class
 
 * Uniform `Turtle` Class
+* Uniform `Obstacle` Class
 
 #### ② View Refactor
 

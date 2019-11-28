@@ -7,6 +7,7 @@ import frogger.Main;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import model.obstacle.Obstacle;
 import model.turtle.NormalTurtle;
 import model.turtle.WetTurtle;
 
