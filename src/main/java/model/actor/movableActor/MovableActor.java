@@ -6,8 +6,6 @@ public abstract class MovableActor extends Actor{
 	
 	private double speed;
 	
-	public MovableActor() {};
-	
 	public MovableActor(double xpos, double ypos, double s) {
 		super(xpos, ypos);
 		speed = s;

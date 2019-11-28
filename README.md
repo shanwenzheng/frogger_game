@@ -23,6 +23,7 @@
 * Uniform `Turtle` Class
 * Uniform `Obstacle` Class
 * Uniform `Log` Class
+* Delete `BackgroundImage` Class
 
 #### ② View Refactor
 

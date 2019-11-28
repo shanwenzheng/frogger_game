@@ -1,5 +1,6 @@
 package view;
 
+import frogger.Main;
 import javafx.scene.layout.Pane;
 import model.Map;
 import model.actor.staticActor.Digit;
@@ -23,7 +24,9 @@ public class GameView {
 	}
 
 	public void drawBackgroundImage() {
-		background.getChildren().add(map.getBackgroundImage());
+		String str = Main.class.getResource("images/iKogsKW.png").toString();
+		String style = "-fx-background-image: url('" + str + "'); -fx-background-size: 600 800;";
+		background.setStyle(style);
 	}
 	
 	public void drawLog() {

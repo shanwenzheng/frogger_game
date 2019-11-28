@@ -18,6 +18,8 @@ public class Main extends Application {
 	    Scene scene  = new Scene(gameView.getBackground(),600,800);
 	    MapLoader.mapLoad(gameView);
 	    
+	    primaryStage.setTitle("Frogger Game");
+		primaryStage.setResizable(false);
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	

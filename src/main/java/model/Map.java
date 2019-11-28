@@ -9,7 +9,6 @@ import model.actor.movableActor.obstacle.Obstacle;
 import model.actor.movableActor.turtle.NormalTurtle;
 import model.actor.movableActor.turtle.Turtle;
 import model.actor.movableActor.turtle.WetTurtle;
-import model.actor.staticActor.BackgroundImage;
 import model.actor.staticActor.End;
 
 public abstract class Map {
@@ -18,7 +17,6 @@ public abstract class Map {
 	private Set<Turtle> turtles;
 	private Set<End> ends;
 	private Animal animal;
-	private BackgroundImage backgroundImage;
 	
 	public Map() {
 		logs = new HashSet<>();
@@ -29,16 +27,11 @@ public abstract class Map {
 	}
 	
 	public void initMap() {
-		createBackgroundImage();
 		createAnimal();
 		createEnd();
 		createObstacles();
 		createLogs();
 		createTurtles();
-	}
-	
-	public void createBackgroundImage() {
-		backgroundImage = new BackgroundImage("images/iKogsKW.png");	
 	}
 	
 	public void createAnimal() {
@@ -71,10 +64,6 @@ public abstract class Map {
 
 	public Animal getAnimal() {
 		return animal;
-	}
-
-	public BackgroundImage getBackgroundImage() {
-		return backgroundImage;
 	}
 	
 	public abstract void createObstacles();
