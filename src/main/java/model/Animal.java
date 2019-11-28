@@ -7,6 +7,8 @@ import frogger.Main;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import model.turtle.NormalTurtle;
+import model.turtle.WetTurtle;
 
 
 public class Animal extends MovableActor {
@@ -166,8 +168,8 @@ public class Animal extends MovableActor {
 		if(getIntersectingObjects(Log.class).size() >= 1 && !noMove) {
 			moveWithSpeed(getIntersectingObjects(Log.class).get(0).getSpeed());
 		}
-		else if (getIntersectingObjects(Turtle.class).size() >= 1 && !noMove) {			
-			moveWithSpeed(getIntersectingObjects(Turtle.class).get(0).getSpeed());
+		else if (getIntersectingObjects(NormalTurtle.class).size() >= 1 && !noMove) {			
+			moveWithSpeed(getIntersectingObjects(NormalTurtle.class).get(0).getSpeed());
 		}
 		else if (getIntersectingObjects(End.class).size() >= 1) {
 			handleEndCondition();

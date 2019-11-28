@@ -3,11 +3,14 @@ package model;
 import java.util.HashSet;
 import java.util.Set;
 
+import model.turtle.NormalTurtle;
+import model.turtle.Turtle;
+import model.turtle.WetTurtle;
+
 public abstract class Map {
 	private Set<Log> logs;
 	private Set<Obstacle> obstacles;
 	private Set<Turtle> turtles;
-	private Set<WetTurtle> wetturtles;
 	private Set<End> ends;
 	private Animal animal;
 	private BackgroundImage backgroundImage;
@@ -16,7 +19,6 @@ public abstract class Map {
 		logs = new HashSet<>();
 		obstacles = new HashSet<>();
 		turtles = new HashSet<>();
-		wetturtles = new HashSet<>();
 		ends = new HashSet<>();
 		initMap();
 	}
@@ -28,7 +30,6 @@ public abstract class Map {
 		createObstacles();
 		createLogs();
 		createTurtles();
-		createWetturtles();
 	}
 	
 	public void createBackgroundImage() {
@@ -54,13 +55,9 @@ public abstract class Map {
 	public Set<Obstacle> getObstacles() {
 		return obstacles;
 	}
-
-	public Set<Turtle> getTurtles() {
+	
+	public Set<Turtle> getTurtles(){
 		return turtles;
-	}
-
-	public Set<WetTurtle> getWetturtles() {
-		return wetturtles;
 	}
 
 	public Set<End> getEnd() {
@@ -78,5 +75,4 @@ public abstract class Map {
 	public abstract void createObstacles();
 	public abstract void createLogs();
 	public abstract void createTurtles();
-	public abstract void createWetturtles();
 }

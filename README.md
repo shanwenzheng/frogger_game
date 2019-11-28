@@ -20,6 +20,8 @@
 * Refactor `BackgroundImage` class
 * Refactor `Animal` Class
 
+* Uniform `Turtle` Class
+
 #### ② View Refactor
 
 * Split `gameView` from main class

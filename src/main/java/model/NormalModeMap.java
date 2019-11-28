@@ -1,5 +1,9 @@
 package model;
 
+
+import model.turtle.NormalTurtle;
+import model.turtle.WetTurtle;
+
 public class NormalModeMap extends Map{
 
 	@Override
@@ -30,16 +34,12 @@ public class NormalModeMap extends Map{
 
 	@Override
 	public void createTurtles() {
-		getTurtles().add(new Turtle(130, 500, 376, -1));
-		getTurtles().add(new Turtle(130, 300, 376, -1));
-	}
-
-	@Override
-	public void createWetturtles() {
-		getWetturtles().add(new WetTurtle(130, 700, 376, -1));
-		getWetturtles().add(new WetTurtle(130, 600, 217, -1));
-		getWetturtles().add(new WetTurtle(130, 400, 217, -1));
-		getWetturtles().add(new WetTurtle(130, 200, 217, -1));
+		getTurtles().add(new NormalTurtle(130, 500, 376, -1));
+		getTurtles().add(new NormalTurtle(130, 300, 376, -1));
+		getTurtles().add(new WetTurtle(130, 700, 376, -1));
+		getTurtles().add(new WetTurtle(130, 600, 217, -1));
+		getTurtles().add(new WetTurtle(130, 400, 217, -1));
+		getTurtles().add(new WetTurtle(130, 200, 217, -1));
 	}
 
 }

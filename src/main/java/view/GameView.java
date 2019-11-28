@@ -32,7 +32,6 @@ public class GameView {
 	
 	public void drawTurtle() {
 		background.getChildren().addAll(map.getTurtles());
-		background.getChildren().addAll(map.getWetturtles());
 	}
 	
 	public void drawEnd() {
