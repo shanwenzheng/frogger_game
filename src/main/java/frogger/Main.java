@@ -21,7 +21,8 @@ public class Main extends Application {
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	
-		GameController gameController = new GameController(gameView, scene);
-		gameController.startGame();
+//		GameController gameController = new GameController(gameView, scene);
+		GameController.INSTANCE.init(gameView, scene);
+		GameController.INSTANCE.startGame();
 	}
 }

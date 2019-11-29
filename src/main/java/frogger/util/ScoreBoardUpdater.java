@@ -7,7 +7,7 @@ import frogger.view.GameView;
 
 public enum ScoreBoardUpdater {
 	INSTANCE;
-
+	
 	private ArrayList<Digit> digits;
 	
 	public void init(ArrayList<Digit> digits) {
@@ -23,4 +23,3 @@ public enum ScoreBoardUpdater {
 		}
 	  }
 }
-

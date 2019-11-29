@@ -19,4 +19,10 @@ public class SimpleModeMap extends Map{
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void createWetTurtles() {
+		// TODO Auto-generated method stub
+		
+	}
 }

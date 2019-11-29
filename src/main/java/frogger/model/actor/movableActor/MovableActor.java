@@ -1,6 +1,10 @@
 package frogger.model.actor.movableActor;
 
+import java.util.ArrayList;
+
 import frogger.model.actor.Actor;
+import javafx.scene.Node;
+import javafx.scene.layout.Pane;
 
 public abstract class MovableActor extends Actor{
 	
@@ -23,9 +27,20 @@ public abstract class MovableActor extends Actor{
 			setX(newRightPos);
 	}
     
+    public <A extends Actor> java.util.List<A> getIntersectingObjects(java.lang.Class<A> cls){
+        ArrayList<A> someArray = new ArrayList<A>();
+        for(Node n : ((Pane)getParent()).getChildren()) {
+        	if(cls.isInstance(n) && n.intersects(this.getBoundsInLocal())) {
+        		someArray.add((A)n);
+        	}
+        }
+        return someArray;
+    }
+    
     public double getSpeed() {
     	return speed;
     }
     
     public abstract void act(long now);
+    public abstract void checkTouch();
 }

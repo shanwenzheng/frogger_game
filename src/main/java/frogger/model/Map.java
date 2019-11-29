@@ -2,11 +2,12 @@ package frogger.model;
 
 import java.util.ArrayList;
 
-import frogger.model.actor.movableActor.animal.Animal;
-import frogger.model.actor.movableActor.animal.Frog;
-import frogger.model.actor.movableActor.log.Log;
-import frogger.model.actor.movableActor.obstacle.Obstacle;
-import frogger.model.actor.movableActor.turtle.Turtle;
+import frogger.Main;
+import frogger.model.actor.movableActor.Frog;
+import frogger.model.actor.movableActor.Log;
+import frogger.model.actor.movableActor.Obstacle;
+import frogger.model.actor.movableActor.Turtle;
+import frogger.model.actor.movableActor.WetTurtle;
 import frogger.model.actor.staticActor.Digit;
 import frogger.model.actor.staticActor.End;
 
@@ -14,14 +15,17 @@ public abstract class Map {
 	private ArrayList<Log> logs;
 	private ArrayList<Obstacle> obstacles;
 	private ArrayList<Turtle> turtles;
+	private ArrayList<WetTurtle> wetTurtles;
 	private ArrayList<End> ends;
 	private ArrayList<Digit> digits;
-	private Animal animal;
+	private Frog animal;
+	private String backgroundImage;
 	
 	public Map() {
 		logs = new ArrayList<>();
 		obstacles = new ArrayList<>();
 		turtles = new ArrayList<>();
+		wetTurtles = new ArrayList<>();
 		ends = new ArrayList<>();
 		digits = new ArrayList<>();
 		initMap();
@@ -34,6 +38,13 @@ public abstract class Map {
 		createObstacles();
 		createLogs();
 		createTurtles();
+		createWetTurtles();
+		createBackgroundImage();
+	}
+	
+	public void createBackgroundImage() {
+		String str = Main.class.getResource("images/iKogsKW.png").toString();
+		backgroundImage = "-fx-background-image: url('" + str + "'); -fx-background-size: 600 800;";
 	}
 	
 	public void createAnimal() {
@@ -65,6 +76,10 @@ public abstract class Map {
 	public ArrayList<Turtle> getTurtles(){
 		return turtles;
 	}
+	
+	public ArrayList<WetTurtle> getWetTurtles(){
+		return wetTurtles;
+	}
 
 	public ArrayList<End> getEnd() {
 		return ends;
@@ -74,11 +89,16 @@ public abstract class Map {
 		return digits;
 	}
 
-	public Animal getAnimal() {
+	public Frog getAnimal() {
 		return animal;
+	}
+	
+	public String getBackgroundImage() {
+		return backgroundImage;
 	}
 	
 	public abstract void createObstacles();
 	public abstract void createLogs();
 	public abstract void createTurtles();
+	public abstract void createWetTurtles();
 }

@@ -8,6 +8,7 @@ public class MapLoader {
 		gameView.drawBackgroundImage();
 		gameView.drawLog();
 		gameView.drawTurtle();
+		gameView.drawWetTurtle();
 		gameView.drawEnd();
 		gameView.drawAnimal();
 		gameView.drawObstacle();
