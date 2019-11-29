@@ -19,7 +19,6 @@
 * Refactor `End` class
 * Refactor `BackgroundImage` class
 * Refactor `Animal` Class
-
 * Uniform `Turtle` Class
 * Uniform `Obstacle` Class
 * Uniform `Log` Class
@@ -27,6 +26,9 @@
 * Uniform `Digit` Class
 * Uniform `End` Class
 * Change digit as instance (Not create new digit everytime update score)
+* Uniform `Animal` Class
+* Make Intersect related method into animal abstract class
+
 
 #### ② View Refactor
 
@@ -43,6 +45,7 @@
 * Change `MusicPlayer` to singleton pattern
 * Create `MapLoader` class to load view
 * Create `MapFactory` class to generate view
+* Change `ScoreBoardupdater` class to singleton pattern
 
 #### ④ Controller Refactor
 
