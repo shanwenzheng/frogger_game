@@ -20,6 +20,14 @@
 * Refactor `BackgroundImage` class
 * Refactor `Animal` Class
 
+* Uniform `Turtle` Class
+* Uniform `Obstacle` Class
+* Uniform `Log` Class
+* Delete `BackgroundImage` Class
+* Uniform `Digit` Class
+* Uniform `End` Class
+* Change digit as instance (Not create new digit everytime update score)
+
 #### ② View Refactor
 
 * Split `gameView` from main class
