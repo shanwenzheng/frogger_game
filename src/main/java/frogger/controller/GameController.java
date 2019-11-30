@@ -1,5 +1,6 @@
 package frogger.controller;
 
+import frogger.model.Score;
 import frogger.model.actor.movableActor.MovableActor;
 import frogger.model.actor.staticActor.End;
 import frogger.util.ActAnimation;
@@ -7,7 +8,6 @@ import frogger.util.EndDetecter;
 import frogger.util.MusicPlayer;
 import frogger.util.ScoreBoardUpdater;
 import frogger.view.GameView;
-import javafx.animation.AnimationTimer;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.KeyEvent;
@@ -15,13 +15,14 @@ import javafx.scene.input.KeyEvent;
 public enum GameController {
 	INSTANCE;
 	private GameView gameView;
+	private Score score;
 	
 	public void init(GameView gameView) {
 		this.gameView = gameView;	
+		this.score = new Score();
 		MusicPlayer.INSTANCE.init();
 		EndDetecter.INSTANCE.init(gameView);
 		ActAnimation.INSTANCE.init(gameView);
-		ScoreBoardUpdater.INSTANCE.init(gameView.getMap().getDigit());
 	}
 	
 	public void startGame() {
@@ -65,7 +66,7 @@ public enum GameController {
 		System.out.println("STOPP: ");
   		Alert alert = new Alert(AlertType.INFORMATION);
   		alert.setTitle("You Have Won The Game!");
-  		alert.setHeaderText("Your High Score: "+gameView.getMap().getAnimal().getPoints()+"!");
+  		alert.setHeaderText("Your High Score: "+score.getScore()+"!");
   		alert.setContentText("Highest Possible Score: 800");
   		alert.show();
 	}
@@ -92,8 +93,18 @@ public enum GameController {
 	
 	public void handleEndTouched(MovableActor actor) {
 		if(!actor.getIntersectingObjects(End.class).get(0).isActivated()) {
-			gameView.getMap().getAnimal().getPoints().addScore(50);
 			actor.getIntersectingObjects(End.class).get(0).setEnd();
+			handleScoreChanged(50);
+			gameView.getMap().getAnimal().setOrigin(1);
 		}
+	}
+	
+	public void handleScoreChanged(int points) {
+		if(points > 0) {
+			score.addScore(points);
+		} else if (score.getScore() > 50) {
+			score.subScore(Math.abs(points));
+		}
+		ScoreBoardUpdater.INSTANCE.updateScore(score.getScore(), gameView.getMap().getScoreBoard());
 	}
 }

@@ -13,14 +13,14 @@ public class Frog extends MovableActor{
 	private HashMap<String, Image> frogImages;
 	private ArrayList<Image> carDeathImages;
 	private ArrayList<Image> waterDeathImages;
-	private Score points = new Score();	
-	private boolean second = false;			
-	private boolean noMove = false;					
-	private double movement = 13.3333333*2;			
-	private double movementX = 10.666666*2;						
+//	private Score points = new Score();				
+	private boolean second;			
+	private boolean noMove;	
+	public String deathType;
 	private int carD;
 	private double w;
-	public String deathType;
+	private double movement = 13.3333333*2;			
+	private double movementX = 10.666666*2;	
     
 	public Frog(int size) {
 		super();
@@ -69,7 +69,7 @@ public class Frog extends MovableActor{
 		else {
 			if(keyCode.equals("w") && getY() < w) {
 				w = getY();
-				points.addScore(10);
+				GameController.INSTANCE.handleScoreChanged(10);
 			}
 			handleMove(keyCode);
 			setImage(frogImages.get(keyCode+"1"));
@@ -88,7 +88,6 @@ public class Frog extends MovableActor{
 	public void checkTouch() {
 		if (getIntersectingObjects(End.class).size() >= 1) {
 			GameController.INSTANCE.handleEndTouched(this);
-			setOrigin(1);
 		} else if(getY() < 438 && getIntersectingObjects(MovableActor.class).size() == 1) {
 			GameController.INSTANCE.handlePoolTouched(this);		
 		}
@@ -120,7 +119,7 @@ public class Frog extends MovableActor{
 	public void handleWaterDeath() {
 		if(carD == 5) {
 			setOrigin(0);
-			points.subScore(50);
+			GameController.INSTANCE.handleScoreChanged(-50);
 		}else if (carD > 0) {
 			setImage(waterDeathImages.get(carD - 1));
 		}
@@ -129,7 +128,7 @@ public class Frog extends MovableActor{
 	public void handleCarDeath() {
 		if(carD == 4) {
 			setOrigin(0);
-			points.subScore(50);
+			GameController.INSTANCE.handleScoreChanged(-50);
 		}else if(carD > 0) {
 			setImage(carDeathImages.get(carD - 1));
 		}
@@ -150,8 +149,4 @@ public class Frog extends MovableActor{
 	public void setDeathType(String str) {
 		deathType = str;
 	}
-	
-	public Score getPoints() {
-		return points;	
-	}	
 }

@@ -52,6 +52,6 @@ public class GameView {
 	}
 	
 	public void drawDigit() {
-		background.getChildren().addAll(map.getDigit());
+		background.getChildren().addAll(map.getScoreBoard());
 	}
 }

@@ -24,3 +24,4 @@ public class Digit extends StaticActor{
 		setImage(digitImages.get(n));
 	}
 }
+
