@@ -56,7 +56,7 @@ public class Frog extends MovableActor{
 		else if(str.equals("d")) {move(movementX, 0);}
 	}
 	
-	public void handleKeyPressed(KeyEvent event) {
+	public void moveKeyPressed(KeyEvent event) {
 		if (noMove) {}
 		else {
 			String keyCode = event.getText();
@@ -66,7 +66,7 @@ public class Frog extends MovableActor{
 		}
 	}
 	
-	public void handleKeyReleased(KeyEvent event) {
+	public void moveKeyReleased(KeyEvent event) {
 		if (noMove) {}
 		else {
 			String keyCode = event.getText();

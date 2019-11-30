@@ -30,8 +30,8 @@ public enum GameController {
 	}
 	
 	public void handleKeyEvent(Scene scene) {
-		scene.addEventHandler(KeyEvent.KEY_PRESSED, event -> gameView.getMap().getAnimal().handleKeyPressed(event));
-		scene.addEventHandler(KeyEvent.KEY_RELEASED, event -> gameView.getMap().getAnimal().handleKeyReleased(event));
+		scene.addEventHandler(KeyEvent.KEY_PRESSED, event -> gameView.getMap().getAnimal().moveKeyPressed(event));
+		scene.addEventHandler(KeyEvent.KEY_RELEASED, event -> gameView.getMap().getAnimal().moveKeyReleased(event));
 	}
 	
 	public void startGame() {
