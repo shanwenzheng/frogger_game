@@ -21,7 +21,7 @@ public enum GameController {
 		this.gameView = gameView;	
 		this.score = new Score();
 		EndDetecter.INSTANCE.init(gameView);
-		ActAnimation.INSTANCE.init(gameView);
+		ActAnimation.INSTANCE.init(gameView.getBackground());
 		MusicPlayer.INSTANCE.init("music/Frogger Main Song Theme (loop).mp3");
 	}
 	

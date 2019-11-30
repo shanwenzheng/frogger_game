@@ -12,8 +12,8 @@ public enum ActAnimation {
     private AnimationTimer actTimer;
     private Pane background;
     
-    public void init(GameView gameView) {
-    	this.background = gameView.getBackground();
+    public void init(Pane background) {
+    	this.background = background;
     	createActTimer();
     }
     
