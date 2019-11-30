@@ -20,32 +20,21 @@ public enum GameController {
 	public void init(GameView gameView) {
 		this.gameView = gameView;	
 		this.score = new Score();
-		EndDetecter.INSTANCE.init(gameView);
 		ActAnimation.INSTANCE.init(gameView.getBackground());
 		MusicPlayer.INSTANCE.init("music/Frogger Main Song Theme (loop).mp3");
 	}
 	
 	public void startGame() {
-		endDetecterStart();
 		musicStart();
 		animationStart();
 	}
 	
 	public void endGame() {
-		endDetecterStop();
 		musicStop();
 		animationStop();
 		printEndGameInfo();
 	}
 	
-	public void endDetecterStart() {
-		EndDetecter.INSTANCE.endDetectStart();
-	}
-	
-	public void endDetecterStop() {
-		EndDetecter.INSTANCE.endDetectStop();
-	}
-    
 	public void musicStart() {
 		MusicPlayer.INSTANCE.playMusic();
 	}
@@ -96,6 +85,9 @@ public enum GameController {
 			actor.getIntersectingObjects(End.class).get(0).setEnd();
 			handleScoreChanged(50);
 			gameView.getMap().getAnimal().setOrigin(1);
+		}
+		if(EndDetecter.INSTANCE.checkEndActivited(gameView.getMap().getEnd())) {
+			endGame();
 		}
 	}
 	
