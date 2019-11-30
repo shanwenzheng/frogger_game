@@ -6,16 +6,18 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 
-public class Animation {
+public enum ActAnimation {
+	INSTANCE;
+	
     private AnimationTimer actTimer;
     private Pane background;
     
-    public Animation(GameView gameView) {
+    public void init(GameView gameView) {
     	this.background = gameView.getBackground();
-    	createTimer();
+    	createActTimer();
     }
     
-    public void createTimer() {
+    public void createActTimer() {
     	actTimer = new AnimationTimer() {
             @Override
             public void handle(long now) {
@@ -30,7 +32,11 @@ public class Animation {
         };
     }
     
-	public AnimationTimer getActTimer() {
-		return actTimer;
+	public void actStart() {
+		actTimer.start();
+	}
+	
+	public void actStop() {
+		actTimer.stop();
 	}
 }

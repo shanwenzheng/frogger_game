@@ -2,6 +2,7 @@ package frogger.controller;
 
 import frogger.model.actor.movableActor.MovableActor;
 import frogger.model.actor.staticActor.End;
+import frogger.util.ActAnimation;
 import frogger.util.Animation;
 import frogger.util.MapLoader;
 import frogger.util.MusicPlayer;
@@ -17,18 +18,16 @@ public enum GameController {
 	
 	private AnimationTimer endDetecter;
 	private GameView gameView;
-	private Animation animation;
 	
 	public void init(GameView gameView) {
 		createEndDetecter();
 		this.gameView = gameView;
-		animation = new Animation(gameView);
 		MusicPlayer.INSTANCE.init();
+		ActAnimation.INSTANCE.init(gameView);
 		ScoreBoardUpdater.INSTANCE.init(gameView.getMap().getDigit());
 	}
 	
 	public void startGame() {
-	    loadMap();
 		endDetecterStart();
 		musicStart();
 		animationStart();
@@ -59,10 +58,6 @@ public enum GameController {
 		};
 	}
 	
-	public void loadMap() {
-		MapLoader.mapLoad(gameView);
-	}
-	
 	public void endDetecterStart() {
 		endDetecter.start();
 	}
@@ -80,11 +75,11 @@ public enum GameController {
 	}
 	
 	private void animationStart() {
-		animation.getActTimer().start();	
+		ActAnimation.INSTANCE.actStart();
 	}
 	
 	private void animationStop() {
-		animation.getActTimer().stop();
+		ActAnimation.INSTANCE.actStop();
 	}
 	
 	public void printEndGameInfo() {
