@@ -46,7 +46,7 @@ public class Frog extends MovableActor{
 			add(new Image(Main.class.getResourceAsStream("images/waterdeath3.png"), size,size , true, true));
 			add(new Image(Main.class.getResourceAsStream("images/waterdeath4.png"), size,size , true, true));
 		}};
-		setOrigin();
+		setOrigin(1);
 	}
 	
 	public void handleMove(String str) {
@@ -56,6 +56,7 @@ public class Frog extends MovableActor{
 		else if(str.equals("d")) {move(movementX, 0);}
 	}
 	
+
 	public void moveKeyPressed(KeyEvent event) {
 		if (noMove) {}
 		else {
@@ -90,22 +91,20 @@ public class Frog extends MovableActor{
 	@Override
 	public void checkTouch() {
 		if (getIntersectingObjects(End.class).size() >= 1) {
-			System.out.println("End");
 			GameController.INSTANCE.handleEndTouched(this);
-			setOrigin();
+			setOrigin(1);
 		} else if(getY() < 438 && getIntersectingObjects(MovableActor.class).size() == 1) {
-			System.out.println("Over");
 			GameController.INSTANCE.handlePoolTouched(this);		
 		}
 	}
 
 	public void checkAnimalWall() {
-		if (getY()<0 || getY()>734) {
-			setOrigin();
+		if (getY()<0) {
+			move(0,-movement*2);
 		} else if (getX()<0) {
-			move(movement*2, 0);
+			move(movementX*2, 0);
 		} else if (getX()>600) {
-			move(-movement*2, 0);
+			move(-movementX*2, 0);
 		}
 	}
 	
@@ -124,7 +123,7 @@ public class Frog extends MovableActor{
 	
 	public void handleWaterDeath() {
 		if(carD == 5) {
-			setOrigin();
+			setOrigin(0);
 			points.subScore(50);
 		}else if (carD > 0) {
 			setImage(waterDeathImages.get(carD - 1));
@@ -133,7 +132,7 @@ public class Frog extends MovableActor{
 	
 	public void handleCarDeath() {
 		if(carD == 4) {
-			setOrigin();
+			setOrigin(0);
 			points.subScore(50);
 		}else if(carD > 0) {
 			setImage(carDeathImages.get(carD - 1));
@@ -141,8 +140,8 @@ public class Frog extends MovableActor{
 	}
 
 	/* initialization frog position and status */
-	public void setOrigin() {
-		w = getY() < w ? getY() : 800;
+	public void setOrigin(int status) {
+		w = status == 0 ? getY() : 800;
 		carD = 0;
 		noMove = false;
 		second = false;
