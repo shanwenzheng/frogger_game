@@ -1,33 +1,15 @@
-package frogger;
+package util;
 
-import java.io.File;
 import java.net.URL;
+import frogger.Main;
 
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.util.Duration;
 
-public class MyStage extends World{
-	MediaPlayer mediaPlayer;
-	@Override
-	public void act(long now) {
-		
-	}
+public enum MusicPlayer{
+	INSTANCE;
 	
-	public MyStage() {
-		
-//		mediaPlayer.play();
-//		mediaPlayer.setOnEndOfMedia(new Runnable() {
-//
-//			@Override
-//			public void run() {
-//				mediaPlayer.seek(Duration.ZERO);
-//				
-//			}
-//			
-//		});
-//		mediaPlayer.play();
-	}
+	MediaPlayer mediaPlayer;
 	
 	public void playMusic() {
 		URL musicFile = Main.class.getResource("music/Frogger Main Song Theme (loop).mp3");
