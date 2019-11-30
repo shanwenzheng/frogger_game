@@ -3,8 +3,7 @@ package frogger.controller;
 import frogger.model.actor.movableActor.MovableActor;
 import frogger.model.actor.staticActor.End;
 import frogger.util.ActAnimation;
-import frogger.util.Animation;
-import frogger.util.MapLoader;
+import frogger.util.EndDetecter;
 import frogger.util.MusicPlayer;
 import frogger.util.ScoreBoardUpdater;
 import frogger.view.GameView;
@@ -15,14 +14,12 @@ import javafx.scene.input.KeyEvent;
 
 public enum GameController {
 	INSTANCE;
-	
-	private AnimationTimer endDetecter;
 	private GameView gameView;
 	
 	public void init(GameView gameView) {
-		createEndDetecter();
-		this.gameView = gameView;
+		this.gameView = gameView;	
 		MusicPlayer.INSTANCE.init();
+		EndDetecter.INSTANCE.init(gameView);
 		ActAnimation.INSTANCE.init(gameView);
 		ScoreBoardUpdater.INSTANCE.init(gameView.getMap().getDigit());
 	}
@@ -40,30 +37,12 @@ public enum GameController {
 		printEndGameInfo();
 	}
 	
-	private void createEndDetecter() {
-		endDetecter = new AnimationTimer() {
-	      @Override
-	      public void handle(long now) {
-	      	if (checkEndActivited()) {
-	      		endGame();
-	      	}
-	      }
-	      
-	      public boolean checkEndActivited() {
-	    	  for(int i = 0; i < gameView.getMap().getEnd().size(); i++) {
-	    		  if (!gameView.getMap().getEnd().get(i).isActivated()) {return false;}
-	    	  }
-	    	  return true;
-	      }
-		};
-	}
-	
 	public void endDetecterStart() {
-		endDetecter.start();
+		EndDetecter.INSTANCE.endDetectStart();
 	}
 	
 	public void endDetecterStop() {
-		endDetecter.stop();
+		EndDetecter.INSTANCE.endDetectStop();
 	}
     
 	public void musicStart() {
