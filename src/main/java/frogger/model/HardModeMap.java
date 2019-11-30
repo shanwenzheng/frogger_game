@@ -20,4 +20,10 @@ public class HardModeMap extends Map {
 
 	}
 
+	@Override
+	public void createWetTurtles() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

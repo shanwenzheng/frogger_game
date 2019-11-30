@@ -1,8 +1,6 @@
 package frogger.view;
 
-import frogger.Main;
 import frogger.model.Map;
-import frogger.model.actor.staticActor.Digit;
 import frogger.util.MapFactory;
 import javafx.scene.layout.Pane;
 
@@ -24,9 +22,7 @@ public class GameView {
 	}
 
 	public void drawBackgroundImage() {
-		String str = Main.class.getResource("images/iKogsKW.png").toString();
-		String style = "-fx-background-image: url('" + str + "'); -fx-background-size: 600 800;";
-		background.setStyle(style);
+		background.setStyle(map.getBackgroundImage());
 	}
 	
 	public void drawLog() {
@@ -35,6 +31,10 @@ public class GameView {
 	
 	public void drawTurtle() {
 		background.getChildren().addAll(map.getTurtles());
+	}
+	
+	public void drawWetTurtle() {
+		background.getChildren().addAll(map.getWetTurtles());
 	}
 	
 	public void drawEnd() {
@@ -50,6 +50,6 @@ public class GameView {
 	}
 	
 	public void drawDigit() {
-		background.getChildren().addAll(map.getDigit());
+		background.getChildren().addAll(map.getScoreBoard());
 	}
 }

@@ -1,65 +1,40 @@
 package frogger.controller;
 
-import frogger.util.Animation;
+import frogger.model.Score;
+import frogger.model.actor.movableActor.MovableActor;
+import frogger.model.actor.staticActor.End;
+import frogger.util.ActAnimation;
+import frogger.util.EndDetecter;
 import frogger.util.MusicPlayer;
 import frogger.util.ScoreBoardUpdater;
 import frogger.view.GameView;
-import javafx.animation.AnimationTimer;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.KeyEvent;
 
-public class GameController {
-	private AnimationTimer endDetecter;
+public enum GameController {
+	INSTANCE;
 	private GameView gameView;
-	private Animation animation;
-	private ScoreBoardUpdater scoreBoardUpdater;
+	private Score score;
 	
-	public GameController(GameView gameView, Scene scene) {
-		createEndDetecter();
-		this.gameView = gameView;
-		animation = new Animation(gameView);
-		scoreBoardUpdater = new ScoreBoardUpdater(gameView);
-		
-		scene.addEventHandler(KeyEvent.KEY_PRESSED, event -> gameView.getMap().getAnimal().handleKeyPressed(event));
-		scene.addEventHandler(KeyEvent.KEY_RELEASED, event -> gameView.getMap().getAnimal().handleKeyReleased(event));
+	public void init(GameView gameView) {
+		this.gameView = gameView;	
+		this.score = new Score();
+		ActAnimation.INSTANCE.init(gameView.getBackground());
+		MusicPlayer.INSTANCE.init("music/Frogger Main Song Theme (loop).mp3");
 	}
 	
 	public void startGame() {
 		musicStart();
-		endDetecterStart();
 		animationStart();
-		scoreBoardUpdaterStart();
 	}
 	
 	public void endGame() {
 		musicStop();
-		endDetecterStop();
 		animationStop();
-		scoreBoardUpdaterStop();
 		printEndGameInfo();
 	}
 	
-	private void createEndDetecter() {
-		endDetecter = new AnimationTimer() {
-	      @Override
-	      public void handle(long now) {
-	      	if (gameView.getMap().getAnimal().getStop()) {
-	      		endGame();
-	      	}
-	      }
-		};
-	}
-	
-	public void endDetecterStart() {
-		endDetecter.start();
-	}
-	
-	public void endDetecterStop() {
-		endDetecter.stop();
-	}
-    
 	public void musicStart() {
 		MusicPlayer.INSTANCE.playMusic();
 	}
@@ -69,27 +44,59 @@ public class GameController {
 	}
 	
 	private void animationStart() {
-		animation.getActTimer().start();	
+		ActAnimation.INSTANCE.actStart();
 	}
 	
 	private void animationStop() {
-		animation.getActTimer().stop();
-	}
-	
-	private void scoreBoardUpdaterStart() {
-		scoreBoardUpdater.getScoreUpdaterTimer().start();
-	}
-	
-	private void scoreBoardUpdaterStop() {
-		scoreBoardUpdater.getScoreUpdaterTimer().stop();
+		ActAnimation.INSTANCE.actStop();
 	}
 	
 	public void printEndGameInfo() {
 		System.out.println("STOPP: ");
   		Alert alert = new Alert(AlertType.INFORMATION);
   		alert.setTitle("You Have Won The Game!");
-  		alert.setHeaderText("Your High Score: "+gameView.getMap().getAnimal().getPoints()+"!");
+  		alert.setHeaderText("Your High Score: "+score.getScore()+"!");
   		alert.setContentText("Highest Possible Score: 800");
   		alert.show();
+	}
+	
+	public void handleKeyPressedEvent(KeyEvent event) {
+		gameView.getMap().getAnimal().moveKeyPressed(event.getText());
+	}
+	
+	public void handleKeyReleasedEvent(KeyEvent event) {
+		gameView.getMap().getAnimal().moveKeyReleased(event.getText());
+	}
+	
+	public void handleLogTurtleTouched(MovableActor actor) {
+		gameView.getMap().getAnimal().move(actor.getSpeed(), 0);
+	}
+	
+	public void handleObstacleTouched(MovableActor actor) {
+		gameView.getMap().getAnimal().setDeathType("carDeath");
+	}
+	
+	public void handlePoolTouched(MovableActor actor) {
+		gameView.getMap().getAnimal().setDeathType("waterDeath");
+	}
+	
+	public void handleEndTouched(MovableActor actor) {
+		if(!actor.getIntersectingObjects(End.class).get(0).isActivated()) {
+			actor.getIntersectingObjects(End.class).get(0).setEnd();
+			handleScoreChanged(50);
+			gameView.getMap().getAnimal().setOrigin(1);
+		}
+		if(EndDetecter.INSTANCE.checkEndActivited(gameView.getMap().getEnd())) {
+			endGame();
+		}
+	}
+	
+	public void handleScoreChanged(int points) {
+		if(points > 0) {
+			score.addScore(points);
+		} else if (score.getScore() > 50) {
+			score.subScore(Math.abs(points));
+		}
+		ScoreBoardUpdater.INSTANCE.updateScore(score.getScore(), gameView.getMap().getScoreBoard());
 	}
 }
