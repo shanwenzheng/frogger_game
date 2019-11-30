@@ -9,7 +9,7 @@ import javafx.scene.media.MediaPlayer;
 public enum MusicPlayer{
 	INSTANCE;
 	
-	MediaPlayer mediaPlayer;
+	private MediaPlayer mediaPlayer;
 	
 	public void init() {
 		URL musicFile = Main.class.getResource("music/Frogger Main Song Theme (loop).mp3");
