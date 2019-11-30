@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 
 public class GameView {
 	private Pane background;
@@ -53,15 +54,22 @@ public class GameView {
 	}
 	
 	public void drawScoreBoard() {
-//		Label label = new Label("Hello world!");
-//        label.setFont(new Font("Arial", 30));
-//        label.setLayoutX(400);
-//        label.setLayoutY(750);
-//		background.getChildren().add(label);
+		Label label = new Label("C-SOCRE");
+        label.setFont(Font.font("Times New Roman", FontWeight.BOLD, 20));
+        label.setLayoutX(510);
+        label.setLayoutY(745);
+        label.setTextFill(Color.web("#FF8800"));
+		background.getChildren().add(label);
 		background.getChildren().addAll(map.getScoreBoard());
 	}
 	
 	public void drawHighScoreBoard() {
+		Label label = new Label("H-SOCRE");
+        label.setFont(Font.font("Times New Roman", FontWeight.BOLD, 20));
+        label.setLayoutX(310);
+        label.setLayoutY(745);
+        label.setTextFill(Color.web("#FF8800"));
+        background.getChildren().add(label);
 		background.getChildren().addAll(map.getHighScoreBoard());
 	}
 }

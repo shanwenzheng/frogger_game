@@ -63,15 +63,15 @@ public abstract class Map {
 	}
 	
 	public void createScoreBoard() {
-		scoreBoard.add(new Digit(0, 30, 565, 750));
-		scoreBoard.add(new Digit(0, 30, 535, 750));
-		scoreBoard.add(new Digit(0, 30, 505, 750));
+		scoreBoard.add(new Digit(0, 30, 565, 770));
+		scoreBoard.add(new Digit(0, 30, 535, 770));
+		scoreBoard.add(new Digit(0, 30, 505, 770));
 	}
 	
 	public void createHighScoreBoard() {
-		highScoreBoard.add(new Digit(0, 30, 365, 750));
-		highScoreBoard.add(new Digit(0, 30, 335, 750));
-		highScoreBoard.add(new Digit(0, 30, 305, 750));
+		highScoreBoard.add(new Digit(0, 30, 365, 770));
+		highScoreBoard.add(new Digit(0, 30, 335, 770));
+		highScoreBoard.add(new Digit(0, 30, 305, 770));
 	}
 
 	public ArrayList<Log> getLogs() {
