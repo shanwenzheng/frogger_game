@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import frogger.Main;
 import frogger.controller.GameController;
-import frogger.model.Score;
 import frogger.model.actor.staticActor.End;
 import javafx.scene.image.Image;
 
@@ -12,8 +11,7 @@ public class Frog extends MovableActor{
 	
 	private HashMap<String, Image> frogImages;
 	private ArrayList<Image> carDeathImages;
-	private ArrayList<Image> waterDeathImages;
-//	private Score points = new Score();				
+	private ArrayList<Image> waterDeathImages;			
 	private boolean second;			
 	private boolean noMove;	
 	public String deathType;
@@ -94,7 +92,7 @@ public class Frog extends MovableActor{
 	}
 
 	public void checkAnimalWall() {
-		if (getY()<0) {
+		if (getY() > 734) {
 			move(0,-movement*2);
 		} else if (getX()<0) {
 			move(movementX*2, 0);
