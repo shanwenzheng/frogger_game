@@ -18,17 +18,13 @@ public class Frog extends MovableActor{
 	private boolean second = false;			
 	private boolean noMove = false;					
 	private double movement = 13.3333333*2;			
-	private double movementX = 10.666666*2;	
-	private double initX;
-	private double initY;						
-	private int carD = 0;
-	private double w = 800;
-	public String deathType = null;
+	private double movementX = 10.666666*2;						
+	private int carD;
+	private double w;
+	public String deathType;
     
-	public Frog(int size, double xpos, double ypos) {
-		super(xpos, ypos, 0);
-		this.initX = xpos;
-		this.initY = ypos;
+	public Frog(int size) {
+		super();
 		frogImages = new HashMap<String, Image>(){{
 			put("w1",new Image(Main.class.getResourceAsStream("images/froggerUp.png"), size, size, true, true));
 			put("a1",new Image(Main.class.getResourceAsStream("images/froggerLeft.png"), size, size, true, true));
@@ -50,7 +46,7 @@ public class Frog extends MovableActor{
 			add(new Image(Main.class.getResourceAsStream("images/waterdeath3.png"), size,size , true, true));
 			add(new Image(Main.class.getResourceAsStream("images/waterdeath4.png"), size,size , true, true));
 		}};
-		setImage(frogImages.get("w1"));
+		setOrigin();
 	}
 	
 	public void handleMove(String str) {
@@ -94,10 +90,11 @@ public class Frog extends MovableActor{
 	@Override
 	public void checkTouch() {
 		if (getIntersectingObjects(End.class).size() >= 1) {
+			System.out.println("End");
 			GameController.INSTANCE.handleEndTouched(this);
-			w=800;
 			setOrigin();
 		} else if(getY() < 438 && getIntersectingObjects(MovableActor.class).size() == 1) {
+			System.out.println("Over");
 			GameController.INSTANCE.handlePoolTouched(this);		
 		}
 	}
@@ -118,29 +115,48 @@ public class Frog extends MovableActor{
 			carD++;
 		}
 		
-		if(carD == 5 || (carD == 4 && deathType.equals("carDeath"))) {
-			setOrigin();
-			deathType = null;
-			carD = 0;
-			setImage(frogImages.get("w1"));
-			noMove = false;
-			points.subScore(50);
-		}else if (carD > 0){
-			ArrayList<Image> temp =  deathType.equals("carDeath") ? carDeathImages : waterDeathImages;
-			setImage(temp.get(carD-1));
+		if(deathType.equals("carDeath")) {
+			handleCarDeath();
+		}else if (deathType.equals("waterDeath")){
+			handleWaterDeath();
 		}
 	}
 	
-	public Score getPoints() {
-		return points;	
-	}	
+	public void handleWaterDeath() {
+		if(carD == 5) {
+			setOrigin();
+			points.subScore(50);
+		}else if (carD > 0) {
+			setImage(waterDeathImages.get(carD - 1));
+		}
+	}
 	
+	public void handleCarDeath() {
+		if(carD == 4) {
+			setOrigin();
+			points.subScore(50);
+		}else if(carD > 0) {
+			setImage(carDeathImages.get(carD - 1));
+		}
+	}
+
+	/* initialization frog position and status */
 	public void setOrigin() {
-		setX(initX);
-		setY(initY);
+		w = getY() < w ? getY() : 800;
+		carD = 0;
+		noMove = false;
+		second = false;
+		deathType = null;
+		setX(300);
+		setY(679.8 + movement);
+		setImage(frogImages.get("w1"));
 	}
 
 	public void setDeathType(String str) {
 		deathType = str;
 	}
+	
+	public Score getPoints() {
+		return points;	
+	}	
 }

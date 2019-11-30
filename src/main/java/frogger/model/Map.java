@@ -48,15 +48,15 @@ public abstract class Map {
 	}
 	
 	public void createAnimal() {
-		animal = new Frog(40, 300, 706.5);
+		animal = new Frog(40);
 	}
 	
 	public void createEnd() {
-		ends.add(new End(60,13,96));
-		ends.add(new End(60,141,96));
-		ends.add(new End(60,141 + 141-13,96));
-		ends.add(new End(60,141 + 141-13+141-13+1,96));
-		ends.add(new End(60,141 + 141-13+141-13+141-13+3,96));
+		ends.add(new End(60,11,85));
+		ends.add(new End(60,139,85));
+		ends.add(new End(60,139 + 139-11,85));
+		ends.add(new End(60,139 + 139-11+139-11+1,85));
+		ends.add(new End(60,139 + 139-11+139-11+139-11+3,85));
 	}
 	
 	public void createDigit() {

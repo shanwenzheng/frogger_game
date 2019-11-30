@@ -1,7 +1,5 @@
 package frogger.controller;
 
-import frogger.model.Score;
-import frogger.model.actor.movableActor.Frog;
 import frogger.model.actor.movableActor.MovableActor;
 import frogger.model.actor.staticActor.End;
 import frogger.util.Animation;
