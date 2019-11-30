@@ -18,6 +18,7 @@ public abstract class Map {
 	private ArrayList<WetTurtle> wetTurtles;
 	private ArrayList<End> ends;
 	private ArrayList<Digit> scoreBoard;
+	private ArrayList<Digit> highScoreBoard;
 	private Frog animal;
 	private String backgroundImage;
 	
@@ -28,13 +29,15 @@ public abstract class Map {
 		wetTurtles = new ArrayList<>();
 		ends = new ArrayList<>();
 		scoreBoard = new ArrayList<>();
+		highScoreBoard = new ArrayList<>();
 		initMap();
 	}
 	
 	public void initMap() {
 		createAnimal();
 		createEnd();
-		createDigit();
+		createScoreBoard();
+		createHighScoreBoard();
 		createObstacles();
 		createLogs();
 		createTurtles();
@@ -59,10 +62,16 @@ public abstract class Map {
 		ends.add(new End(60,139 + 139-11+139-11+139-11+3,85));
 	}
 	
-	public void createDigit() {
-		scoreBoard.add(new Digit(0, 30, 565, 25));
-		scoreBoard.add(new Digit(0, 30, 535, 25));
-		scoreBoard.add(new Digit(0, 30, 505, 25));
+	public void createScoreBoard() {
+		scoreBoard.add(new Digit(0, 30, 565, 750));
+		scoreBoard.add(new Digit(0, 30, 535, 750));
+		scoreBoard.add(new Digit(0, 30, 505, 750));
+	}
+	
+	public void createHighScoreBoard() {
+		highScoreBoard.add(new Digit(0, 30, 365, 750));
+		highScoreBoard.add(new Digit(0, 30, 335, 750));
+		highScoreBoard.add(new Digit(0, 30, 305, 750));
 	}
 
 	public ArrayList<Log> getLogs() {
@@ -87,6 +96,10 @@ public abstract class Map {
 	
 	public ArrayList<Digit> getScoreBoard(){
 		return scoreBoard;
+	}
+	
+	public ArrayList<Digit> getHighScoreBoard(){
+		return highScoreBoard;
 	}
 
 	public Frog getAnimal() {

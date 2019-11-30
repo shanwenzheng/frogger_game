@@ -2,7 +2,10 @@ package frogger.view;
 
 import frogger.model.Map;
 import frogger.util.MapFactory;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 public class GameView {
 	private Pane background;
@@ -49,7 +52,16 @@ public class GameView {
 		background.getChildren().addAll(map.getObstacles());
 	}
 	
-	public void drawDigit() {
+	public void drawScoreBoard() {
+//		Label label = new Label("Hello world!");
+//        label.setFont(new Font("Arial", 30));
+//        label.setLayoutX(400);
+//        label.setLayoutY(750);
+//		background.getChildren().add(label);
 		background.getChildren().addAll(map.getScoreBoard());
+	}
+	
+	public void drawHighScoreBoard() {
+		background.getChildren().addAll(map.getHighScoreBoard());
 	}
 }

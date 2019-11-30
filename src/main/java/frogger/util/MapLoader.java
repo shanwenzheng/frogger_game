@@ -12,6 +12,7 @@ public class MapLoader {
 		gameView.drawEnd();
 		gameView.drawAnimal();
 		gameView.drawObstacle();
-		gameView.drawDigit();
+		gameView.drawScoreBoard();
+		gameView.drawHighScoreBoard();
 	}
 }
