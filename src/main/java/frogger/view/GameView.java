@@ -1,8 +1,6 @@
 package frogger.view;
 
-import frogger.Main;
 import frogger.model.Map;
-import frogger.model.actor.staticActor.Digit;
 import frogger.util.MapFactory;
 import javafx.scene.layout.Pane;
 

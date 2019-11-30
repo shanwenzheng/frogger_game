@@ -1,7 +1,6 @@
 package frogger.util;
 
 import frogger.model.actor.movableActor.MovableActor;
-import frogger.view.GameView;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
