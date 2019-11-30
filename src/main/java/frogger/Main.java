@@ -4,6 +4,7 @@ import frogger.controller.GameController;
 import frogger.view.GameView;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -22,7 +23,10 @@ public class Main extends Application {
 		primaryStage.show();
 	
 //		GameController gameController = new GameController(gameView, scene);
-		GameController.INSTANCE.init(gameView, scene);
+		GameController.INSTANCE.init(gameView);
 		GameController.INSTANCE.startGame();
+		
+		scene.addEventHandler(KeyEvent.KEY_PRESSED, event -> GameController.INSTANCE.handleKeyPressedEvent(event));
+		scene.addEventHandler(KeyEvent.KEY_RELEASED, event -> GameController.INSTANCE.handleKeyReleasedEvent(event));
 	}
 }

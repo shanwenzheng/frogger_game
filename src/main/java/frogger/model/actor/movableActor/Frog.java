@@ -7,7 +7,6 @@ import frogger.controller.GameController;
 import frogger.model.Score;
 import frogger.model.actor.staticActor.End;
 import javafx.scene.image.Image;
-import javafx.scene.input.KeyEvent;
 
 public class Frog extends MovableActor{
 	
@@ -56,21 +55,18 @@ public class Frog extends MovableActor{
 		else if(str.equals("d")) {move(movementX, 0);}
 	}
 	
-
-	public void moveKeyPressed(KeyEvent event) {
+	public void moveKeyPressed(String keyCode) {
 		if (noMove) {}
 		else {
-			String keyCode = event.getText();
 			setImage(frogImages.get(keyCode + (second ? "1" : "2")));
 			second = !second;
 			handleMove(keyCode);
 		}
 	}
 	
-	public void moveKeyReleased(KeyEvent event) {
+	public void moveKeyReleased(String keyCode) {
 		if (noMove) {}
 		else {
-			String keyCode = event.getText();
 			if(keyCode.equals("w") && getY() < w) {
 				w = getY();
 				points.addScore(10);

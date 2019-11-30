@@ -8,7 +8,6 @@ import frogger.util.MusicPlayer;
 import frogger.util.ScoreBoardUpdater;
 import frogger.view.GameView;
 import javafx.animation.AnimationTimer;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.KeyEvent;
@@ -20,18 +19,12 @@ public enum GameController {
 	private GameView gameView;
 	private Animation animation;
 	
-	public void init(GameView gameView, Scene scene) {
+	public void init(GameView gameView) {
 		createEndDetecter();
 		this.gameView = gameView;
 		animation = new Animation(gameView);
 		MusicPlayer.INSTANCE.init();
 		ScoreBoardUpdater.INSTANCE.init(gameView.getMap().getDigit());
-		handleKeyEvent(scene);
-	}
-	
-	public void handleKeyEvent(Scene scene) {
-		scene.addEventHandler(KeyEvent.KEY_PRESSED, event -> gameView.getMap().getAnimal().moveKeyPressed(event));
-		scene.addEventHandler(KeyEvent.KEY_RELEASED, event -> gameView.getMap().getAnimal().moveKeyReleased(event));
 	}
 	
 	public void startGame() {
@@ -101,6 +94,14 @@ public enum GameController {
   		alert.setHeaderText("Your High Score: "+gameView.getMap().getAnimal().getPoints()+"!");
   		alert.setContentText("Highest Possible Score: 800");
   		alert.show();
+	}
+	
+	public void handleKeyPressedEvent(KeyEvent event) {
+		gameView.getMap().getAnimal().moveKeyPressed(event.getText());
+	}
+	
+	public void handleKeyReleasedEvent(KeyEvent event) {
+		gameView.getMap().getAnimal().moveKeyReleased(event.getText());
 	}
 	
 	public void handleLogTurtleTouched(MovableActor actor) {
