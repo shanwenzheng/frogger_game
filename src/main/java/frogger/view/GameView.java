@@ -24,10 +24,6 @@ public class GameView {
 	public Map getMap() {
 		return map;
 	}
-
-	public void drawBackgroundImage() {
-		background.setStyle(map.getBackgroundImage());
-	}
 	
 	public void drawLog() {
 		background.getChildren().addAll(map.getLogs());
@@ -55,20 +51,16 @@ public class GameView {
 	
 	public void drawScoreBoard() {
 		Label label = new Label("C-SOCRE");
-        label.setFont(Font.font("Times New Roman", FontWeight.BOLD, 20));
         label.setLayoutX(510);
         label.setLayoutY(745);
-        label.setTextFill(Color.web("#FF8800"));
 		background.getChildren().add(label);
 		background.getChildren().addAll(map.getScoreBoard());
 	}
 	
 	public void drawHighScoreBoard() {
 		Label label = new Label("H-SOCRE");
-        label.setFont(Font.font("Times New Roman", FontWeight.BOLD, 20));
         label.setLayoutX(310);
         label.setLayoutY(745);
-        label.setTextFill(Color.web("#FF8800"));
         background.getChildren().add(label);
 		background.getChildren().addAll(map.getHighScoreBoard());
 	}

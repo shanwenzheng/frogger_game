@@ -29,5 +29,6 @@ public class Main extends Application {
 		
 		scene.addEventHandler(KeyEvent.KEY_PRESSED, event -> GameController.INSTANCE.handleKeyPressedEvent(event));
 		scene.addEventHandler(KeyEvent.KEY_RELEASED, event -> GameController.INSTANCE.handleKeyReleasedEvent(event));
+		scene.getStylesheets().add(Main.class.getResource("css/game.css").toExternalForm());
 	}
 }

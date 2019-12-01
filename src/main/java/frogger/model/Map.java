@@ -20,7 +20,6 @@ public abstract class Map {
 	private ArrayList<Digit> scoreBoard;
 	private ArrayList<Digit> highScoreBoard;
 	private Frog animal;
-	private String backgroundImage;
 	
 	public Map() {
 		logs = new ArrayList<>();
@@ -42,12 +41,6 @@ public abstract class Map {
 		createLogs();
 		createTurtles();
 		createWetTurtles();
-		createBackgroundImage();
-	}
-	
-	public void createBackgroundImage() {
-		String str = Main.class.getResource("images/iKogsKW.png").toString();
-		backgroundImage = "-fx-background-image: url('" + str + "'); -fx-background-size: 600 800;";
 	}
 	
 	public void createAnimal() {
@@ -104,10 +97,6 @@ public abstract class Map {
 
 	public Frog getAnimal() {
 		return animal;
-	}
-	
-	public String getBackgroundImage() {
-		return backgroundImage;
 	}
 	
 	public abstract void createObstacles();
