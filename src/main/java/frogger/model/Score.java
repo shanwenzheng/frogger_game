@@ -19,5 +19,9 @@ public class Score {
 	public int getScore() {
 		return points;
 	}
+	
+	public void setScore(int points) {
+		this.points = points;
+	}
 }
 

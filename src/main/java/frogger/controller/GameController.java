@@ -16,10 +16,12 @@ public enum GameController {
 	INSTANCE;
 	private GameView gameView;
 	private Score score;
+	private Score highScore;
 	
 	public void init(GameView gameView) {
 		this.gameView = gameView;	
 		this.score = new Score();
+		this.highScore = new Score();
 		ActAnimation.INSTANCE.init(gameView.getBackground());
 		MusicPlayer.INSTANCE.init("music/Frogger Main Song Theme (loop).mp3");
 	}
@@ -98,5 +100,13 @@ public enum GameController {
 			score.subScore(Math.abs(points));
 		}
 		ScoreBoardUpdater.INSTANCE.updateScore(score.getScore(), gameView.getMap().getScoreBoard());
+		handleHighScoreUpdate();
+	}
+	
+	public void handleHighScoreUpdate() {
+		if(score.getScore() > highScore.getScore()) {
+			highScore.setScore(score.getScore());
+			ScoreBoardUpdater.INSTANCE.updateScore(highScore.getScore(), gameView.getMap().getHighScoreBoard());
+		}
 	}
 }
