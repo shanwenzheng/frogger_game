@@ -2,7 +2,6 @@ package frogger.model;
 
 import java.util.ArrayList;
 
-import frogger.Main;
 import frogger.model.actor.movableActor.Frog;
 import frogger.model.actor.movableActor.Log;
 import frogger.model.actor.movableActor.Obstacle;
