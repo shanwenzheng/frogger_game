@@ -12,7 +12,7 @@ import frogger.model.actor.staticActor.Digit;
 import frogger.model.actor.staticActor.End;
 import javafx.scene.image.ImageView;
 
-public abstract class Map {
+public class Map {
 	private ArrayList<Log> logs;
 	private ArrayList<Obstacle> obstacles;
 	private ArrayList<Turtle> turtles;
@@ -21,56 +21,7 @@ public abstract class Map {
 	private ArrayList<Digit> scoreBoard;
 	private ArrayList<Digit> highScoreBoard;
 	private ArrayList<ImageView> lifeImage;
-	private Life life;
-	private Frog animal;
 	
-	public Map() {
-		logs = new ArrayList<>();
-		obstacles = new ArrayList<>();
-		turtles = new ArrayList<>();
-		wetTurtles = new ArrayList<>();
-		ends = new ArrayList<>();
-		scoreBoard = new ArrayList<>();
-		highScoreBoard = new ArrayList<>();
-		lifeImage = new ArrayList<>();
-	}
-	
-	public void initMap() {
-		createAnimal();
-		createEnd();
-		createScoreBoard();
-		createHighScoreBoard();
-		createObstacles();
-		createLogs();
-		createTurtles();
-		createWetTurtles();
-		createLifeImage();
-	}
-	
-	public void createAnimal() {
-		animal = new Frog(40);
-	}
-	
-	public void createEnd() {
-		ends.add(new End(60,11,85));
-		ends.add(new End(60,139,85));
-		ends.add(new End(60,139 + 139-11,85));
-		ends.add(new End(60,139 + 139-11+139-11+1,85));
-		ends.add(new End(60,139 + 139-11+139-11+139-11+3,85));
-	}
-	
-	public void createScoreBoard() {
-		scoreBoard.add(new Digit(0, 30, 565, 770));
-		scoreBoard.add(new Digit(0, 30, 535, 770));
-		scoreBoard.add(new Digit(0, 30, 505, 770));
-	}
-	
-	public void createHighScoreBoard() {
-		highScoreBoard.add(new Digit(0, 30, 365, 770));
-		highScoreBoard.add(new Digit(0, 30, 335, 770));
-		highScoreBoard.add(new Digit(0, 30, 305, 770));
-	}
-
 	public ArrayList<Log> getLogs() {
 		return logs;
 	}
@@ -78,47 +29,74 @@ public abstract class Map {
 	public ArrayList<Obstacle> getObstacles() {
 		return obstacles;
 	}
-	
-	public ArrayList<Turtle> getTurtles(){
+
+	public ArrayList<Turtle> getTurtles() {
 		return turtles;
 	}
-	
-	public ArrayList<WetTurtle> getWetTurtles(){
+
+	public ArrayList<WetTurtle> getWetTurtles() {
 		return wetTurtles;
 	}
 
-	public ArrayList<End> getEnd() {
+	public ArrayList<End> getEnds() {
 		return ends;
 	}
-	
-	public ArrayList<Digit> getScoreBoard(){
+
+	public ArrayList<Digit> getScoreBoard() {
 		return scoreBoard;
 	}
-	
-	public ArrayList<Digit> getHighScoreBoard(){
+
+	public ArrayList<Digit> getHighScoreBoard() {
 		return highScoreBoard;
 	}
-	
-	public ArrayList<ImageView> getLifeImage(){
+
+	public ArrayList<ImageView> getLifeImage() {
 		return lifeImage;
-	}
-	
-	public Life getLife() {
-		return life;
-	}
-	
-	public void setLife(Life life) {
-		this.life = life;
 	}
 
 	public Frog getAnimal() {
 		return animal;
 	}
+
+	public void setLogs(ArrayList<Log> logs) {
+		this.logs = logs;
+	}
+
+	public void setObstacles(ArrayList<Obstacle> obstacles) {
+		this.obstacles = obstacles;
+	}
+
+	public void setTurtles(ArrayList<Turtle> turtles) {
+		this.turtles = turtles;
+	}
+
+	public void setWetTurtles(ArrayList<WetTurtle> wetTurtles) {
+		this.wetTurtles = wetTurtles;
+	}
+
+	public void setEnds(ArrayList<End> ends) {
+		this.ends = ends;
+	}
+
+	public void setScoreBoard(ArrayList<Digit> scoreBoard) {
+		this.scoreBoard = scoreBoard;
+	}
+
+	public void setHighScoreBoard(ArrayList<Digit> highScoreBoard) {
+		this.highScoreBoard = highScoreBoard;
+	}
+
+	public void setLifeImage(ArrayList<ImageView> lifeImage) {
+		this.lifeImage = lifeImage;
+	}
+
+	public void setAnimal(Frog animal) {
+		this.animal = animal;
+	}
+
+	private Frog animal;
 	
-	public abstract void createObstacles();
-	public abstract void createLogs();
-	public abstract void createTurtles();
-	public abstract void createWetTurtles();
-	public abstract void createLifeImage();
+	public Map() {}
+
 }
 

@@ -8,13 +8,9 @@ import javafx.scene.layout.Pane;
 public class GameView {
 	private Pane background;
 	private Map map;
-	private Label scoreLabel;
-	private Label highScoreLabel;
 
-	public GameView(String gameLevel) {
+	public GameView(String gameLevel) throws Exception {
 		background = new Pane();
-		scoreLabel = new Label();
-		highScoreLabel = new Label();
 		map = MapFactory.createMap(gameLevel);
 	}
 	
@@ -39,7 +35,7 @@ public class GameView {
 	}
 	
 	public void drawEnd() {
-		background.getChildren().addAll(map.getEnd());
+		background.getChildren().addAll(map.getEnds());
 	}
 	
 	public void drawAnimal() {
@@ -55,20 +51,19 @@ public class GameView {
 	}
 	
 	public void drawScoreBoard() {
-		initScoreBoard(scoreLabel, "C-SCORE", 504, 742);
-		background.getChildren().add(scoreLabel);
+		background.getChildren().add(createLabel("C-SCORE", 504, 742));
 		background.getChildren().addAll(map.getScoreBoard());
 	}
 	
 	public void drawHighScoreBoard() {
-		initScoreBoard(highScoreLabel, "H-SCORE", 304, 742);
-        background.getChildren().add(highScoreLabel);
+        background.getChildren().add(createLabel("H-SCORE", 304, 742));
 		background.getChildren().addAll(map.getHighScoreBoard());
 	}
 	
-	public void initScoreBoard(Label label, String str, int xPos, int yPos) {
-		label.setText(str);
+	public Label createLabel(String str, int xPos, int yPos) {
+		Label label = new Label(str);
 		label.setLayoutX(xPos);
 		label.setLayoutY(yPos);
+		return label;
 	}
 }
