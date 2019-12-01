@@ -1,12 +1,20 @@
 package frogger.model;
 
 
+import frogger.Main;
 import frogger.model.actor.movableActor.Log;
 import frogger.model.actor.movableActor.Obstacle;
 import frogger.model.actor.movableActor.Turtle;
 import frogger.model.actor.movableActor.WetTurtle;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class NormalModeMap extends Map{
+	
+	public NormalModeMap() {
+		super();
+		setLife(new Life());
+	}
 
 	@Override
 	public void createObstacles() {
@@ -46,6 +54,18 @@ public class NormalModeMap extends Map{
 		getWetTurtles().add(new WetTurtle(130, 600, 217, -1));
 		getWetTurtles().add(new WetTurtle(130, 400, 217, -1));
 		getWetTurtles().add(new WetTurtle(130, 200, 217, -1));
+	}
+
+	@Override
+	public void createLifeImage() {
+		int shift = 0;
+		for(int i = 0; i < getLife().getTotalLife(); i++) {
+			ImageView temp = new ImageView(new Image(Main.class.getResourceAsStream("images/froggerUp.png"), 50, 50, true, true));
+			temp.setX(10 + shift);
+			temp.setY(750);
+			getLifeImage().add(i, temp);
+			shift += 50;
+		}
 	}
 
 }

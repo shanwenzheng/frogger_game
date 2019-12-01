@@ -10,6 +10,7 @@ import frogger.model.actor.movableActor.Turtle;
 import frogger.model.actor.movableActor.WetTurtle;
 import frogger.model.actor.staticActor.Digit;
 import frogger.model.actor.staticActor.End;
+import javafx.scene.image.ImageView;
 
 public abstract class Map {
 	private ArrayList<Log> logs;
@@ -18,8 +19,10 @@ public abstract class Map {
 	private ArrayList<WetTurtle> wetTurtles;
 	private ArrayList<End> ends;
 	private ArrayList<Digit> scoreBoard;
+	private ArrayList<Digit> highScoreBoard;
+	private ArrayList<ImageView> lifeImage;
+	private Life life;
 	private Frog animal;
-	private String backgroundImage;
 	
 	public Map() {
 		logs = new ArrayList<>();
@@ -28,23 +31,20 @@ public abstract class Map {
 		wetTurtles = new ArrayList<>();
 		ends = new ArrayList<>();
 		scoreBoard = new ArrayList<>();
-		initMap();
+		highScoreBoard = new ArrayList<>();
+		lifeImage = new ArrayList<>();
 	}
 	
 	public void initMap() {
 		createAnimal();
 		createEnd();
-		createDigit();
+		createScoreBoard();
+		createHighScoreBoard();
 		createObstacles();
 		createLogs();
 		createTurtles();
 		createWetTurtles();
-		createBackgroundImage();
-	}
-	
-	public void createBackgroundImage() {
-		String str = Main.class.getResource("images/iKogsKW.png").toString();
-		backgroundImage = "-fx-background-image: url('" + str + "'); -fx-background-size: 600 800;";
+		createLifeImage();
 	}
 	
 	public void createAnimal() {
@@ -59,10 +59,16 @@ public abstract class Map {
 		ends.add(new End(60,139 + 139-11+139-11+139-11+3,85));
 	}
 	
-	public void createDigit() {
-		scoreBoard.add(new Digit(0, 30, 565, 25));
-		scoreBoard.add(new Digit(0, 30, 535, 25));
-		scoreBoard.add(new Digit(0, 30, 505, 25));
+	public void createScoreBoard() {
+		scoreBoard.add(new Digit(0, 30, 565, 770));
+		scoreBoard.add(new Digit(0, 30, 535, 770));
+		scoreBoard.add(new Digit(0, 30, 505, 770));
+	}
+	
+	public void createHighScoreBoard() {
+		highScoreBoard.add(new Digit(0, 30, 365, 770));
+		highScoreBoard.add(new Digit(0, 30, 335, 770));
+		highScoreBoard.add(new Digit(0, 30, 305, 770));
 	}
 
 	public ArrayList<Log> getLogs() {
@@ -88,18 +94,31 @@ public abstract class Map {
 	public ArrayList<Digit> getScoreBoard(){
 		return scoreBoard;
 	}
+	
+	public ArrayList<Digit> getHighScoreBoard(){
+		return highScoreBoard;
+	}
+	
+	public ArrayList<ImageView> getLifeImage(){
+		return lifeImage;
+	}
+	
+	public Life getLife() {
+		return life;
+	}
+	
+	public void setLife(Life life) {
+		this.life = life;
+	}
 
 	public Frog getAnimal() {
 		return animal;
-	}
-	
-	public String getBackgroundImage() {
-		return backgroundImage;
 	}
 	
 	public abstract void createObstacles();
 	public abstract void createLogs();
 	public abstract void createTurtles();
 	public abstract void createWetTurtles();
+	public abstract void createLifeImage();
 }
 

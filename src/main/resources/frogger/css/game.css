@@ -1,0 +1,11 @@
+.root {
+     -fx-background-image: url("../images/iKogsKW.png");
+     -fx-background-size: 600 800;
+}
+
+.label {
+	-fx-font-family: 'Algerian';
+	-fx-font-size: 25px;
+	-fx-text-fill: #FF8800;
+	-fx-font-weight: bold;
+}

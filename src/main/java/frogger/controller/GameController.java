@@ -4,7 +4,6 @@ import frogger.model.Score;
 import frogger.model.actor.movableActor.MovableActor;
 import frogger.model.actor.staticActor.End;
 import frogger.util.ActAnimation;
-import frogger.util.EndDetecter;
 import frogger.util.MusicPlayer;
 import frogger.util.ScoreBoardUpdater;
 import frogger.view.GameView;
@@ -16,10 +15,14 @@ public enum GameController {
 	INSTANCE;
 	private GameView gameView;
 	private Score score;
+	private Score highScore;
+	private int endCount;
 	
 	public void init(GameView gameView) {
+		endCount = 0;
 		this.gameView = gameView;	
 		this.score = new Score();
+		this.highScore = new Score();
 		ActAnimation.INSTANCE.init(gameView.getBackground());
 		MusicPlayer.INSTANCE.init("music/Frogger Main Song Theme (loop).mp3");
 	}
@@ -85,12 +88,12 @@ public enum GameController {
 			actor.getIntersectingObjects(End.class).get(0).setEnd();
 			handleScoreChanged(50);
 			gameView.getMap().getAnimal().setOrigin(1);
+			endCount ++;
 		}
-		if(EndDetecter.INSTANCE.checkEndActivited(gameView.getMap().getEnd())) {
-			endGame();
-		}
+		
+		if(endCount == 5) { endGame();}
 	}
-	
+
 	public void handleScoreChanged(int points) {
 		if(points > 0) {
 			score.addScore(points);
@@ -98,5 +101,18 @@ public enum GameController {
 			score.subScore(Math.abs(points));
 		}
 		ScoreBoardUpdater.INSTANCE.updateScore(score.getScore(), gameView.getMap().getScoreBoard());
+		
+		if(score.getScore() > highScore.getScore()) {
+			highScore.setScore(score.getScore());
+			ScoreBoardUpdater.INSTANCE.updateScore(highScore.getScore(), gameView.getMap().getHighScoreBoard());
+		}
+	}
+
+	public void handleLifeLosed() {
+		gameView.getMap().getLife().loseLife();
+		int index = gameView.getMap().getLife().getRemainingLife();
+		gameView.getBackground().getChildren().remove(gameView.getMap().getLifeImage().get(index));
+		
+		if(gameView.getMap().getLife().getRemainingLife() == 0) {endGame();}
 	}
 }
