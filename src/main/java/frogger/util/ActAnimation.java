@@ -21,8 +21,9 @@ public enum ActAnimation {
             @Override
             public void handle(long now) {
         		Class<MovableActor> cls = MovableActor.class;
-        		for (Node n : background.getChildren()) {
-        			if (cls.isInstance(n)) {
+        		for(int i = 0; i < background.getChildren().size(); i++) {
+        			Node n = background.getChildren().get(i);
+        			if(cls.isInstance(n)) {
         				MovableActor actor = (MovableActor) n;
         				actor.act(now);
         			}

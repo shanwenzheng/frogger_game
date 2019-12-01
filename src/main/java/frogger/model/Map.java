@@ -10,6 +10,7 @@ import frogger.model.actor.movableActor.Turtle;
 import frogger.model.actor.movableActor.WetTurtle;
 import frogger.model.actor.staticActor.Digit;
 import frogger.model.actor.staticActor.End;
+import javafx.scene.image.ImageView;
 
 public abstract class Map {
 	private ArrayList<Log> logs;
@@ -19,6 +20,8 @@ public abstract class Map {
 	private ArrayList<End> ends;
 	private ArrayList<Digit> scoreBoard;
 	private ArrayList<Digit> highScoreBoard;
+	private ArrayList<ImageView> lifeImage;
+	private Life life;
 	private Frog animal;
 	
 	public Map() {
@@ -29,7 +32,7 @@ public abstract class Map {
 		ends = new ArrayList<>();
 		scoreBoard = new ArrayList<>();
 		highScoreBoard = new ArrayList<>();
-		initMap();
+		lifeImage = new ArrayList<>();
 	}
 	
 	public void initMap() {
@@ -41,6 +44,7 @@ public abstract class Map {
 		createLogs();
 		createTurtles();
 		createWetTurtles();
+		createLifeImage();
 	}
 	
 	public void createAnimal() {
@@ -94,6 +98,18 @@ public abstract class Map {
 	public ArrayList<Digit> getHighScoreBoard(){
 		return highScoreBoard;
 	}
+	
+	public ArrayList<ImageView> getLifeImage(){
+		return lifeImage;
+	}
+	
+	public Life getLife() {
+		return life;
+	}
+	
+	public void setLife(Life life) {
+		this.life = life;
+	}
 
 	public Frog getAnimal() {
 		return animal;
@@ -103,5 +119,6 @@ public abstract class Map {
 	public abstract void createLogs();
 	public abstract void createTurtles();
 	public abstract void createWetTurtles();
+	public abstract void createLifeImage();
 }
 

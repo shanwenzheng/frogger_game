@@ -26,4 +26,10 @@ public class HardModeMap extends Map {
 		
 	}
 
+	@Override
+	public void createLifeImage() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

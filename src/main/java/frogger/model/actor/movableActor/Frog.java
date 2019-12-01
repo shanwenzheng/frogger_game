@@ -118,6 +118,7 @@ public class Frog extends MovableActor{
 		if(carD == 5) {
 			setOrigin(0);
 			GameController.INSTANCE.handleScoreChanged(-50);
+			GameController.INSTANCE.handleLifeLosed();
 		}else if (carD > 0) {
 			setImage(waterDeathImages.get(carD - 1));
 		}
@@ -127,6 +128,7 @@ public class Frog extends MovableActor{
 		if(carD == 4) {
 			setOrigin(0);
 			GameController.INSTANCE.handleScoreChanged(-50);
+			GameController.INSTANCE.handleLifeLosed();
 		}else if(carD > 0) {
 			setImage(carDeathImages.get(carD - 1));
 		}

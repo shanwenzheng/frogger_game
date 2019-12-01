@@ -4,16 +4,17 @@ import frogger.model.Map;
 import frogger.util.MapFactory;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 
 public class GameView {
 	private Pane background;
 	private Map map;
+	private Label scoreLabel;
+	private Label highScoreLabel;
 
 	public GameView(String gameLevel) {
 		background = new Pane();
+		scoreLabel = new Label();
+		highScoreLabel = new Label();
 		map = MapFactory.createMap(gameLevel);
 	}
 	
@@ -49,19 +50,25 @@ public class GameView {
 		background.getChildren().addAll(map.getObstacles());
 	}
 	
+	public void drawLifeImage() {
+		background.getChildren().addAll(map.getLifeImage());
+	}
+	
 	public void drawScoreBoard() {
-		Label label = new Label("C-SOCRE");
-        label.setLayoutX(510);
-        label.setLayoutY(745);
-		background.getChildren().add(label);
+		initScoreBoard(scoreLabel, "C-SCORE", 504, 742);
+		background.getChildren().add(scoreLabel);
 		background.getChildren().addAll(map.getScoreBoard());
 	}
 	
 	public void drawHighScoreBoard() {
-		Label label = new Label("H-SOCRE");
-        label.setLayoutX(310);
-        label.setLayoutY(745);
-        background.getChildren().add(label);
+		initScoreBoard(highScoreLabel, "H-SCORE", 304, 742);
+        background.getChildren().add(highScoreLabel);
 		background.getChildren().addAll(map.getHighScoreBoard());
+	}
+	
+	public void initScoreBoard(Label label, String str, int xPos, int yPos) {
+		label.setText(str);
+		label.setLayoutX(xPos);
+		label.setLayoutY(yPos);
 	}
 }

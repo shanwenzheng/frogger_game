@@ -25,4 +25,10 @@ public class SimpleModeMap extends Map{
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void createLifeImage() {
+		// TODO Auto-generated method stub
+		
+	}
 }

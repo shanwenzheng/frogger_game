@@ -4,8 +4,8 @@
 }
 
 .label {
-	-fx-font-family: "Times New Roman";
-	-fx-font-size: 20px;
+	-fx-font-family: 'Algerian';
+	-fx-font-size: 25px;
 	-fx-text-fill: #FF8800;
 	-fx-font-weight: bold;
 }
