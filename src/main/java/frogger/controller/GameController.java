@@ -1,5 +1,6 @@
 package frogger.controller;
 
+import frogger.model.Life;
 import frogger.model.Score;
 import frogger.model.actor.movableActor.MovableActor;
 import frogger.model.actor.staticActor.End;
@@ -14,6 +15,7 @@ import javafx.scene.input.KeyEvent;
 public enum GameController {
 	INSTANCE;
 	private GameView gameView;
+	private Life life;
 	private Score score;
 	private Score highScore;
 	private int endCount;
@@ -23,6 +25,7 @@ public enum GameController {
 		this.gameView = gameView;	
 		this.score = new Score();
 		this.highScore = new Score();
+		life = new Life(gameView.getMap().getLifeImage().size());
 		ActAnimation.INSTANCE.init(gameView.getBackground());
 		MusicPlayer.INSTANCE.init("music/Frogger Main Song Theme (loop).mp3");
 	}
@@ -109,10 +112,10 @@ public enum GameController {
 	}
 
 	public void handleLifeLosed() {
-		gameView.getMap().getLife().loseLife();
-		int index = gameView.getMap().getLife().getRemainingLife();
+		life.loseLife();
+		int index = life.getRemainingLife();
 		gameView.getBackground().getChildren().remove(gameView.getMap().getLifeImage().get(index));
 		
-		if(gameView.getMap().getLife().getRemainingLife() == 0) {endGame();}
+		if(life.getRemainingLife() == 0) {endGame();}
 	}
 }

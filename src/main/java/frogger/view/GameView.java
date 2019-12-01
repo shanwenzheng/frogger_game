@@ -11,7 +11,7 @@ public class GameView {
 	private Label scoreLabel;
 	private Label highScoreLabel;
 
-	public GameView(String gameLevel) {
+	public GameView(String gameLevel) throws Exception {
 		background = new Pane();
 		scoreLabel = new Label();
 		highScoreLabel = new Label();
@@ -39,7 +39,7 @@ public class GameView {
 	}
 	
 	public void drawEnd() {
-		background.getChildren().addAll(map.getEnd());
+		background.getChildren().addAll(map.getEnds());
 	}
 	
 	public void drawAnimal() {

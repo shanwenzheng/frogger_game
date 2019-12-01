@@ -5,7 +5,6 @@ import frogger.view.GameView;
 public class MapLoader {
 	
 	public static void mapLoad(GameView gameView) {
-		gameView.getMap().initMap();
 		gameView.drawLog();
 		gameView.drawTurtle();
 		gameView.drawWetTurtle();
