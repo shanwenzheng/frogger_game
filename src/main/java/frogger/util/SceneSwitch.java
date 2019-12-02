@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 
 public enum SceneSwitch {
@@ -48,6 +49,10 @@ public enum SceneSwitch {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void exitProgram() {
+		Platform.exit();
 	}
 }
 

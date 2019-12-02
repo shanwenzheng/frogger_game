@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" styleClass="root" stylesheets="@../css/startScreen.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" styleClass="root" stylesheets="@../css/startScreen.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frogger.controller.StartScreenController">
    <top>
       <Pane prefHeight="426.0" prefWidth="600.0" styleClass="top" BorderPane.alignment="CENTER" />
    </top>
@@ -21,9 +21,9 @@
    <center>
       <VBox prefHeight="268.0" prefWidth="419.0" styleClass="center" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" styleClass="menu-item" text="Start" />
-            <Button mnemonicParsing="false" prefHeight="173.0" prefWidth="280.0" styleClass="menu-item" text="Instruction" />
-            <Button mnemonicParsing="false" styleClass="menu-item" text="Exit" />
+            <Button fx:id="start" mnemonicParsing="false" onAction="#switchToStartScreen" styleClass="menu-item" text="Start" />
+            <Button fx:id="instruction" mnemonicParsing="false" onAction="#switchToInstruction" prefHeight="173.0" prefWidth="280.0" styleClass="menu-item" text="Instruction" />
+            <Button fx:id="exit" mnemonicParsing="false" onAction="#exitProgram" styleClass="menu-item" text="Exit" />
          </children>
       </VBox>
    </center>

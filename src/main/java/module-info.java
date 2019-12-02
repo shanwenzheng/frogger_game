@@ -8,6 +8,7 @@ module frogger {
 	exports frogger.util;
 	exports frogger.model.actor.movableActor;
 	exports frogger.model.actor;
+	opens frogger.controller to javafx.fxml;
 
 	requires transitive javafx.base;
 	requires transitive javafx.controls;
