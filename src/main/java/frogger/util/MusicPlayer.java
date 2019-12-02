@@ -11,14 +11,11 @@ public enum MusicPlayer{
 	
 	private MediaPlayer mediaPlayer;
 	
-	public void init(String musicURL) {
+	public void playMusic(String musicURL) {
 		URL musicFile = Main.class.getResource(musicURL);
 		Media sound = new Media(musicFile.toString());
 		mediaPlayer = new MediaPlayer(sound);
 		mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-	}
-	
-	public void playMusic() {
 	    mediaPlayer.play();
 	}
 	

@@ -20,6 +20,7 @@ public enum SceneSwitch {
 	
 	public void switchToStartScreen() {
 		try {
+			MusicPlayer.INSTANCE.playMusic("music/GoodLuckCome.mp3");
 			Pane root = FXMLLoader.load(Main.class.getResource("view/startScreen.fxml"));
 			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);

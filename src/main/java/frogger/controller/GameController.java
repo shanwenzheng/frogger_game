@@ -27,7 +27,6 @@ public enum GameController {
 		this.highScore = new Score();
 		life = new Life(gameView.getMap().getLifeImage().size());
 		ActAnimation.INSTANCE.init(gameView.getBackground());
-		MusicPlayer.INSTANCE.init("music/Frogger Main Song Theme (loop).mp3");
 	}
 	
 	public void startGame() {
@@ -42,7 +41,7 @@ public enum GameController {
 	}
 	
 	public void musicStart() {
-		MusicPlayer.INSTANCE.playMusic();
+		MusicPlayer.INSTANCE.playMusic("music/Frogger Main Song Theme (loop).mp3");
 	}
 	
 	public void musicStop() {
