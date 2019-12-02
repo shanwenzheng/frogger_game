@@ -1,7 +1,7 @@
 package frogger;
 
-import frogger.util.MusicPlayer;
-import frogger.util.SceneSwitch;
+import frogger.service.MusicPlayer;
+import frogger.service.SceneSwitch;
 import javafx.application.Application;
 import javafx.stage.Stage;
 

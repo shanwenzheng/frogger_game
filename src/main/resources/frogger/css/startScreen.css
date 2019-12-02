@@ -32,6 +32,7 @@
   -fx-padding: 30px;
   -fx-border-insets: 30px;
   -fx-background-insets: 30px;
+  -fx-font-family: "Comic Sans MS";
 }
 
 .menu-item:hover {

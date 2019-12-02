@@ -1,6 +1,6 @@
 package frogger.controller;
 
-import frogger.util.SceneSwitch;
+import frogger.service.SceneSwitch;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -28,7 +28,7 @@ public class StartScreenController {
 
     @FXML
     void switchToStartScreen(ActionEvent event) {
-    	SceneSwitch.INSTANCE.switchToGame();
+    	SceneSwitch.INSTANCE.switchToSelect();
     }
 
 }

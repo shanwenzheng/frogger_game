@@ -7,7 +7,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" styleClass="root" stylesheets="@../css/startScreen.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frogger.controller.StartScreenController">
    <top>
-      <Pane prefHeight="426.0" prefWidth="600.0" styleClass="top" BorderPane.alignment="CENTER" />
+      <Pane prefHeight="357.0" prefWidth="600.0" styleClass="top" BorderPane.alignment="CENTER" />
    </top>
    <left>
       <Pane prefHeight="253.0" prefWidth="65.0" BorderPane.alignment="CENTER" />
@@ -16,7 +16,7 @@
       <Pane prefHeight="253.0" prefWidth="70.0" BorderPane.alignment="CENTER" />
    </right>
    <bottom>
-      <Pane prefHeight="121.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
+      <Pane prefHeight="70.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
    </bottom>
    <center>
       <VBox prefHeight="268.0" prefWidth="419.0" styleClass="center" BorderPane.alignment="CENTER">

@@ -1,7 +1,7 @@
 package frogger.view;
 
 import frogger.model.Map;
-import frogger.util.MapFactory;
+import frogger.service.MapFactory;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 
