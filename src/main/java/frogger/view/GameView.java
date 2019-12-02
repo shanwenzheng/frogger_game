@@ -14,6 +14,18 @@ public class GameView {
 		map = MapFactory.createMap(gameLevel);
 	}
 	
+	public void drawBackground() {
+		drawLog();
+		drawTurtle();
+		drawWetTurtle();
+		drawEnd();
+		drawAnimal();
+		drawObstacle();
+		drawScoreBoard();
+		drawHighScoreBoard();
+		drawLifeImage();
+	}
+	
 	public Pane getBackground() {
 		return background;
 	}

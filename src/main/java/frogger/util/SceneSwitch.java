@@ -34,8 +34,8 @@ public enum SceneSwitch {
 	public void switchToGame() {
 		try {
 			GameView gameView = new GameView("NormalMode");
+			gameView.drawBackground();
 		    Scene scene = new Scene(gameView.getBackground(),600,800);
-		    MapLoader.mapLoad(gameView);
 		
 			GameController.INSTANCE.init(gameView);
 			GameController.INSTANCE.startGame();
