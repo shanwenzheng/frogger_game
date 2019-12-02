@@ -41,7 +41,7 @@ public enum GameController {
 	}
 	
 	public void musicStart() {
-		MusicPlayer.INSTANCE.playMusic("music/Frogger Main Song Theme (loop).mp3");
+		MusicPlayer.INSTANCE.playGameMusic();
 	}
 	
 	public void musicStop() {
