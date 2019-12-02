@@ -45,7 +45,7 @@ public class NormalMode {
 		put(400,276);
 	}};
 	
-	public static final HashMap<Integer, Integer> POS_OF_MEDIUM_LOG = new HashMap<Integer, Integer>(){{}};
+	public static final HashMap<Integer, Integer> POS_OF_MEDIUM_LOG = new HashMap<Integer, Integer>(){};
 	
 	public static final HashMap<Integer, Integer> POS_OF_SHORT_LOG = new HashMap<Integer, Integer>(){{
 		put(0,166);
