@@ -1,5 +1,6 @@
 module frogger {
 	exports frogger;
+	exports frogger.constant;
 	exports frogger.controller;
 	exports frogger.model.actor.staticActor;
 	exports frogger.model;
@@ -12,4 +13,5 @@ module frogger {
 	requires transitive javafx.controls;
 	requires transitive javafx.graphics;
 	requires transitive javafx.media;
+	requires transitive javafx.fxml;
 }
