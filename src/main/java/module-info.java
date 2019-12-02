@@ -1,15 +1,18 @@
 module frogger {
 	exports frogger;
+	exports frogger.constant;
 	exports frogger.controller;
 	exports frogger.model.actor.staticActor;
 	exports frogger.model;
 	exports frogger.view;
-	exports frogger.util;
+	exports frogger.service;
 	exports frogger.model.actor.movableActor;
 	exports frogger.model.actor;
+	opens frogger.controller to javafx.fxml;
 
-	requires javafx.base;
-	requires javafx.controls;
-	requires javafx.graphics;
-	requires javafx.media;
+	requires transitive javafx.base;
+	requires transitive javafx.controls;
+	requires transitive javafx.fxml;
+	requires transitive javafx.graphics;
+	requires transitive javafx.media;
 }

@@ -4,9 +4,9 @@ import frogger.model.Life;
 import frogger.model.Score;
 import frogger.model.actor.movableActor.MovableActor;
 import frogger.model.actor.staticActor.End;
-import frogger.util.ActAnimation;
-import frogger.util.MusicPlayer;
-import frogger.util.ScoreBoardUpdater;
+import frogger.service.ActAnimation;
+import frogger.service.MusicPlayer;
+import frogger.service.ScoreBoardUpdater;
 import frogger.view.GameView;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -27,7 +27,6 @@ public enum GameController {
 		this.highScore = new Score();
 		life = new Life(gameView.getMap().getLifeImage().size());
 		ActAnimation.INSTANCE.init(gameView.getBackground());
-		MusicPlayer.INSTANCE.init("music/Frogger Main Song Theme (loop).mp3");
 	}
 	
 	public void startGame() {
@@ -42,7 +41,7 @@ public enum GameController {
 	}
 	
 	public void musicStart() {
-		MusicPlayer.INSTANCE.playMusic();
+		MusicPlayer.INSTANCE.playGameMusic();
 	}
 	
 	public void musicStop() {

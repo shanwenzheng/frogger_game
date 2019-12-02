@@ -1,34 +1,24 @@
 package frogger;
 
-import frogger.controller.GameController;
-import frogger.util.MapLoader;
-import frogger.view.GameView;
+import frogger.service.MusicPlayer;
+import frogger.service.SceneSwitch;
 import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+	
 	public static void main(String[] args) {
 		launch(args);
 	}
-
-	@Override
-	public void start(Stage primaryStage) throws Exception {
-		GameView gameView = new GameView("NormalMode");
-	    Scene scene  = new Scene(gameView.getBackground(),600,800);
-	    MapLoader.mapLoad(gameView);
-	    
-	    primaryStage.setTitle("Frogger Game");
-		primaryStage.setResizable(false);
-		primaryStage.setScene(scene);
-		primaryStage.show();
 	
-		GameController.INSTANCE.init(gameView);
-		GameController.INSTANCE.startGame();
+	@Override
+	public void start(Stage primaryStage){
+		MusicPlayer.INSTANCE.init();
+		SceneSwitch.INSTANCE.init(primaryStage);
 		
-		scene.addEventHandler(KeyEvent.KEY_PRESSED, event -> GameController.INSTANCE.handleKeyPressedEvent(event));
-		scene.addEventHandler(KeyEvent.KEY_RELEASED, event -> GameController.INSTANCE.handleKeyReleasedEvent(event));
-		scene.getStylesheets().add(Main.class.getResource("css/game.css").toExternalForm());
+		primaryStage.setTitle("Frogger Game");
+		primaryStage.setResizable(false);
+		
+		SceneSwitch.INSTANCE.switchToStartScreen();
 	}
 }

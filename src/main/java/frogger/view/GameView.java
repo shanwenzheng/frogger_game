@@ -1,7 +1,7 @@
 package frogger.view;
 
 import frogger.model.Map;
-import frogger.util.MapFactory;
+import frogger.service.MapFactory;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 
@@ -12,6 +12,18 @@ public class GameView {
 	public GameView(String gameLevel) throws Exception {
 		background = new Pane();
 		map = MapFactory.createMap(gameLevel);
+	}
+	
+	public void drawBackground() {
+		drawLog();
+		drawTurtle();
+		drawWetTurtle();
+		drawEnd();
+		drawAnimal();
+		drawObstacle();
+		drawScoreBoard();
+		drawHighScoreBoard();
+		drawLifeImage();
 	}
 	
 	public Pane getBackground() {

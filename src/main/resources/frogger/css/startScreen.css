@@ -1,0 +1,50 @@
+.root {
+  -fx-background-image: url("../images/homeBackGround.jpg");
+  -fx-background-repeat: no-repeat;
+  -fx-background-attachment: fixed;
+  -fx-background-position: center;
+  -fx-background-size: 600 800;
+}
+
+.top {
+  -fx-background-image: url("../images/homeTop.png");
+  -fx-background-repeat: no-repeat;
+  -fx-background-attachment: fixed;
+  -fx-background-position: center;
+  -fx-background-size: 100%;
+}
+
+.center {
+  -fx-alignment: center;
+  -fx-background-color: rgba(79, 196, 124, 0.2);
+  -fx-background-radius: 50px;
+  -fx-border-radius: 50px;
+  -fx-border-width: 5px;
+  -fx-border-color: rgba(2, 44, 20, 0.2);
+}
+
+.menu-item {
+  -fx-background-color: rgba(255, 255, 255, 0);
+  -fx-alignment: center;
+  -fx-font-size: 40px;
+  -fx-text-fill: white;
+  -fx-font-weight: bold;
+  -fx-padding: 30px;
+  -fx-border-insets: 30px;
+  -fx-background-insets: 30px;
+  -fx-font-family: "Comic Sans MS";
+}
+
+.menu-item:hover {
+  -fx-text-fill: black;
+  -fx-font-size: 40px;
+  -fx-stroke: black;
+  -fx-stroke-width: 1;
+}
+
+.menu-item:pressed {
+  -fx-text-fill: black;
+  -fx-font-size: 35px;
+  -fx-stroke: black;
+  -fx-stroke-width: 1;
+}
