@@ -31,9 +31,9 @@ public enum SceneSwitch {
 		}
 	}
 	
-	public void switchToGame() {
+	public void switchToGame(String nickName, String gameLevel) {
 		try {
-			GameView gameView = new GameView("NormalMode");
+			GameView gameView = new GameView(gameLevel);
 			gameView.drawBackground();
 		    Scene scene = new Scene(gameView.getBackground(),600,800);
 		
@@ -61,6 +61,10 @@ public enum SceneSwitch {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void switchToInstruction() {
+		
 	}
 	
 	public void exitProgram() {

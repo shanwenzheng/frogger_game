@@ -45,7 +45,7 @@
 .combo-box-base{
 	-fx-background-color: 'transparent';
 	-fx-alignment:center;
-	-fx-font-size: 20px;
+	-fx-font-size: 15px;
 	-fx-text-fill: grey;
 	-fx-font-weight: bold;
 	-fx-font-family: 'Comic Sans MS';
@@ -55,7 +55,7 @@
 }
 
 .combo-box-popup .list-view {
-	-fx-pref-height: 200;
+	-fx-pref-height: 100;
 	-fx-background-radius: 10px;
   	-fx-border-width: 4px;
   	-fx-border-color: #585858;

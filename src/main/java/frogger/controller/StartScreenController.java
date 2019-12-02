@@ -3,6 +3,7 @@ package frogger.controller;
 import frogger.service.SceneSwitch;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 
 public class StartScreenController {
@@ -23,7 +24,7 @@ public class StartScreenController {
 
     @FXML
     void switchToInstruction(ActionEvent event) {
-
+    	SceneSwitch.INSTANCE.switchToInstruction();
     }
 
     @FXML

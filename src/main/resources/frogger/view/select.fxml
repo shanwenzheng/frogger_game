@@ -43,11 +43,6 @@
                         <Label prefHeight="131.0" prefWidth="214.0" text="NickName" />
                      </children>
                   </Pane>
-                  <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
-                     <children>
-                        <TextField fx:id="nickName" alignment="CENTER" layoutX="35.0" layoutY="28.0" mouseTransparent="true" prefHeight="75.0" prefWidth="141.0" promptText="Player" />
-                     </children>
-                  </Pane>
                   <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                      <children>
                         <Label prefHeight="136.0" prefWidth="211.0" text="GameLevel" />
@@ -55,19 +50,20 @@
                   </Pane>
                   <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <children>
-                        <ComboBox fx:id="gameLevel" layoutX="18.0" layoutY="34.0" prefHeight="62.0" prefWidth="178.0" promptText="gameLevel" />
+                        <ComboBox fx:id="gameLevel" layoutX="18.0" layoutY="34.0" prefHeight="62.0" prefWidth="178.0" />
                      </children>
                   </Pane>
                   <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                      <children>
-                        <Button fx:id="back" layoutX="44.0" layoutY="38.0" mnemonicParsing="false" text="←BACK" />
+                        <Button fx:id="back" layoutX="44.0" layoutY="38.0" mnemonicParsing="false" onAction="#backToStartScreen" text="←BACK" />
                      </children>
                   </Pane>
                   <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <children>
-                        <Button fx:id="start" layoutX="24.0" layoutY="38.0" mnemonicParsing="false" text="START→" />
+                        <Button fx:id="start" layoutX="24.0" layoutY="38.0" mnemonicParsing="false" onAction="#goToGameScreen" text="START→" />
                      </children>
                   </Pane>
+                  <TextField fx:id="nickName" promptText="Unknown Player" GridPane.columnIndex="1" />
                </children>
             </GridPane>
          </children></VBox>
