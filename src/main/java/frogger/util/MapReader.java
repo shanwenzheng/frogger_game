@@ -1,11 +1,8 @@
 package frogger.util;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-
 import frogger.Main;
 import frogger.model.Map;
-import frogger.model.actor.Actor;
 import frogger.model.actor.movableActor.Frog;
 import frogger.model.actor.movableActor.Log;
 import frogger.model.actor.movableActor.Obstacle;
@@ -26,12 +23,12 @@ public class MapReader {
 		levelConst = Class.forName("frogger.constant." + str);
 	}
 	
-	public Map getMap() throws Exception {
+	public Map getMap(){
 		createMap();
 		return map;
 	}
 	
-	public void createMap() throws Exception {
+	public void createMap(){
 		createEnd();
 		createScoreBoard();
 		createHighScoreBoard();
@@ -44,135 +41,123 @@ public class MapReader {
 	}
 	
 	public void createEnd() {
-		ArrayList<End> temp = new ArrayList<End>();
-		temp.add(new End(60,11,85));
-		temp.add(new End(60,139,85));
-		temp.add(new End(60,139 + 139-11,85));
-		temp.add(new End(60,139 + 139-11+139-11+1,85));
-		temp.add(new End(60,139 + 139-11+139-11+139-11+3,85));
-		map.setEnds(temp);
+		map.getEnds().add(new End(60,11,85));
+		map.getEnds().add(new End(60,139,85));
+		map.getEnds().add(new End(60,139 + 139-11,85));
+		map.getEnds().add(new End(60,139 + 139-11+139-11+1,85));
+		map.getEnds().add(new End(60,139 + 139-11+139-11+139-11+3,85));
 	}
 	
 	public void createScoreBoard() {
-		ArrayList<Digit> temp = new ArrayList<Digit>();
-		temp.add(new Digit(0, 30, 565, 770));
-		temp.add(new Digit(0, 30, 535, 770));
-		temp.add(new Digit(0, 30, 505, 770));
-		map.setScoreBoard(temp);
+		map.getScoreBoard().add(new Digit(0, 30, 565, 770));
+		map.getScoreBoard().add(new Digit(0, 30, 535, 770));
+		map.getScoreBoard().add(new Digit(0, 30, 505, 770));
 	}
 	
 	public void createHighScoreBoard() {
-		ArrayList<Digit> temp = new ArrayList<Digit>();
-		temp.add(new Digit(0, 30, 365, 770));
-		temp.add(new Digit(0, 30, 335, 770));
-		temp.add(new Digit(0, 30, 305, 770));
-		map.setHighScoreBoard(temp);
+		map.getHighScoreBoard().add(new Digit(0, 30, 365, 770));
+		map.getHighScoreBoard().add(new Digit(0, 30, 335, 770));
+		map.getHighScoreBoard().add(new Digit(0, 30, 305, 770));
 	}
 	
 	public void createAnimal() {
 		map.setAnimal(new Frog(40));
 	}
 	
-	@SuppressWarnings("unchecked")
-	public void createObstalce() throws Exception{
-		ArrayList<Obstacle> temp = new ArrayList<Obstacle>();
-		HashMap<Integer, Integer> position;
-		double speed;
-		
-		position = (HashMap<Integer, Integer>) levelConst.getField("POS_OF_LONG_TRUCK").get(null);
-		speed = (double) levelConst.getField("SPEED_OF_LONG_TRUCK").get(null);
-		for(Integer xPos : position.keySet()) {
-			String imageLink = "images/truck1" + (speed < 0 ? "Left" : "Right") + ".png";
-			temp.add(new Obstacle(imageLink, 120, xPos, position.get(xPos), speed));
-		}
-		
-		position = (HashMap<Integer, Integer>) levelConst.getField("POS_OF_SHORT_TRUCK").get(null);
-		speed = (double) levelConst.getField("SPEED_OF_SHORT_TRUCK").get(null);
-		for(Integer xPos : position.keySet()) {
-			String imageLink = "images/truck2" + (speed < 0 ? "Left" : "Right") + ".png";
-			temp.add(new Obstacle(imageLink, 200, xPos, position.get(xPos), speed));
-		}
-		
-		position = (HashMap<Integer, Integer>) levelConst.getField("POS_OF_QUICK_CAR").get(null);
-		speed = (double) levelConst.getField("SPEED_OF_QUICK_CAR").get(null);
-		for(Integer xPos : position.keySet()) {
-			String imageLink = "images/car1" + (speed < 0 ? "Left" : "Right") + ".png";
-			temp.add(new Obstacle(imageLink, 50, xPos, position.get(xPos), speed));
-		}
-		
-		position = (HashMap<Integer, Integer>) levelConst.getField("POS_OF_SLOW_CAR").get(null);
-		speed = (double) levelConst.getField("SPEED_OF_SLOW_CAR").get(null);
-		for(Integer xPos : position.keySet()) {
-			String imageLink = "images/car1" + (speed < 0 ? "Left" : "Right") + ".png";
-			temp.add(new Obstacle(imageLink, 50, xPos, position.get(xPos), speed));
-		}
-		
-		map.setObstacles(temp);
+	public void createObstalce(){
+		readConstantClass("LONG_TRUCK");
+		readConstantClass("SHORT_TRUCK");
+		readConstantClass("QUICK_CAR");
+		readConstantClass("SLOW_CAR");
 	}
 	
-	@SuppressWarnings("unchecked")
-	public void createLog() throws Exception{
-		ArrayList<Log> temp = new ArrayList<Log>();
-		HashMap<Integer, Integer> position;
-		double speed;
-		
-		position = (HashMap<Integer, Integer>) levelConst.getField("POS_OF_LONG_LOG").get(null);
-		speed = (double) levelConst.getField("SPEED_OF_LONG_LOG").get(null);
-		for(Integer xPos : position.keySet()) {
-			temp.add(new Log(("images/logs.png"), 300, xPos, position.get(xPos), speed));
-		}
-		
-		position = (HashMap<Integer, Integer>) levelConst.getField("POS_OF_MEDIUM_LOG").get(null);
-		speed = (double) levelConst.getField("SPEED_OF_MEDIUM_LOG").get(null);
-		for(Integer xPos : position.keySet()) {
-			temp.add(new Log(("images/log2.png"), 225, xPos, position.get(xPos), speed));
-		}
-		
-		position = (HashMap<Integer, Integer>) levelConst.getField("POS_OF_SHORT_LOG").get(null);
-		speed = (double) levelConst.getField("SPEED_OF_SHORT_LOG").get(null);
-		for(Integer xPos : position.keySet()) {
-			temp.add(new Log(("images/log3.png"), 150, xPos, position.get(xPos), speed));
-		}
-		
-		map.setLogs(temp);
+	public void createLog(){
+		readConstantClass("LONG_LOG");
+		readConstantClass("MEDIUM_LOG");
+		readConstantClass("SHORT_LOG");
 	}
 	
-	@SuppressWarnings("unchecked")
-	public void createTurtles() throws Exception{
-		ArrayList<Turtle> temp = new ArrayList<Turtle>();
-		
-		HashMap<Integer, Integer> position = (HashMap<Integer, Integer>) levelConst.getField("POS_OF_TURTLE").get(null);
-		double speed = (double) levelConst.getField("SPEED_OF_TURTLE").get(null);
-		for(Integer xPos : position.keySet()) {
-			temp.add(new Turtle(130, xPos, position.get(xPos), speed));
-		}
-		
-		map.setTurtles(temp);
+	public void createTurtles(){
+		readConstantClass("TURTLE");
 	}
 	
-	@SuppressWarnings("unchecked")
-	public void createWetTurtles() throws Exception{
-		ArrayList<WetTurtle> temp = new ArrayList<WetTurtle>();
-		
-		HashMap<Integer, Integer> position = (HashMap<Integer, Integer>) levelConst.getField("POS_OF_WETTURTLE").get(null);
-		double speed = (double) levelConst.getField("SPEED_OF_WETTURTLE").get(null);
-		for(Integer xPos : position.keySet()) {
-			temp.add(new WetTurtle(130, xPos, position.get(xPos), speed));
-		}
-		
-		map.setWetTurtles(temp);
+
+	public void createWetTurtles(){
+		readConstantClass("WETTURTLE");
 	}
 
-	public void createLifeImage() throws Exception{
-		ArrayList<ImageView> temp = new ArrayList<ImageView>();
-		int shift = 0;
-		for(int i = 0; i < (int)levelConst.getField("NUM_OF_LIFE").get(null); i++) {
-			ImageView life = new ImageView(new Image(Main.class.getResourceAsStream("images/froggerUp.png"), 50, 50, true, true));
-			life.setX(10 + shift);
-			life.setY(750);
-			temp.add(i, life);
-			shift += 50;
+	public void createLifeImage(){
+		readConstantClass("LIFE_IMAGE");
+	}
+	
+	@SuppressWarnings("unchecked")
+	public void readConstantClass(String actorStr){
+		HashMap<Integer, Integer> position = null;
+		double speed = 0;
+
+		try {
+			position = (HashMap<Integer, Integer>) levelConst.getField("POS_OF_" + actorStr).get(null);
+			if(!actorStr.equals("LIFE_IMAGE")) 	{speed = (double) levelConst.getField("SPEED_OF_" + actorStr).get(null);}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		map.setLifeImage(temp);
+		
+		switch(actorStr) {
+		case "LONG_TRUCK":
+			for(Integer xPos : position.keySet()) {
+				map.getObstacles().add(new Obstacle("images/truck1" + (speed < 0 ? "Left" : "Right") + ".png", 120, xPos, position.get(xPos), speed));
+			}
+			break;
+		case "SHORT_TRUCK":
+			for(Integer xPos : position.keySet()) {
+				map.getObstacles().add(new Obstacle("images/truck2" + (speed < 0 ? "Left" : "Right") + ".png", 200, xPos, position.get(xPos), speed));
+			}
+			break;
+		case "QUICK_CAR":
+			for(Integer xPos : position.keySet()) {
+				map.getObstacles().add(new Obstacle("images/car1" + (speed < 0 ? "Left" : "Right") + ".png", 50, xPos, position.get(xPos), speed));
+			}
+			break;
+		case "SLOW_CAR":
+			for(Integer xPos : position.keySet()) {
+				map.getObstacles().add(new Obstacle("images/car1" + (speed < 0 ? "Left" : "Right") + ".png", 50, xPos, position.get(xPos), speed));
+			}
+			break;
+		case "LONG_LOG":
+			for(Integer xPos : position.keySet()) {
+				map.getLogs().add(new Log(("images/logs.png"), 300, xPos, position.get(xPos), speed));
+			}
+			break;
+		case "MEDIUM_LOG":
+			for(Integer xPos : position.keySet()) {
+				map.getLogs().add(new Log(("images/log2.png"), 225, xPos, position.get(xPos), speed));
+			}
+			break;
+		case "SHORT_LOG":
+			for(Integer xPos : position.keySet()) {
+				map.getLogs().add(new Log(("images/log2.png"), 150, xPos, position.get(xPos), speed));
+			}
+			break;
+		case "TURTLE":
+			for(Integer xPos : position.keySet()) {
+				map.getTurtles().add(new Turtle(130, xPos, position.get(xPos), speed));
+			}
+			break;
+		case "WETTURTLE":
+			for(Integer xPos : position.keySet()) {
+				map.getWetTurtles().add(new WetTurtle(130, xPos, position.get(xPos), speed));
+			}
+			break;
+		case "LIFE_IMAGE":
+			for(Integer xPos : position.keySet()) {
+				ImageView temp = new ImageView(new Image(Main.class.getResourceAsStream("images/froggerUp.png"), 50, 50, true, true));
+				temp.setX(xPos);
+				temp.setY(position.get(xPos));
+				map.getLifeImage().add(temp);
+			}
+			break;
+		default:
+			break;
+		}
 	}
 }

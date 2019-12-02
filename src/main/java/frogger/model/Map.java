@@ -20,6 +20,18 @@ public class Map {
 	private ArrayList<Digit> scoreBoard;
 	private ArrayList<Digit> highScoreBoard;
 	private ArrayList<ImageView> lifeImage;
+	private Frog animal;
+	
+	public Map() {
+		logs = new ArrayList<Log>();
+		obstacles = new ArrayList<Obstacle>();
+		turtles = new ArrayList<Turtle>();
+		wetTurtles = new ArrayList<WetTurtle>();
+		ends = new ArrayList<End>();
+		scoreBoard = new ArrayList<Digit>();
+		highScoreBoard = new ArrayList<Digit>();
+		lifeImage = new ArrayList<ImageView>();
+	}
 	
 	public ArrayList<Log> getLogs() {
 		return logs;
@@ -57,45 +69,8 @@ public class Map {
 		return animal;
 	}
 
-	public void setLogs(ArrayList<Log> logs) {
-		this.logs = logs;
-	}
-
-	public void setObstacles(ArrayList<Obstacle> obstacles) {
-		this.obstacles = obstacles;
-	}
-
-	public void setTurtles(ArrayList<Turtle> turtles) {
-		this.turtles = turtles;
-	}
-
-	public void setWetTurtles(ArrayList<WetTurtle> wetTurtles) {
-		this.wetTurtles = wetTurtles;
-	}
-
-	public void setEnds(ArrayList<End> ends) {
-		this.ends = ends;
-	}
-
-	public void setScoreBoard(ArrayList<Digit> scoreBoard) {
-		this.scoreBoard = scoreBoard;
-	}
-
-	public void setHighScoreBoard(ArrayList<Digit> highScoreBoard) {
-		this.highScoreBoard = highScoreBoard;
-	}
-
-	public void setLifeImage(ArrayList<ImageView> lifeImage) {
-		this.lifeImage = lifeImage;
-	}
-
 	public void setAnimal(Frog animal) {
 		this.animal = animal;
 	}
-
-	private Frog animal;
-	
-	public Map() {}
-
 }
 

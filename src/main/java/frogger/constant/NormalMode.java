@@ -67,4 +67,10 @@ public class NormalMode {
 		put(400,217);
 		put(200,217);
 	}};
+	
+	public static final HashMap<Integer, Integer> POS_OF_LIFE_IMAGE = new HashMap<Integer, Integer>(){{
+		put(10,750);
+		put(60,750);
+		put(110,750);
+	}};
 }
