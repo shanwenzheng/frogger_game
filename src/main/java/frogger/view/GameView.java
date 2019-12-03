@@ -1,16 +1,24 @@
 package frogger.view;
 
+import frogger.controller.GameController;
 import frogger.model.Map;
 import frogger.service.MapFactory;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 
 public class GameView {
 	private Pane background;
 	private Map map;
+	private Button homeButton;
+	private Button restartButton;
+	private Button instructionButton;
 
 	public GameView(String gameLevel) throws Exception {
 		background = new Pane();
+		homeButton = new Button("🏠");
+		restartButton = new Button("🔄");
+		instructionButton = new Button("❓");
 		map = MapFactory.createMap(gameLevel);
 	}
 	
@@ -24,6 +32,9 @@ public class GameView {
 		drawScoreBoard();
 		drawHighScoreBoard();
 		drawLifeImage();
+		drawHomeButton();
+		drawInstructionButton();
+		drawRestartButton();
 	}
 	
 	public Pane getBackground() {
@@ -77,5 +88,27 @@ public class GameView {
 		label.setLayoutX(xPos);
 		label.setLayoutY(yPos);
 		return label;
+	}
+	
+	public void drawHomeButton() {
+		homeButton.setLayoutX(420);
+		homeButton.setLayoutY(25);
+		homeButton.setOnAction(event -> {GameController.INSTANCE.handleHomeButtonPressed();});
+		background.getChildren().add(homeButton);
+		
+	}
+	
+	public void drawRestartButton() {
+		restartButton.setLayoutX(540);
+		restartButton.setLayoutY(25);
+		restartButton.setOnAction(event -> {GameController.INSTANCE.handleRestartButtonPressed();});
+		background.getChildren().add(restartButton);
+	}
+	
+	public void drawInstructionButton() {
+		instructionButton.setLayoutX(480);
+		instructionButton.setLayoutY(25);
+		instructionButton.setOnAction(event -> {GameController.INSTANCE.handleInstructionButtonPressed();});
+		background.getChildren().add(instructionButton);
 	}
 }

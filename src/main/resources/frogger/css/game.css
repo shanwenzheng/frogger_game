@@ -9,3 +9,19 @@
 	-fx-text-fill: #FF8800;
 	-fx-font-weight: bold;
 }
+
+.button{
+	-fx-background-color: orange;
+	-fx-background-radius:50%;
+	-fx-font-size:17px;
+	-fx-text-fill:black;
+	-fx-font-weight:bold;
+}
+
+.button:hover{
+	-fx-font-size:22px;
+}
+
+.button:pressed{
+	-fx-font-size:19px;
+}
