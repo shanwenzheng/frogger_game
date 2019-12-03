@@ -19,6 +19,7 @@ public class Main extends Application {
 		primaryStage.setTitle("Frogger Game");
 		primaryStage.setResizable(false);
 		
-		SceneSwitch.INSTANCE.switchToStartScreen();
+//		SceneSwitch.INSTANCE.switchToStartScreen();
+		SceneSwitch.INSTANCE.switchToScoreList("Win");
 	}
 }

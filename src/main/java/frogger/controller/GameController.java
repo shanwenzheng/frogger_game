@@ -43,7 +43,7 @@ public enum GameController {
 	public void endGame(int status) {
 		musicStop();
 		animationStop();
-		if(status == 1) {printEndGameInfo();}
+		if(status == 1) {handleGameEnd();}
 	}
 	
 	public void musicStart() {
@@ -60,15 +60,6 @@ public enum GameController {
 	
 	private void animationStop() {
 		ActAnimation.INSTANCE.actStop();
-	}
-	
-	public void printEndGameInfo() {
-		System.out.println("STOPP: ");
-  		Alert alert = new Alert(AlertType.INFORMATION);
-  		alert.setTitle("You Have Won The Game!");
-  		alert.setHeaderText("Your High Score: "+score.getScore()+"!");
-  		alert.setContentText("Highest Possible Score: 800");
-  		alert.show();
 	}
 	
 	public void handleKeyPressedEvent(KeyEvent event) {
@@ -136,5 +127,10 @@ public enum GameController {
 	
 	public void handleInstructionButtonPressed() {
 		SceneSwitch.INSTANCE.switchToInstruction();
+	}
+	
+	public void handleGameEnd() {
+		String gameStatus = endCount == 5 ? "Win" : "Lose";
+		SceneSwitch.INSTANCE.switchToScoreList(gameStatus);
 	}
 }
