@@ -8,6 +8,7 @@ import frogger.service.ActAnimation;
 import frogger.service.MusicPlayer;
 import frogger.service.SceneSwitch;
 import frogger.service.ScoreBoardUpdater;
+import frogger.service.ScoreListWriter;
 import frogger.view.GameView;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -130,6 +131,8 @@ public enum GameController {
 	}
 	
 	public void handleGameEnd() {
+		ScoreListWriter.INSTANCE.writeInFile(nickName, score);
+		
 		String gameStatus = endCount == 5 ? "Win" : "Lose";
 		SceneSwitch.INSTANCE.switchToScoreList(gameStatus);
 	}

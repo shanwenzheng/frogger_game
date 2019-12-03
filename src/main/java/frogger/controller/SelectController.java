@@ -32,6 +32,8 @@ public class SelectController {
     	}
     	gameLevel.setItems(options);
     	gameLevel.getSelectionModel().selectFirst();
+    	
+    	nickName.setText("Unknown Player");
     }
 
     @FXML
