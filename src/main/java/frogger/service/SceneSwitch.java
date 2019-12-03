@@ -6,7 +6,6 @@ import frogger.Main;
 import frogger.controller.GameController;
 import frogger.view.GameView;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -41,7 +40,7 @@ public enum SceneSwitch {
 			gameView.drawBackground();
 		    Scene scene = new Scene(gameView.getBackground(),600,800);
 		
-			GameController.INSTANCE.init(gameView);
+			GameController.INSTANCE.init(gameView, nickName, gameLevel);
 			GameController.INSTANCE.startGame();
 			
 			scene.addEventHandler(KeyEvent.KEY_PRESSED, event -> GameController.INSTANCE.handleKeyPressedEvent(event));
@@ -72,6 +71,8 @@ public enum SceneSwitch {
 	        instructionStage = new Stage();
 	        Pane root = FXMLLoader.load(Main.class.getResource("view/instruction.fxml")); 
 	        Scene scene = new Scene(root);
+	        instructionStage.setTitle("Instruction");
+	        instructionStage.setResizable(false);
 	        instructionStage.setScene(scene);
 	        instructionStage.show();
 		} catch (IOException e) {

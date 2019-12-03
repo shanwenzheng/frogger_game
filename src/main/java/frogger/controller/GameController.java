@@ -6,6 +6,7 @@ import frogger.model.actor.movableActor.MovableActor;
 import frogger.model.actor.staticActor.End;
 import frogger.service.ActAnimation;
 import frogger.service.MusicPlayer;
+import frogger.service.SceneSwitch;
 import frogger.service.ScoreBoardUpdater;
 import frogger.view.GameView;
 import javafx.scene.control.Alert;
@@ -19,13 +20,17 @@ public enum GameController {
 	private Score score;
 	private Score highScore;
 	private int endCount;
+	private String nickName;
+	private String gameLevel;
 	
-	public void init(GameView gameView) {
+	public void init(GameView gameView, String nickName, String gameLevel) {
 		endCount = 0;
+		this.nickName = nickName;
+		this.gameLevel = gameLevel;
 		this.gameView = gameView;	
 		this.score = new Score();
 		this.highScore = new Score();
-		life = new Life(gameView.getMap().getLifeImage().size());
+		this.life = new Life(gameView.getMap().getLifeImage().size());
 		ActAnimation.INSTANCE.init(gameView.getBackground());
 	}
 	
@@ -34,10 +39,11 @@ public enum GameController {
 		animationStart();
 	}
 	
-	public void endGame() {
+	/* 0 means end game by pressing button. 1 means end game by reach all the end position or lose all life) */
+	public void endGame(int status) {
 		musicStop();
 		animationStop();
-		printEndGameInfo();
+		if(status == 1) {printEndGameInfo();}
 	}
 	
 	public void musicStart() {
@@ -90,10 +96,10 @@ public enum GameController {
 			actor.getIntersectingObjects(End.class).get(0).setEnd();
 			handleScoreChanged(50);
 			gameView.getMap().getAnimal().setOrigin(1);
-			endCount ++;
+			endCount++;
 		}
 		
-		if(endCount == 5) { endGame();}
+		if(endCount == 5) { endGame(1);}
 	}
 
 	public void handleScoreChanged(int points) {
@@ -115,6 +121,20 @@ public enum GameController {
 		int index = life.getRemainingLife();
 		gameView.getBackground().getChildren().remove(gameView.getMap().getLifeImage().get(index));
 		
-		if(life.getRemainingLife() == 0) {endGame();}
+		if(life.getRemainingLife() == 0) {endGame(1);}
+	}
+	
+	public void handleHomeButtonPressed() {
+		endGame(0);
+		SceneSwitch.INSTANCE.switchToStartScreen();
+	}
+	
+	public void handleRestartButtonPressed() {
+		endGame(0);
+		SceneSwitch.INSTANCE.switchToGame(nickName, gameLevel);
+	}
+	
+	public void handleInstructionButtonPressed() {
+		SceneSwitch.INSTANCE.switchToInstruction();
 	}
 }
