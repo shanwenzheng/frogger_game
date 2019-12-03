@@ -1,9 +1,12 @@
 package frogger.service;
 
+import java.io.IOException;
+
 import frogger.Main;
 import frogger.controller.GameController;
 import frogger.view.GameView;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -14,6 +17,7 @@ public enum SceneSwitch {
 	INSTANCE;
 	
 	private Stage primaryStage;
+	private Stage instructionStage;
 	
 	public void init(Stage primaryStage) {
 		this.primaryStage = primaryStage;
@@ -64,11 +68,27 @@ public enum SceneSwitch {
 	}
 	
 	public void switchToInstruction() {
-		
+		try {
+	        instructionStage = new Stage();
+	        Pane root = FXMLLoader.load(Main.class.getResource("view/instruction.fxml")); 
+	        Scene scene = new Scene(root);
+	        instructionStage.setScene(scene);
+	        instructionStage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void exitProgram() {
 		Platform.exit();
+	}
+	
+	public Stage getPrimaryStage() {
+		return primaryStage;
+	}
+	
+	public Stage getInstructionStage() {
+		return instructionStage;
 	}
 }
 
