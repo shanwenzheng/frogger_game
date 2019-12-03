@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="701.0" prefWidth="569.0" styleClass="root" stylesheets="@../css/instruction.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frogger.controller.InstructionController">
+   <children>
+      <AnchorPane layoutX="27.0" layoutY="52.0" prefHeight="574.0" prefWidth="524.0" styleClass="container">
+         <children>
+            <Label layoutX="14.0" layoutY="14.0" text="Object:" />
+            <Label layoutX="8.0" layoutY="108.0" text="Controls:" />
+            <Label layoutX="8.0" layoutY="368.0" text="Actors:" />
+            <Label layoutX="251.0" layoutY="108.0" text="Score:" />
+            <TextArea layoutX="9.0" layoutY="46.0" prefHeight="77.0" prefWidth="514.0" text="      The Object of the game is to help frog to arrive the end &#10;positon as safety as you can and score most points along the way&#10;" />
+            <TextArea layoutX="14.0" layoutY="140.0" prefHeight="235.0" prefWidth="200.0" text="  Action        Key&#10;&#10;    Up          W&#10;&#10;   Left         A&#10;&#10;   Down        S&#10;&#10;   Right        D" />
+            <Line endX="81.29290771484375" endY="3.0517578125E-5" layoutX="97.0" layoutY="183.0" startX="-65.60000610351562" startY="1.52587890625E-5" />
+            <Line endX="-89.0" endY="198.99993896484375" layoutX="193.0" layoutY="154.0" startX="-89.0" startY="-13.999984741210938" />
+            <Line endX="73.5999755859375" endY="1.52587890625E-5" layoutX="105.0" layoutY="141.0" startX="-72.79998779296875" startY="1.52587890625E-5" />
+            <Line endX="-99.29998779296875" endY="196.50003051757812" layoutX="279.0" layoutY="156.0" startX="-100.0" startY="-15.999984741210938" />
+            <Line endX="-100.0" endY="190.5999755859375" layoutX="131.0" layoutY="164.0" startX="-100.0" startY="-24.0" />
+            <Line endX="83.20001220703125" endY="1.52587890625E-5" layoutX="94.0" layoutY="225.0" startX="-65.60000610351562" startY="1.52587890625E-5" />
+            <Line endX="83.20001220703125" endY="1.52587890625E-5" layoutX="96.0" layoutY="268.0" startX="-65.60000610351562" startY="1.52587890625E-5" />
+            <Line endX="83.20001220703125" endY="1.52587890625E-5" layoutX="96.0" layoutY="310.0" startX="-65.60000610351562" startY="1.52587890625E-5" />
+            <Line endX="83.20001220703125" endY="1.52587890625E-5" layoutX="96.0" layoutY="353.0" startX="-65.60000610351562" startY="1.52587890625E-5" />
+            <TextArea layoutX="14.0" layoutY="400.0" prefHeight="219.0" prefWidth="514.0" text="· Logs:  Frogger can hop from side to side on a log.&#10; &#10;· Turtles: Frogger can float on the turtles on the river.&#10;&#10;· WetTurtles: These turtles can float on water and dive under &#10; the water. When they not dive under the water. Frogger float &#10;on the turtle is safe.&#10;&#10;· Obstacles: Frooger will die when they touch the obstacles." />
+            <TextArea layoutX="237.0" layoutY="140.0" prefHeight="257.0" prefWidth="302.0" text="     Event                    Points&#10;&#10;   Move Up                    +10&#10;  (First Come)&#10;&#10;CarDeath/WaterDeath       -50&#10;  (Points &gt; 50)&#10;&#10; Reach the End               +50&#10; (End is non-Activited)" />
+            <Line endX="216.800048828125" endY="3.0517578125E-5" layoutX="295.0" layoutY="183.0" startX="-65.60000610351562" startY="1.52587890625E-5" />
+            <Line endX="216.800048828125" endY="3.0517578125E-5" layoutX="294.0" layoutY="249.0" startX="-65.60000610351562" startY="1.52587890625E-5" />
+            <Line endX="216.800048828125" endY="3.0517578125E-5" layoutX="293.0" layoutY="309.0" startX="-65.60000610351562" startY="1.52587890625E-5" />
+            <Line endX="216.800048828125" endY="3.0517578125E-5" layoutX="294.0" layoutY="375.0" startX="-65.60000610351562" startY="1.52587890625E-5" />
+            <Line endX="216.800048828125" endY="3.0517578125E-5" layoutX="294.0" layoutY="141.0" startX="-65.60000610351562" startY="1.52587890625E-5" />
+            <Line endX="-100.30712890625" endY="212.29293823242188" layoutX="328.0" layoutY="162.0" startX="-100.0" startY="-23.999984741210938" />
+            <Line endX="-100.30712890625" endY="212.29293823242188" layoutX="532.0" layoutY="163.0" startX="-100.0" startY="-23.999984741210938" />
+            <Line endX="-100.30712890625" endY="212.29293823242188" layoutX="612.0" layoutY="163.0" startX="-100.0" startY="-23.999984741210938" />
+         </children>
+      </AnchorPane>
+      <Label fx:id="title" layoutX="126.0" prefHeight="52.0" prefWidth="334.0" text="Instruction" />
+      <Button fx:id="exit" layoutX="-20.0" layoutY="-14.0" mnemonicParsing="false" onAction="#closeInstructionStage" text="🔙" />
+   </children>
+</AnchorPane>

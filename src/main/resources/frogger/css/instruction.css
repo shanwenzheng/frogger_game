@@ -1,0 +1,58 @@
+.root {
+	-fx-background-image: url("../images/helpBackGround.jpg");
+	-fx-background-repeat: no-repeat;
+	-fx-background-attachment: fixed;
+	-fx-background-position: center;
+	-fx-background-size: 100% 100%;
+}
+
+.button{
+	-fx-background-color: 'transparent';
+	-fx-font-size:40px;
+	-fx-font-weight:bold;
+	-fx-text-fill: #363435;
+}
+
+.container{
+	-fx-background-color: rgba(79, 196, 124, 0.2);
+	-fx-background-radius: 50px;
+	-fx-border-radius: 50px;
+	-fx-border-width: 5px;
+	-fx-border-color: rgba(2, 44, 20, 0.2);
+}
+
+.label{
+	-fx-background-color: rgba(255, 255, 255, 0);
+	-fx-alignment: center;
+	-fx-font-size: 22px;
+	-fx-text-fill: #363435;
+	-fx-font-weight: bold;
+	-fx-font-family:'Comic Sans MS';
+}
+
+#title{
+	-fx-text-fill:black;
+	-fx-font-size:30px;
+}
+
+.text-area {
+	-fx-alignment: center;
+	-fx-background-color: 'transparent';
+	-fx-background-radius: 50px;
+	-fx-font-size: 15px;
+	-fx-font-family: 'Comic Sans MS';
+	-fx-font-weight: bold;
+	-fx-text-fill:#363636
+}
+
+.text-area .scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.text-area .scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+
+.text-area .scroll-pane .content{
+    -fx-background-color: transparent;
+}
