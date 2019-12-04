@@ -16,9 +16,11 @@ public enum MusicPlayer{
 	private MediaPlayer winPlayer;
 	
 	public void init() {
-		startScreenPlayer = initPlayer("music/GoodLuckCome.mp3");
+		startScreenPlayer = initPlayer("music/LightYearOut.mp3");
 		selectPlayer = initPlayer("music/Nanwangjinxiao.mp3");
 		gamePlayer = initPlayer("music/Frogger Main Song Theme (loop).mp3");
+		losePlayer = initPlayer("music/WildWofDisco.mp3");
+		winPlayer = initPlayer("music/GoodLuckCome.mp3");
 	}
 	
 	public MediaPlayer initPlayer(String musicURL) {
@@ -58,8 +60,8 @@ public enum MusicPlayer{
 		startScreenPlayer.stop();
 		gamePlayer.stop();
 		selectPlayer.stop();
-//		losePlayer.stop();
-//		winPlayer.stop();
+		losePlayer.stop();
+		winPlayer.stop();
 	}
 
 }

@@ -1,6 +1,7 @@
 package frogger.constant;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public class NormalMode {
 	
@@ -68,7 +69,7 @@ public class NormalMode {
 		put(200,217);
 	}};
 	
-	public static final HashMap<Integer, Integer> POS_OF_LIFE_IMAGE = new HashMap<Integer, Integer>(){{
+	public static final LinkedHashMap<Integer, Integer> POS_OF_LIFE_IMAGE = new LinkedHashMap<Integer, Integer>(){{
 		put(10,750);
 		put(60,750);
 		put(110,750);

@@ -7,7 +7,9 @@ import frogger.model.actor.staticActor.End;
 import frogger.service.ActAnimation;
 import frogger.service.MusicPlayer;
 import frogger.service.SceneSwitch;
+import frogger.service.ScoreBaseFactory;
 import frogger.service.ScoreBoardUpdater;
+import frogger.service.ScoreListWriter;
 import frogger.view.GameView;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -15,13 +17,14 @@ import javafx.scene.input.KeyEvent;
 
 public enum GameController {
 	INSTANCE;
+	
 	private GameView gameView;
 	private Life life;
 	private Score score;
 	private Score highScore;
-	private int endCount;
 	private String nickName;
 	private String gameLevel;
+	private int endCount;
 	
 	public void init(GameView gameView, String nickName, String gameLevel) {
 		endCount = 0;
@@ -43,7 +46,7 @@ public enum GameController {
 	public void endGame(int status) {
 		musicStop();
 		animationStop();
-		if(status == 1) {printEndGameInfo();}
+		if(status == 1) {handleGameEnd();}
 	}
 	
 	public void musicStart() {
@@ -60,15 +63,6 @@ public enum GameController {
 	
 	private void animationStop() {
 		ActAnimation.INSTANCE.actStop();
-	}
-	
-	public void printEndGameInfo() {
-		System.out.println("STOPP: ");
-  		Alert alert = new Alert(AlertType.INFORMATION);
-  		alert.setTitle("You Have Won The Game!");
-  		alert.setHeaderText("Your High Score: "+score.getScore()+"!");
-  		alert.setContentText("Highest Possible Score: 800");
-  		alert.show();
 	}
 	
 	public void handleKeyPressedEvent(KeyEvent event) {
@@ -136,5 +130,13 @@ public enum GameController {
 	
 	public void handleInstructionButtonPressed() {
 		SceneSwitch.INSTANCE.switchToInstruction();
+	}
+	
+	public void handleGameEnd() {
+		score.addScore(ScoreBaseFactory.createScoreBase(gameLevel));
+		ScoreListWriter.INSTANCE.writeInFile(nickName, score);
+		
+		String gameStatus = endCount == 5 ? "Win" : "Lose";
+		SceneSwitch.INSTANCE.switchToScoreList(gameStatus, score);
 	}
 }

@@ -8,6 +8,10 @@ public class Score {
 		points = 0;
 	}
 	
+	public Score(int points) {
+		this.points = points;
+	}
+	
 	public void addScore(int point) {
 		this.points += point;
 	}
