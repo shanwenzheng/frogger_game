@@ -134,6 +134,6 @@ public enum GameController {
 		ScoreListWriter.INSTANCE.writeInFile(nickName, score);
 		
 		String gameStatus = endCount == 5 ? "Win" : "Lose";
-		SceneSwitch.INSTANCE.switchToScoreList(gameStatus);
+		SceneSwitch.INSTANCE.switchToScoreList(gameStatus, score);
 	}
 }

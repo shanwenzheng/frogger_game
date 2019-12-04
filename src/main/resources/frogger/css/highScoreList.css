@@ -1,8 +1,8 @@
 .root {
-  -fx-background-image: url("../images/scoreListBackground.jpeg");
-  -fx-background-repeat: no-repeat;
-  -fx-background-position: center;
-  -fx-background-size: 600 800;
+	-fx-background-image: url("../images/scoreListBackground.jpeg");
+	-fx-background-repeat: no-repeat;
+	-fx-background-position: center;
+	-fx-background-size: 600 800;
 }
 
 #currentScore{
@@ -15,11 +15,11 @@
 }
 
 .board {
-  -fx-background-color: rgba(0, 0, 0, 0.5);
-  -fx-background-radius: 10px;
-  -fx-border-width: 1px;
-  -fx-border-color: #000;
-  -fx-border-radius: 10px;
+	-fx-background-color: rgba(0, 0, 0, 0.5);
+	-fx-background-radius: 10px;
+	-fx-border-width: 1px;
+	-fx-border-color: #000;
+	-fx-border-radius: 10px;
 }
 
 .list-view {
@@ -36,19 +36,42 @@
 }
 
 .list-view .list-cell:filled:selected, .combo-box-popup .list-view .list-cell:filled:selected:hover {
-  -fx-background-color: rgba(0, 0, 0, 0.4);
-  -fx-text-fill: #fff;
+	-fx-background-color: rgba(0, 0, 0, 0.4);
+	-fx-text-fill: #fff;
 }
 
 .list-view .list-cell:filled:hover {
-  -fx-background-color: rgba(0, 0, 0, 0.7);
-  -fx-text-fill: #fff;
+	-fx-background-color: rgba(0, 0, 0, 0.7);
+	-fx-text-fill: #fff;
 }
 
 .list-cell:filled:hover .label {
-  -fx-text-fill: #fff;
+	-fx-text-fill: #fff;
 }
 
 .list-cell:filled:selected .label {
-  -fx-text-fill: #fff;
+	-fx-text-fill: #fff;
+}
+
+.button{
+	-fx-background-color: grey;
+	-fx-background-radius:50%;
+	-fx-font-size:16px;
+	-fx-text-fill:black;
+	-fx-font-weight:bold;
+}
+
+.button:hover{
+	-fx-font-size:20px;
+}
+
+.button:pressed{
+	-fx-font-size:18px;
+}
+
+#currentScore{
+	-fx-font-size:22px;
+	-fx-font-weight:bold;
+	-fx-font-family:'Comic Sans MS';
+	-fx-font-fill: black;
 }

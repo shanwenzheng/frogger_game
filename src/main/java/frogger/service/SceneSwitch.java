@@ -4,12 +4,14 @@ import java.io.IOException;
 
 import frogger.Main;
 import frogger.controller.GameController;
+import frogger.model.Score;
 import frogger.view.GameView;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -82,22 +84,28 @@ public enum SceneSwitch {
 		}
 	}
 	
-	public void switchToScoreList(String status) {
+	public void switchToScoreList(String status, Score score) {
 		try {
 			ImageView statusImage = new ImageView();
-			statusImage.setLayoutX(110);
+			statusImage.setLayoutX(70);
 			statusImage.setLayoutY(30);
 			
 			if(status.equals("Win")) {
-				statusImage.setImage(new Image(Main.class.getResourceAsStream("images/victory.jpg"), 400, 400, true, true));
+				statusImage.setImage(new Image(Main.class.getResourceAsStream("images/victory.jpg"), 450, 450, true, true));
 				MusicPlayer.INSTANCE.playWinMusic();
 			}else {
-				statusImage.setImage(new Image(Main.class.getResourceAsStream("images/defeat.png"), 400, 400, true, true));
+				statusImage.setImage(new Image(Main.class.getResourceAsStream("images/defeat.png"), 450, 450, true, true));
 				MusicPlayer.INSTANCE.playLoseMusic();
 			}
 			
+			Text currentScore = new Text("Your Score: " + score.getScore());
+			currentScore.setLayoutX(70);
+			currentScore.setLayoutY(260);
+			currentScore.setId("currentScore");
+			
 			Pane root = FXMLLoader.load(Main.class.getResource("view/highScoreList.fxml"));
 			root.getChildren().add(statusImage);
+			root.getChildren().add(currentScore);
 			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
 			primaryStage.show();

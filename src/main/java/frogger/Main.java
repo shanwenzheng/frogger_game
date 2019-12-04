@@ -20,6 +20,5 @@ public class Main extends Application {
 		primaryStage.setResizable(false);
 		
 		SceneSwitch.INSTANCE.switchToStartScreen();
-//		SceneSwitch.INSTANCE.switchToScoreList("Win");
 	}
 }
