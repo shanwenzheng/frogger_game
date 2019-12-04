@@ -19,13 +19,13 @@ public class SimpleMode {
 	public static final double SPEED_OF_WETTURTLE = -1;
 	
 	public static final HashMap<Integer, Integer> POS_OF_LONG_TRUCK = new HashMap<Integer, Integer>(){{
-		put(0,649);
-		put(400,649);
+		put(0,540);
+		put(500,540);
 	}};
 	
 	public static final HashMap<Integer, Integer> POS_OF_SHORT_TRUCK = new HashMap<Integer, Integer>(){{
-		put(0,540);
-		put(500,540);
+		put(0,649);
+		put(400,649);
 	}};
 	
 	public static final HashMap<Integer, Integer> POS_OF_QUICK_CAR = new HashMap<Integer, Integer>(){{

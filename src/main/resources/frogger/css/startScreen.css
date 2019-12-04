@@ -1,5 +1,5 @@
 .root {
-  -fx-background-image: url("../images/homeBackGround.jpg");
+  -fx-background-image: url("../images/home/homeBackGround.jpg");
   -fx-background-repeat: no-repeat;
   -fx-background-attachment: fixed;
   -fx-background-position: center;
@@ -7,7 +7,7 @@
 }
 
 .top {
-  -fx-background-image: url("../images/homeTop.png");
+  -fx-background-image: url("../images/home/homeTop.png");
   -fx-background-repeat: no-repeat;
   -fx-background-attachment: fixed;
   -fx-background-position: center;

@@ -3,6 +3,7 @@ package frogger.model.actor.movableActor;
 import java.util.ArrayList;
 
 import frogger.Main;
+import frogger.constant.FileName;
 import frogger.controller.GameController;
 import javafx.scene.image.Image;
 
@@ -13,16 +14,18 @@ public class Turtle extends MovableActor{
 	public Turtle(int size, double  xpos, double  ypos, double  s) {
 		super(xpos, ypos, s);
 		turtleImages = new ArrayList<Image>() {{
-			add(new Image(Main.class.getResourceAsStream("images/TurtleAnimation2.png"), size, size, true, true));
-			add(new Image(Main.class.getResourceAsStream("images/TurtleAnimation1.png"), size, size, true, true));
-			add(new Image(Main.class.getResourceAsStream("images/TurtleAnimation3.png"), size, size, true, true));
+			add(new Image(Main.class.getResourceAsStream(FileName.IMAGE_TURTLE.get(1)), size, size, true, true));
+			add(new Image(Main.class.getResourceAsStream(FileName.IMAGE_TURTLE.get(0)), size, size, true, true));
+			add(new Image(Main.class.getResourceAsStream(FileName.IMAGE_TURTLE.get(2)), size, size, true, true));
 		}};
 		setImage(turtleImages.get(0));
 	}
 
 	@Override
 	public void act(long now) {
-		setImage(turtleImages.get((int) (now/900000000  % turtleImages.size())));
+		int index = (int) (now/900000000  % turtleImages.size());
+		setImage(turtleImages.get(index));
+		
 		move(getSpeed(), 0);
 		checkWall(getSpeed(),-75,-200,600);
 		checkTouch();

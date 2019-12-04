@@ -2,6 +2,7 @@ package frogger.service;
 
 import java.util.HashMap;
 import frogger.Main;
+import frogger.constant.FileName;
 import frogger.model.Map;
 import frogger.model.actor.movableActor.Frog;
 import frogger.model.actor.movableActor.Log;
@@ -105,37 +106,37 @@ public class MapReader {
 		switch(actorStr) {
 		case "LONG_TRUCK":
 			for(Integer xPos : position.keySet()) {
-				map.getObstacles().add(new Obstacle("images/truck1" + (speed < 0 ? "Left" : "Right") + ".png", 120, xPos, position.get(xPos), speed));
+				map.getObstacles().add(new Obstacle((speed < 0 ? FileName.IMAGE_LONG_TRUCK_LEFT : FileName.IMAGE_LONG_TRUCK_RIGHT), 200, xPos, position.get(xPos), speed));
 			}
 			break;
 		case "SHORT_TRUCK":
 			for(Integer xPos : position.keySet()) {
-				map.getObstacles().add(new Obstacle("images/truck2" + (speed < 0 ? "Left" : "Right") + ".png", 200, xPos, position.get(xPos), speed));
+				map.getObstacles().add(new Obstacle((speed < 0 ? FileName.IMAGE_SHORT_TRUCK_LEFT : FileName.IMAGE_SHORT_TRUCK_RIGHT), 120, xPos, position.get(xPos), speed));
 			}
 			break;
 		case "QUICK_CAR":
 			for(Integer xPos : position.keySet()) {
-				map.getObstacles().add(new Obstacle("images/car1" + (speed < 0 ? "Left" : "Right") + ".png", 50, xPos, position.get(xPos), speed));
+				map.getObstacles().add(new Obstacle((speed < 0 ? FileName.IMAGE_CAR_LEFT : FileName.IMAGE_CAR_RIGHT), 50, xPos, position.get(xPos), speed));
 			}
 			break;
 		case "SLOW_CAR":
 			for(Integer xPos : position.keySet()) {
-				map.getObstacles().add(new Obstacle("images/car1" + (speed < 0 ? "Left" : "Right") + ".png", 50, xPos, position.get(xPos), speed));
+				map.getObstacles().add(new Obstacle((speed < 0 ? FileName.IMAGE_CAR_LEFT : FileName.IMAGE_CAR_RIGHT), 50, xPos, position.get(xPos), speed));
 			}
 			break;
 		case "LONG_LOG":
 			for(Integer xPos : position.keySet()) {
-				map.getLogs().add(new Log(("images/logs.png"), 300, xPos, position.get(xPos), speed));
+				map.getLogs().add(new Log(FileName.IMAGE_LONG_LOG, 300, xPos, position.get(xPos), speed));
 			}
 			break;
 		case "MEDIUM_LOG":
 			for(Integer xPos : position.keySet()) {
-				map.getLogs().add(new Log(("images/log2.png"), 225, xPos, position.get(xPos), speed));
+				map.getLogs().add(new Log(FileName.IMAGE_MEDIUM_LOG, 225, xPos, position.get(xPos), speed));
 			}
 			break;
 		case "SHORT_LOG":
 			for(Integer xPos : position.keySet()) {
-				map.getLogs().add(new Log(("images/log2.png"), 150, xPos, position.get(xPos), speed));
+				map.getLogs().add(new Log(FileName.IMAGE_SHORT_LOG, 150, xPos, position.get(xPos), speed));
 			}
 			break;
 		case "TURTLE":
@@ -150,7 +151,7 @@ public class MapReader {
 			break;
 		case "LIFE_IMAGE":
 			for(Integer xPos : position.keySet()) {
-				ImageView temp = new ImageView(new Image(Main.class.getResourceAsStream("images/froggerUp.png"), 50, 50, true, true));
+				ImageView temp = new ImageView(new Image(Main.class.getResourceAsStream(FileName.IMAGE_LIFE), 50, 50, true, true));
 				temp.setX(xPos);
 				temp.setY(position.get(xPos));
 				map.getLifeImage().add(temp);

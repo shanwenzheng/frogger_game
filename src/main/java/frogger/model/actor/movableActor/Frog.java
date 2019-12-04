@@ -1,17 +1,16 @@
 package frogger.model.actor.movableActor;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import frogger.Main;
+import frogger.constant.FileName;
 import frogger.controller.GameController;
 import frogger.model.actor.staticActor.End;
 import javafx.scene.image.Image;
 
 public class Frog extends MovableActor{
 	
-	private HashMap<String, Image> frogImages;
-	private ArrayList<Image> carDeathImages;
-	private ArrayList<Image> waterDeathImages;			
+	private HashMap<String, Image> frogImages;	
+	private int imageSize;
 	private boolean second;			
 	private boolean noMove;	
 	public String deathType;
@@ -22,26 +21,16 @@ public class Frog extends MovableActor{
     
 	public Frog(int size) {
 		super();
+		this.imageSize = size;
 		frogImages = new HashMap<String, Image>(){{
-			put("w1",new Image(Main.class.getResourceAsStream("images/froggerUp.png"), size, size, true, true));
-			put("a1",new Image(Main.class.getResourceAsStream("images/froggerLeft.png"), size, size, true, true));
-			put("s1",new Image(Main.class.getResourceAsStream("images/froggerDown.png"), size, size, true, true));
-			put("d1",new Image(Main.class.getResourceAsStream("images/froggerRight.png"), size, size, true, true));
-			put("w2",new Image(Main.class.getResourceAsStream("images/froggerUpJump.png"), size, size, true, true));
-			put("a2",new Image(Main.class.getResourceAsStream("images/froggerLeftJump.png"), size, size, true, true));
-			put("s2",new Image(Main.class.getResourceAsStream("images/froggerDownJump.png"), size, size, true, true));
-			put("d2",new Image(Main.class.getResourceAsStream("images/froggerRightJump.png"), size, size, true, true));
-		}};
-		carDeathImages = new ArrayList<Image>() {{
-			add(new Image(Main.class.getResourceAsStream("images/cardeath1.png"), size,size , true, true));
-			add(new Image(Main.class.getResourceAsStream("images/cardeath2.png"), size,size , true, true));
-			add(new Image(Main.class.getResourceAsStream("images/cardeath3.png"), size,size , true, true));
-		}};
-		waterDeathImages = new ArrayList<Image>() {{
-			add(new Image(Main.class.getResourceAsStream("images/waterdeath1.png"), size,size , true, true));
-			add(new Image(Main.class.getResourceAsStream("images/waterdeath2.png"), size,size , true, true));
-			add(new Image(Main.class.getResourceAsStream("images/waterdeath3.png"), size,size , true, true));
-			add(new Image(Main.class.getResourceAsStream("images/waterdeath4.png"), size,size , true, true));
+			put("w1",new Image(Main.class.getResourceAsStream(FileName.IMAGE_FROG_UP), size, size, true, true));
+			put("a1",new Image(Main.class.getResourceAsStream(FileName.IMAGE_FROG_LEFT), size, size, true, true));
+			put("s1",new Image(Main.class.getResourceAsStream(FileName.IMAGE_FROG_DOWN), size, size, true, true));
+			put("d1",new Image(Main.class.getResourceAsStream(FileName.IMAGE_FROG_RIGHT), size, size, true, true));
+			put("w2",new Image(Main.class.getResourceAsStream(FileName.IMAGE_FROG_UP_JUMP), size, size, true, true));
+			put("a2",new Image(Main.class.getResourceAsStream(FileName.IMAGE_FROG_LEFT_JUMP), size, size, true, true));
+			put("s2",new Image(Main.class.getResourceAsStream(FileName.IMAGE_FROG_DOWN_JUMP), size, size, true, true));
+			put("d2",new Image(Main.class.getResourceAsStream(FileName.IMAGE_FROG_RIGHT_JUMP), size, size, true, true));
 		}};
 		setOrigin(1);
 	}
@@ -120,7 +109,7 @@ public class Frog extends MovableActor{
 			GameController.INSTANCE.handleScoreChanged(-50);
 			GameController.INSTANCE.handleLifeLosed();
 		}else if (carD > 0) {
-			setImage(waterDeathImages.get(carD - 1));
+			setImage(new Image(Main.class.getResourceAsStream(FileName.IMAGE_WATER_DEATH.get(carD-1)), imageSize, imageSize, true, true));
 		}
 	}
 	
@@ -130,7 +119,7 @@ public class Frog extends MovableActor{
 			GameController.INSTANCE.handleScoreChanged(-50);
 			GameController.INSTANCE.handleLifeLosed();
 		}else if(carD > 0) {
-			setImage(carDeathImages.get(carD - 1));
+			setImage(new Image(Main.class.getResourceAsStream(FileName.IMAGE_CAR_DEATH.get(carD-1)), imageSize, imageSize, true, true));
 		}
 	}
 

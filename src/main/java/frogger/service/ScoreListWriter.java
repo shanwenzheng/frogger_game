@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.net.URL;
 import frogger.Main;
+import frogger.constant.FileName;
 import frogger.model.Score;
 
 public enum ScoreListWriter {
@@ -13,7 +14,7 @@ public enum ScoreListWriter {
 	
 	public void writeInFile(String nickName, Score score) {
 		try {
-			URL fileURL = Main.class.getResource("scoreFile/highScore.txt");
+			URL fileURL = Main.class.getResource(FileName.FILE_SCORE_LIST);
 			File f = createFile(fileURL.getPath());
 			
 			PrintWriter writer = new PrintWriter(new FileOutputStream(f,true));
