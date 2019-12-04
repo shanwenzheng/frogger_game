@@ -21,29 +21,40 @@ public class ScoreListController {
     @FXML
     private ListView<String> listView;
     
-    @FXML
-    private Button restart;
-
-    @FXML
-    private Button home;
-    
     private LinkedHashMap<String, Score> scoreList;
+    
+    private static final int NUM_OF_SCORE_DISPLAY = 8;
     
     @FXML
     public void initialize() {
     	ScoreListReader.INSTANCE.init();
     	ScoreListReader.INSTANCE.readFromFile();
-    	
+        ObservableList<String> options = FXCollections.observableArrayList();
         scoreList = sortScoreList(ScoreListReader.INSTANCE.getScoreList());
     	
         int count = 1;
-        ObservableList<String> options = FXCollections.observableArrayList();
         for(String nickName : scoreList.keySet()) {
         	int score = scoreList.get(nickName).getScore();
-        	options.add(count + ".  " + nickName + ":" + score);
+        	options.add("   " + nickName + ":" + score);
         	count++;
+        	if (count > NUM_OF_SCORE_DISPLAY) { break;}
         }
         listView.setItems(options);
+    }
+    
+    @FXML
+    void backToHome(ActionEvent event) {
+    	SceneSwitch.INSTANCE.switchToStartScreen();
+    }
+
+    @FXML
+    void restartGame(ActionEvent event) {
+    	SceneSwitch.INSTANCE.switchToSelect();
+    }
+    
+    @FXML
+    void exitGame(ActionEvent event) {
+    	SceneSwitch.INSTANCE.exitProgram();
     }
     
     public LinkedHashMap<String, Score> sortScoreList(LinkedHashMap<String,Score> scoreList) {
@@ -63,15 +74,5 @@ public class ScoreListController {
         }
         
         return returnScoreList;
-    }
-
-    @FXML
-    void backToHome(ActionEvent event) {
-    	SceneSwitch.INSTANCE.switchToStartScreen();
-    }
-
-    @FXML
-    void restartGame(ActionEvent event) {
-    	SceneSwitch.INSTANCE.switchToSelect();
     }
 }
