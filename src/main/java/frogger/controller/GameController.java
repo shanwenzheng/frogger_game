@@ -7,6 +7,7 @@ import frogger.model.actor.staticActor.End;
 import frogger.service.ActAnimation;
 import frogger.service.MusicPlayer;
 import frogger.service.SceneSwitch;
+import frogger.service.ScoreBaseFactory;
 import frogger.service.ScoreBoardUpdater;
 import frogger.service.ScoreListWriter;
 import frogger.view.GameView;
@@ -16,13 +17,14 @@ import javafx.scene.input.KeyEvent;
 
 public enum GameController {
 	INSTANCE;
+	
 	private GameView gameView;
 	private Life life;
 	private Score score;
 	private Score highScore;
-	private int endCount;
 	private String nickName;
 	private String gameLevel;
+	private int endCount;
 	
 	public void init(GameView gameView, String nickName, String gameLevel) {
 		endCount = 0;
@@ -131,6 +133,7 @@ public enum GameController {
 	}
 	
 	public void handleGameEnd() {
+		score.addScore(ScoreBaseFactory.createScoreBase(gameLevel));
 		ScoreListWriter.INSTANCE.writeInFile(nickName, score);
 		
 		String gameStatus = endCount == 5 ? "Win" : "Lose";
