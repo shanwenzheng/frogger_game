@@ -13,7 +13,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 
 public class ScoreListController {
@@ -23,8 +22,6 @@ public class ScoreListController {
     
     private LinkedHashMap<String, Score> scoreList;
     
-    private static final int NUM_OF_SCORE_DISPLAY = 8;
-    
     @FXML
     public void initialize() {
     	ScoreListReader.INSTANCE.init();
@@ -32,12 +29,9 @@ public class ScoreListController {
         ObservableList<String> options = FXCollections.observableArrayList();
         scoreList = sortScoreList(ScoreListReader.INSTANCE.getScoreList());
     	
-        int count = 1;
         for(String nickName : scoreList.keySet()) {
         	int score = scoreList.get(nickName).getScore();
         	options.add("   " + nickName + ":" + score);
-        	count++;
-        	if (count > NUM_OF_SCORE_DISPLAY) { break;}
         }
         listView.setItems(options);
     }

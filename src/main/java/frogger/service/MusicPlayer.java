@@ -3,6 +3,7 @@ package frogger.service;
 import java.net.URL;
 
 import frogger.Main;
+import frogger.constant.FileName;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
@@ -16,11 +17,11 @@ public enum MusicPlayer{
 	private MediaPlayer winPlayer;
 	
 	public void init() {
-		startScreenPlayer = initPlayer("music/LightYearOut.mp3");
-		selectPlayer = initPlayer("music/Nanwangjinxiao.mp3");
-		gamePlayer = initPlayer("music/Frogger Main Song Theme (loop).mp3");
-		losePlayer = initPlayer("music/WildWofDisco.mp3");
-		winPlayer = initPlayer("music/GoodLuckCome.mp3");
+		startScreenPlayer = initPlayer(FileName.MUSIC_START);
+		selectPlayer = initPlayer(FileName.MUSIC_SELECT);
+		gamePlayer = initPlayer(FileName.MUSIC_GAME);
+		losePlayer = initPlayer(FileName.MUSIC_DEFEAT);
+		winPlayer = initPlayer(FileName.MUSIC_VICTORY);
 	}
 	
 	public MediaPlayer initPlayer(String musicURL) {

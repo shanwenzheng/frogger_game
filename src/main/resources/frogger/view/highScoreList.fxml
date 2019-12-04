@@ -13,42 +13,17 @@
             <ListView fx:id="listView" layoutX="43.0" layoutY="243.0" prefHeight="488.0" prefWidth="491.0" />
             <ImageView fitHeight="44.0" fitWidth="55.0" layoutX="51.0" layoutY="254.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/no1.png" />
+                  <Image url="@../images/scorelist/no1.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="44.0" fitWidth="55.0" layoutX="51.0" layoutY="314.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/no2.png" />
+                  <Image url="@../images/scorelist/no2.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="44.0" fitWidth="55.0" layoutX="51.0" layoutY="377.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/no3.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="44.0" fitWidth="55.0" layoutX="48.0" layoutY="435.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/no4.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="44.0" fitWidth="55.0" layoutX="48.0" layoutY="494.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/no5.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="44.0" fitWidth="55.0" layoutX="48.0" layoutY="549.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/no6.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="44.0" fitWidth="55.0" layoutX="48.0" layoutY="610.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/no7.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="44.0" fitWidth="55.0" layoutX="48.0" layoutY="663.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/no8.png" />
+                  <Image url="@../images/scorelist/no3.png" />
                </image>
             </ImageView>
          </children>

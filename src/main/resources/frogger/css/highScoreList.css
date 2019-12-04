@@ -1,5 +1,5 @@
 .root {
-	-fx-background-image: url("../images/scoreListBackground.jpeg");
+	-fx-background-image: url("../images/scorelist/scoreListBackground.jpeg");
 	-fx-background-repeat: no-repeat;
 	-fx-background-position: center;
 	-fx-background-size: 600 800;

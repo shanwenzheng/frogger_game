@@ -3,6 +3,7 @@ package frogger.service;
 import java.io.IOException;
 
 import frogger.Main;
+import frogger.constant.FileName;
 import frogger.controller.GameController;
 import frogger.model.Score;
 import frogger.view.GameView;
@@ -29,7 +30,7 @@ public enum SceneSwitch {
 	public void switchToStartScreen() {
 		try {
 			MusicPlayer.INSTANCE.playStartScreenMusic();
-			Pane root = FXMLLoader.load(Main.class.getResource("view/startScreen.fxml"));
+			Pane root = FXMLLoader.load(Main.class.getResource(FileName.VIEW_START));
 			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
 			primaryStage.show();
@@ -61,7 +62,7 @@ public enum SceneSwitch {
 	public void switchToSelect() {
 		try {
 			MusicPlayer.INSTANCE.playSelectMusic();
-			Pane root = FXMLLoader.load(Main.class.getResource("view/select.fxml"));
+			Pane root = FXMLLoader.load(Main.class.getResource(FileName.VIEW_SELECT));
 			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
 			primaryStage.show();
@@ -73,7 +74,7 @@ public enum SceneSwitch {
 	public void switchToInstruction() {
 		try {
 	        instructionStage = new Stage();
-	        Pane root = FXMLLoader.load(Main.class.getResource("view/instruction.fxml")); 
+	        Pane root = FXMLLoader.load(Main.class.getResource(FileName.VIEW_INSTRUCTION)); 
 	        Scene scene = new Scene(root);
 	        instructionStage.setTitle("Instruction");
 	        instructionStage.setResizable(false);
@@ -91,10 +92,10 @@ public enum SceneSwitch {
 			statusImage.setLayoutY(30);
 			
 			if(status.equals("Win")) {
-				statusImage.setImage(new Image(Main.class.getResourceAsStream("images/victory.jpg"), 450, 450, true, true));
+				statusImage.setImage(new Image(Main.class.getResourceAsStream(FileName.IMAGE_VICTORY), 450, 450, true, true));
 				MusicPlayer.INSTANCE.playWinMusic();
 			}else {
-				statusImage.setImage(new Image(Main.class.getResourceAsStream("images/defeat.png"), 450, 450, true, true));
+				statusImage.setImage(new Image(Main.class.getResourceAsStream(FileName.IMAGE_DEFEAT), 450, 450, true, true));
 				MusicPlayer.INSTANCE.playLoseMusic();
 			}
 			
@@ -103,7 +104,7 @@ public enum SceneSwitch {
 			currentScore.setLayoutY(260);
 			currentScore.setId("currentScore");
 			
-			Pane root = FXMLLoader.load(Main.class.getResource("view/highScoreList.fxml"));
+			Pane root = FXMLLoader.load(Main.class.getResource(FileName.VIEW_HIGHSCORELIST));
 			root.getChildren().add(statusImage);
 			root.getChildren().add(currentScore);
 			Scene scene = new Scene(root);
