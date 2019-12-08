@@ -275,6 +275,7 @@ public enum GameController {
 		ScoreListWriter.INSTANCE.writeInFile(nickName, score);
 		
 		String gameStatus = endCount == 5 ? "Win" : "Lose";
+		SceneSwitch.INSTANCE.switchToPopup(popupScoreList);
 		SceneSwitch.INSTANCE.switchToScoreList(gameStatus, score);
 	}
 	
