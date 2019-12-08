@@ -1,8 +1,18 @@
-package frogger.constant;
+ package frogger.constant;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * <h2> FileName </h2>
+ * 
+ * <p> The {@link FileName} class is used to store constant file names.
+ * 
+ * @author Wenzheng Shan
+ * @version 1.0
+ * @since 1.0
+ *
+ */
 public class FileName {
 	
 	public static final String IMAGE_CAR_LEFT = "images/obstacle/car1Left.png";
@@ -77,6 +87,7 @@ public class FileName {
 	public static final String VIEW_SELECT = "view/select.fxml";
 	public static final String VIEW_INSTRUCTION = "view/instruction.fxml";
 	public static final String VIEW_HIGHSCORELIST = "view/highScoreList.fxml";
+	public static final String VIEW_POPUP = "view/popup.fxml";
 	
 	public static final String MUSIC_START = "music/startScreen.mp3";
 	public static final String MUSIC_SELECT = "music/select.mp3";
@@ -84,5 +95,5 @@ public class FileName {
 	public static final String MUSIC_VICTORY = "music/victory.mp3";
 	public static final String MUSIC_DEFEAT = "music/defeat.mp3";
 	
-	public static final String FILE_SCORE_LIST = "scoreFile/highScore.txt";
+	public static final String FILE_SCORE_LIST = System.getProperty("user.dir") + "\\src\\main\\resources\\frogger\\scoreFile\\highScore.txt";
 }

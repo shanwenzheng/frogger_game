@@ -3,6 +3,42 @@ package frogger.constant;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
+/**
+ * <h2> HardMode </h2>
+ * 
+ * <p> The {@link HardMode} class is used to store the hard level constant 
+ * and read by {@link frogger.service.MapReader} to generate {@link frogger.model.Map}.
+ * 
+ * <p> <strong>Stored Constants:</strong>
+ * <pre>
+ * 		NUM_OF_LIFE;
+ * 		SPEED_OF_LONG_TRUCK
+ * 		SPEED_OF_SHORT_TRUCK
+ * 		SPEED_OF_SLOW_CAR
+ * 		SPEED_OF_QUICK_CAR
+ * 		SPEED_OF_LONG_LOG
+ * 		SPEED_OF_MEDIUM_LOG
+ * 		SPEED_OF_SHORT_LOG
+ * 		SPEED_OF_TURTLE
+ * 		SPEED_OF_WETTURTLE
+ * 		POS_OF_LONG_TRUCK
+ *		POS_OF_SHORT_TRUCK
+ * 		POS_OF_QUICK_CAR
+ * 		POS_OF_SLOW_CAR
+ * 		POS_OF_LONG_LOG
+ * 		POS_OF_MEDIUM_LOG
+ * 		POS_OF_SHORT_LOG
+ * 		POS_OF_TURTLE
+ * 		POS_OF_WETTURTLE
+ * 		POS_OF_LIFE_IMAGE	
+ * </pre>
+ * 
+ * @author Wenzheng Shan
+ * @version 1.0
+ * @since 1.0
+ *
+ */
+@SuppressWarnings("serial")
 public class HardMode {
 	
 	public static final int NUM_OF_LIFE = 2;

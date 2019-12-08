@@ -30,6 +30,6 @@
       </AnchorPane>
       <Button fx:id="restart" layoutX="474.0" layoutY="765.0" mnemonicParsing="false" onAction="#restartGame" text="🔄" />
       <Button fx:id="home" layoutX="525.0" layoutY="765.0" mnemonicParsing="false" onAction="#backToHome" text="🏠" />
-      <Button fx:id="exit" layoutX="426.0" layoutY="765.0" mnemonicParsing="false" onAction="#restartGame" prefHeight="28.0" prefWidth="31.0" text="X" />
+      <Button fx:id="exit" layoutX="426.0" layoutY="765.0" mnemonicParsing="false" onAction="#exitGame" prefHeight="28.0" prefWidth="31.0" text="X" />
    </children>
 </AnchorPane>
