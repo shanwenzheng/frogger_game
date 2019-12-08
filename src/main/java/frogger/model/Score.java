@@ -17,7 +17,7 @@ package frogger.model;
  * @author Wenzheng Shan
  * @version 1.0
  * @since 1.0
- * @See GameController
+ * @see frogger.controller.GameController
  */
 public class Score {
 	

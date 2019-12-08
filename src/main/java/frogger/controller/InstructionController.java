@@ -7,18 +7,18 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 
 /**
- * <h2> InstructionController</h1>
+ * <h2> InstructionController</h2>
  * 
  * <p> The {@link InstructionController} class is a controller for instruction screen
  * 
  * @author Wenzheng Shan
  * @version 1.0
  * @since 1.0
- * @See SceneSwitch
+ * @see SceneSwitch
  */
 public class InstructionController {
 
-    /** The exit {@Link Button} exit the application when clicked */
+    /** The exit {@link Button} exit the application when clicked */
     @FXML
     private Button exit;
     
@@ -38,7 +38,7 @@ public class InstructionController {
     @FXML
     private TextArea scoreText;
     
-    /** <p> This method is called when the scene is initialized and set all the {@link TextAread} un-editable. */
+    /** <p> This method is called when the scene is initialized and set all the {@link TextArea} un-editable. */
     @FXML
     public void initialize() {
     	objectText.setEditable(false);

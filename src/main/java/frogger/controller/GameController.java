@@ -1,6 +1,5 @@
 package frogger.controller;
 
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
 import frogger.model.Life;
@@ -40,17 +39,17 @@ import javafx.scene.layout.Pane;
  * @author Wenzheng Shan
  * @version 1.0
  * @since 1.0
- * @See SceneSwitch
- * @See GameView
- * @See Map
- * @See Pane
- * @See Life
- * @See Score
- * @See ActAnimation
- * @See MusicPlayer
- * @See ScoreListWriter
- * @See ScoreBoardUpdater
- * @See ScoreBaseFactory
+ * @see SceneSwitch
+ * @see GameView
+ * @see Map
+ * @see Pane
+ * @see Life
+ * @see Score
+ * @see ActAnimation
+ * @see MusicPlayer
+ * @see ScoreListWriter
+ * @see ScoreBoardUpdater
+ * @see ScoreBaseFactory
  */
 public enum GameController {
 	/** The shared instance for global use for whole project */
@@ -106,7 +105,7 @@ public enum GameController {
 	
 	/** <p>Starts the game
 	 *
-	 * <p> This method start the {@link MediaPlayer} and {@link ActAnimation} 
+	 * <p> This method start the {@link MusicPlayer} and {@link ActAnimation} 
 	 */
 	public void startGame() {
 		musicStart();
@@ -116,7 +115,7 @@ public enum GameController {
 	/**
 	 * <p> Ends the game
 	 * 
-	 * <p> This method stop the {@link MediaPlayer} and {@link ActAnimation}
+	 * <p> This method stop the {@link MusicPlayer} and {@link ActAnimation}
 	 * And if the {@link #life} is used up or {@link #endCount} equals to 5 then call {@link #handleGameEnd()}.
 	 * 
 	 * @param status	The status of ending game. 0 means end game by pressing button and 1 means end game by reach all the end position or lose all life and then call {@link #handleGameEnd()}.
@@ -150,7 +149,7 @@ public enum GameController {
 	/**
 	 * <p> This method call {@link frogger.model.actor.movableActor.Frog#moveKeyPressed(String)} when player presses a key.
 	 * 
-	 * <p> This method is added into {@link Scene} in {@link SceneSwitch} and called when player presses a key.
+	 * <p> This method is added into {@link javafx.scene.Scene} in {@link SceneSwitch} and called when player presses a key.
 	 *  
 	 * @param event		Player pressed key event
 	 */
@@ -161,7 +160,7 @@ public enum GameController {
 	/**
 	 * <p> This method call {@link frogger.model.actor.movableActor.Frog#moveKeyReleased(String)} when player releases a key.
 	 * 
-	 * <p> This method is added into {@link Scene} in {@link SceneSwitch} and called when player releases a key.
+	 * <p> This method is added into {@link javafx.scene.Scene} in {@link SceneSwitch} and called when player releases a key.
 	 *  
 	 * @param event		Player pressed key event
 	 */
@@ -218,9 +217,9 @@ public enum GameController {
 
 	/**
 	 * <p>	This method handle the {@link Score} add or subtract based on the given input {@code points} and call {@link ScoreBoardUpdater#updateScore(int, java.util.ArrayList)}
-	 * to update scoreBoard view in {@link Map}.
+	 * to update scoreBoard view in {@link Map}. This method also called {@link #handlePopupScoreListChanged(int)} to update the current round score list.
 	 * 
-	 * @param points	The changed point based on the event
+	 * @param points	The point will be added or subtracted in {@link #score}
 	 */
 	public void handleScoreChanged(int points) {
 		int changePoints = 0;
@@ -248,19 +247,19 @@ public enum GameController {
 		if(life.getRemainingLife() == 0) {endGame(1);}
 	}
 	
-    /** <p> Called when the home {@link Button} is clicked and back to the start screen as well as {@link #endGame(int)} */
+    /** <p> Called when the home {@link javafx.scene.control.Button} is clicked and back to the start screen as well as {@link #endGame(int)} */
 	public void handleHomeButtonPressed() {
 		endGame(0);
 		SceneSwitch.INSTANCE.switchToStartScreen();
 	}
 	
-	/** <p> Called when the restart {@link Button} is clicked and restart the game */
+	/** <p> Called when the restart {@link javafx.scene.control.Button} is clicked and restart the game */
 	public void handleRestartButtonPressed() {
 		endGame(0);
 		SceneSwitch.INSTANCE.switchToGame(nickName, gameLevel);
 	}
 	
-	/** <p> Called when the instruction {@link Button} is clicked and show the instruction screen */
+	/** <p> Called when the instruction {@link javafx.scene.control.Button} is clicked and show the instruction screen */
 	public void handleInstructionButtonPressed() {
 		SceneSwitch.INSTANCE.switchToInstruction();
 	}
@@ -279,6 +278,11 @@ public enum GameController {
 		SceneSwitch.INSTANCE.switchToScoreList(gameStatus, score);
 	}
 	
+	/**
+	 * <p> This method update the current round popup socre list with given {@code point} and called by {@link #handleScoreChanged(int)}.
+	 *  
+	 * @param points	The changed point will be added or subtracted in {@link #popupScoreList}
+	 */
 	public void handlePopupScoreListChanged(int points) {
 		int index = life.getTotalLife() - life.getRemainingLife();
 		

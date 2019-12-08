@@ -8,7 +8,7 @@ import frogger.model.actor.staticActor.Digit;
  * <h2>ScoreBoardUpdater</h2>
  * 
  * <p>The {@link ScoreBoardUpdater} class is an singleton class of utility to update the {@link Digit} created in map 
- * when the {@link Score} changed
+ * when the {@link frogger.model.Score} changed
  * 
  * <p><strong>Note:</strong> this class is implemented as an {@link Enum} thus to be a singleton class.
  * 
@@ -27,8 +27,8 @@ import frogger.model.actor.staticActor.Digit;
  * @author Wenzheng Shan
  * @version 1.0
  * @since 1.0
- * @See ScoreListController
- * @See Digit
+ * @see frogger.controller.ScoreListController
+ * @see Digit
  *
  */
 public enum ScoreBoardUpdater {
@@ -40,8 +40,8 @@ public enum ScoreBoardUpdater {
 	 * 
 	 * <p> Each time get the single figure of input n and update corresponding digit to this single figure
 	 * 
-	 * @param n		The current point of game (passed from {@link frogger.controller.gameController})
-	 * @param scoreBoard	The {@link ArrayList} with three single {@link Digit} as scoreBoard being updated (generated in {@link Map})
+	 * @param n		The current point of game (passed from {@link frogger.controller.GameController})
+	 * @param scoreBoard	The {@link ArrayList} with three single {@link Digit} as scoreBoard being updated (generated in {@link frogger.model.Map})
 	 */
 	public void updateScore(int n, ArrayList<Digit> scoreBoard) {
 		for (Digit digit: scoreBoard) {

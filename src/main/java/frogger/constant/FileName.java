@@ -3,6 +3,16 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * <h2> FileName </h2>
+ * 
+ * <p> The {@link FileName} class is used to store constant file names.
+ * 
+ * @author Wenzheng Shan
+ * @version 1.0
+ * @since 1.0
+ *
+ */
 public class FileName {
 	
 	public static final String IMAGE_CAR_LEFT = "images/obstacle/car1Left.png";

@@ -15,7 +15,7 @@ package frogger.model;
  * @author Wenzheng Shan
  * @version 1.0
  * @since 1.0
- * @See GameController
+ * @see frogger.controller.GameController
  */
 public class Life{
 	
@@ -34,7 +34,7 @@ public class Life{
 		this.remainingLife = totalLife;
 	}
 	
-	/** Decreases the {@link #remainingLKife} by {@code 1} and the minimum life count is {@code 0}. */
+	/** Decreases the {@link #remainingLife} by {@code 1} and the minimum life count is {@code 0}. */
 	public void loseLife() {
 		remainingLife--;
 		if(remainingLife < 0) {

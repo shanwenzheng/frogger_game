@@ -1,6 +1,5 @@
 package frogger.model.actor;
 
-import frogger.model.actor.staticActor.StaticActor;
 import javafx.scene.image.ImageView;
 
 /**
@@ -15,16 +14,16 @@ import javafx.scene.image.ImageView;
  * @author Wenzheng Shan
  * @version 1.0
  * @since 1.0
- * @See StaticActor
- * @See MovableActor
- * @See End
- * @See Digit
- * @See Frog
- * @See Obstacle
- * @See Log
- * @See Turtle
- * @See WetTurtle
- * @See ImageView
+ * @see frogger.model.actor.staticActor
+ * @see frogger.model.actor.movableActor
+ * @see frogger.model.actor.staticActor.End
+ * @see frogger.model.actor.staticActor.Digit
+ * @see frogger.model.actor.movableActor.Frog
+ * @see frogger.model.actor.movableActor.Obstacle
+ * @see frogger.model.actor.movableActor.Log
+ * @see frogger.model.actor.movableActor.Turtle
+ * @see frogger.model.actor.movableActor.WetTurtle
+ * @see ImageView
  */
 public abstract class Actor extends ImageView{
 	

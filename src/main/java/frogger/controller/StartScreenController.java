@@ -8,12 +8,12 @@ import javafx.scene.control.Button;
 /**
  * <h2> HomeController</h2>
  * 
- * <p> The {@link StartScreenControoler} class is a controller for Start Screen
+ * <p> The {@link StartScreenController} class is a controller for Start Screen
  * 
  * @author Wenzheng Shan
  * @version 1.0
  * @since 1.0
- * @See SceneSwitch
+ * @see SceneSwitch
  */
 public class StartScreenController {
 
@@ -25,7 +25,7 @@ public class StartScreenController {
     @FXML
     private Button instruction;
 
-    /** The exit {@Link Button} exit the application when clicked */
+    /** The exit {@link Button} exit the application when clicked */
     @FXML
     private Button exit;
 

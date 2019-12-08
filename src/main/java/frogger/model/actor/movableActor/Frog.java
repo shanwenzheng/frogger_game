@@ -1,6 +1,5 @@
 package frogger.model.actor.movableActor;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import frogger.Main;
 import frogger.constant.FileName;
@@ -13,7 +12,7 @@ import javafx.scene.image.Image;
  * 
  * <p> The {@link Frog} class is used to create the Frog object.
  * 
- * <p> A {@link Frog} object is set in {@link Map}. It is the main character of the game and move with the key pressed and released.
+ * <p> A {@link Frog} object is set in {@link frogger.model.Map}. It is the main character of the game and move with the key pressed and released.
  * In each frame, this object also check the wall touch and check whether the frog touched the pool or enter into the end position.
  * When it touches {@link End} or sunk into pool, it will ask {@link GameController} to handle some consequences.
  *
@@ -22,10 +21,10 @@ import javafx.scene.image.Image;
  * @author Wenzheng Shan
  * @version 1.0
  * @since 1.0
- * @See Map
- * @See MovableActor
- * @See GameController
- * @See End
+ * @see MovableActor
+ * @see GameController
+ * @see End
+ * @see frogger.model.Map
  */
 public class Frog extends MovableActor{
 	
@@ -65,7 +64,7 @@ public class Frog extends MovableActor{
 	/**
 	 * <p> The constructor of {@link Frog} class to generate instance
 	 * 
-	 * <p> This constructor call {@link #setOrigin(int)} function to sets the {@link Frog} in the given position of the given {@link Map}
+	 * <p> This constructor call {@link #setOrigin(int)} function to sets the {@link Frog} in the given position of the given {@link frogger.model.Map}
 	 * and initialize related variables. And this constructor also initializes the {@link HashMap} move image and set the initial image of {@link Frog}
 	 * 
 	 * @param size		The size of the image
@@ -89,8 +88,8 @@ public class Frog extends MovableActor{
 	/**
 	 * <p>This method is called when the key pressed and released to let {@link Frog} move
 	 * 
-	 * <p>When player pressed {@code W}, frog move upwards. When player pressed {@Code A}, frog move Left.
-	 * When player pressed {@Code S}, frog move right. When player pressed {@Code D}, frog move right.
+	 * <p>When player pressed {@code W}, frog move upwards. When player pressed {@code A}, frog move Left.
+	 * When player pressed {@code S}, frog move right. When player pressed {@code D}, frog move right.
 	 * 
 	 * @param str	The current direction of moving (W,A,S,D)
 	 */
@@ -141,9 +140,9 @@ public class Frog extends MovableActor{
 	 * <p>This method will do the following tasks:
 	 *  1. check whether {@link Frog} has touched the wall
 	 *  2. check whether {@link Frog} has touched the {@link End} or pool
-	 *  3. Call {@link #handleDeath(now)} when touched the {@link Obstacle} or pool
+	 *  3. Call {@link #handleDeath(long)} when touched the {@link Obstacle} or pool
 	 *  
-	 * <p> This method that will be called by {@link ActAnimation} in every frame to execute all above tasks.
+	 * <p> This method that will be called by {@link frogger.service.ActAnimation} in every frame to execute all above tasks.
 	 */
 	@Override
 	public void act(long now) {
@@ -180,11 +179,13 @@ public class Frog extends MovableActor{
 		}
 	}
 	
-	/** 
+	/**
 	 * <p> This method is called when {@link Frog} touch {@link Obstacle} or sunk into pool to handle the death situation.
 	 * 
 	 * <p> This method sets the {@link #noMove} to true to prohibit {@link Frog} move and incremental {@link #carD} which is used as index to change death image,
 	 * And it calls {@link #handleCarDeath()} or {@link #handleWaterDeath()} based on the {@link #deathType} which is changed by {@link GameController}.
+	 *
+	 * @param now	The long type variable which will be used to calculate {@link #carD}
 	 */
 	public void handleDeath(long now){
 		noMove = true;
@@ -202,8 +203,8 @@ public class Frog extends MovableActor{
 	/**
 	 * <p> This method is called by {@link #handleDeath(long)} when the {@link #deathType} is set to "waterDeath" to handle the water death situation.
 	 * 
-	 * <p> This methods sets the death image depend on the index {@link #carD} and {@link #ImageSize}. And if {@link #carD} is equal to 5,
-	 * it will call {@link #setOrigin(int)} function to reset {@link Frog} and call {@link GameControoler} to handle the socreChanged and lifeLosed consequences.
+	 * <p> This methods sets the death image depend on the index {@link #carD} and {@link #imageSize}. And if {@link #carD} is equal to 5,
+	 * it will call {@link #setOrigin(int)} function to reset {@link Frog} and call {@link frogger.controller.GameController} to handle the socreChanged and lifeLosed consequences.
 	 */
 	public void handleWaterDeath() {
 		if(carD == 5) {
@@ -218,8 +219,8 @@ public class Frog extends MovableActor{
 	/**
 	 * <p> This method is called by {@link #handleDeath(long)} when the {@link #deathType} is set to "carDeath" to handle the car death situation.
 	 * 
-	 * <p> This methods sets the death image depend on the index {@link #carD} and {@link #ImageSize}. And if {@link #carD} is equal to 4,
-	 * it will call {@link #setOrigin(int)} function to reset {@link Frog} and call {@link GameControoler} to handle the socreChanged and lifeLosed consequences.
+	 * <p> This methods sets the death image depend on the index {@link #carD} and {@link #imageSize}. And if {@link #carD} is equal to 4,
+	 * it will call {@link #setOrigin(int)} function to reset {@link Frog} and call {@link frogger.controller.GameController} to handle the socreChanged and lifeLosed consequences.
 	 */
 	public void handleCarDeath() {
 		if(carD == 4) {

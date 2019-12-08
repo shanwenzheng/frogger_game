@@ -22,7 +22,7 @@ import javafx.scene.control.TextField;
  * @author Wenzheng Shan
  * @version 1.0
  * @since 1.0
- * @See SceneSwitch
+ * @see SceneSwitch
  */
 public class SelectController {
 
@@ -34,11 +34,11 @@ public class SelectController {
     @FXML
     private ComboBox<String> gameLevel;
 
-    /** The back {@Link Button} back to the start screen when clicked */
+    /** The back {@link Button} back to the start screen when clicked */
     @FXML
     private Button back;
 
-    /** The start {@Link Button} start the game when clicked */
+    /** The start {@link Button} start the game when clicked */
     @FXML
     private Button start;
     

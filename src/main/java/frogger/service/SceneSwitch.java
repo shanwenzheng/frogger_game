@@ -49,13 +49,13 @@ import javafx.fxml.FXMLLoader;
  * @author Wenzheng Shan
  * @version 1.0
  * @since 1.0
- * @See MusicPlayer
- * @See GameController
- * @See InstructionController
- * @See ScoreListController
- * @See SelectController
- * @See StartScreenController
- * @See PopupController
+ * @see MusicPlayer
+ * @see frogger.controller.GameController
+ * @see frogger.controller.InstructionController
+ * @see frogger.controller.ScoreListController
+ * @see frogger.controller.SelectController
+ * @see frogger.controller.StartScreenController
+ * @see frogger.controller.PopupController
  */
 public enum SceneSwitch {
 	/** The shared instance for global use for whole project */
@@ -70,7 +70,7 @@ public enum SceneSwitch {
 	
 	
 	/**
-	 * <p>Initializes the primaryStage of application based on the given {@link Stage} from {@link Main#start()}
+	 * <p>Initializes the primaryStage of application based on the given {@link Stage}
 	 * and create instructionStage and popoupStage using new Stage().
 	 * 
 	 * @param primaryStage the primaryStage of application
@@ -156,7 +156,7 @@ public enum SceneSwitch {
 	}
 	
 	/**
-	 * <p> Open the Popup stage
+	 * <p> Open the Popup stage and transmit the current score list of each round to {@link PopupController}
 	 * 
 	 * @param popupScoreList	A temporary {@link ArrayList} store the high score of each round.
 	 */

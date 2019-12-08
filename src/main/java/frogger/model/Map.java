@@ -14,7 +14,7 @@ import javafx.scene.image.ImageView;
 /**
  * <h2> Map </h2>
  * 
- * <p> The {@link Map} Class is used to contain all different types of {@link Actor} objects and provide the method for outside classes 
+ * <p> The {@link Map} Class is used to contain all different types of {@link frogger.model.actor.Actor} objects and provide the method for outside classes 
  * to access or add these objects.
  * 
  * <p> <Strong> Use: </Strong>
@@ -27,18 +27,18 @@ import javafx.scene.image.ImageView;
  * @author Wenzheng Shan
  * @version 1.0
  * @since 1.0
- * @See Log
- * @See Obstacle
- * @See Turtle
- * @See WetTurtle
- * @See End
- * @See Digit
- * @See ImageView
- * @See Frog
- * @See GameView
- * @See MapReader
- * @See MapFactory
- * @See GameController
+ * @see Log
+ * @see Obstacle
+ * @see Turtle
+ * @see WetTurtle
+ * @see End
+ * @see Digit
+ * @see ImageView
+ * @see Frog
+ * @see frogger.view.GameView
+ * @see frogger.service.MapReader
+ * @see frogger.service.MapFactory
+ * @see frogger.controller.GameController
  */
 public class Map {
 	

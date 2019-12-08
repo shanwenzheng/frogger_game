@@ -28,8 +28,8 @@ import frogger.model.Score;
  * @author Wenzheng Shan
  * @version 1.0
  * @since 1.0
- * @See ScoreListController
- * @See Score
+ * @see frogger.controller.ScoreListController
+ * @see Score
  */
 public enum ScoreListReader {
 	/** The shared instance for global use for whole project */
@@ -82,7 +82,7 @@ public enum ScoreListReader {
 	}
 	
 	/**
-	 * <p> returns the scoreList read from file and will be used to print to the screen by {@link ScoreListController}.
+	 * <p> returns the scoreList read from file and will be used to print to the screen by {@link frogger.controller.ScoreListController}.
 	 * 
 	 * @return	return the socreList read from file
 	 */

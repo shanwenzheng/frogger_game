@@ -23,9 +23,9 @@ import javafx.scene.control.ListView;
  * @author Wenzheng Shan
  * @version 1.0
  * @since 1.0
- * @See SceneSwitch
- * @See Score
- * @See ScoreListReader
+ * @see SceneSwitch
+ * @see Score
+ * @see ScoreListReader
  */
 public class ScoreListController {
 
@@ -58,7 +58,7 @@ public class ScoreListController {
     }
     
     /** 
-     * <p> Called when the home {@link Button} is clicked and show the start screen.
+     * <p> Called when the home {@link javafx.scene.control.Button} is clicked and show the start screen.
      * 
      * @param event		The Button click event 
      */
@@ -68,7 +68,7 @@ public class ScoreListController {
     }
 
     /** 
-     * <p> Called when the restart {@link Button} is clicked and show the select screen.
+     * <p> Called when the restart {@link javafx.scene.control.Button} is clicked and show the select screen.
      * 
      * @param event		The Button click event 
      */
@@ -78,7 +78,7 @@ public class ScoreListController {
     }
     
     /** 
-     * <p> Called when the exit {@link Button} is clicked and exit the program.
+     * <p> Called when the exit {@link javafx.scene.control.Button} is clicked and exit the program.
      * 
      * @param event		The Button click event 
      */

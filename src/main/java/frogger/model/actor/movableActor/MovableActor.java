@@ -20,12 +20,12 @@ import javafx.scene.layout.Pane;
  * @author Wenzheng Shan
  * @version 1.0
  * @since 1.0
- * @See Actor
- * @See Frog
- * @See Log
- * @See Obstacle
- * @See Turtle
- * @See WetTurtle
+ * @see Actor
+ * @see Frog
+ * @see Log
+ * @see Obstacle
+ * @see Turtle
+ * @see WetTurtle
  */
 public abstract class MovableActor extends Actor{
 	
@@ -83,9 +83,9 @@ public abstract class MovableActor extends Actor{
 	 * 
 	 * @param <A>	The class extend from {@link Actor}
 	 * @param cls	All the instance that collide with the instance who call this method
-	 * @return		A {@link List} contains all the instances that collide with instance who call this method and the class of those instances is {@code cls}
+	 * @return		A {@link java.util.List} contains all the instances that collide with instance who call this method and the class of those instances is {@code cls}
 	 */
-    public <A extends Actor> java.util.List<A> getIntersectingObjects(java.lang.Class<A> cls){
+	public <A extends Actor> java.util.List<A> getIntersectingObjects(java.lang.Class<A> cls){
         ArrayList<A> someArray = new ArrayList<A>();
         for(Node n : ((Pane)getParent()).getChildren()) {
         	if(cls.isInstance(n) && n.intersects(this.getBoundsInLocal())) {
@@ -105,8 +105,8 @@ public abstract class MovableActor extends Actor{
     }
     
     /**
-     * <p>An abstract method that will be called by {@link ActAnimation} in every frame to perfrom some operation.
-     * <p><strong> Note: </strong>This is an abstract method and is designed to be overridden in the subclass of {@link MovableActor}</strong>
+     * <p>An abstract method that will be called by {@link frogger.service.ActAnimation} in every frame to perfrom some operation.
+     * <p><strong> Note: </strong>This is an abstract method and is designed to be overridden in the subclass of {@link MovableActor}
      * 
      * @param now	The current time of calling method.
      */
@@ -114,7 +114,7 @@ public abstract class MovableActor extends Actor{
     
     /**
      * <p> An abstract method that will check the touch of other object (e.g., {@link Log} will call this method to check whether touch with {@link Frog}).
-     * <p><strong> Note: </strong>This is an abstract method and is designed to be overridden in the subclass of {@link MovableActor}</strong>
+     * <p><strong> Note: </strong>This is an abstract method and is designed to be overridden in the subclass of {@link MovableActor}
      */
     public abstract void checkTouch();
 }

@@ -30,7 +30,7 @@ public class ScoreBaseFactory {
 	 * <p>return the additional point depend on the given gameLevel
 	 * 
 	 * @param gameLevel		The gameLevel of current game (e.g., SimpleMode)
-	 * @return		Return the additional point (e.g., NormalMode -> 50 points)
+	 * @return		Return the additional point (e.g., NormalMode --- 50 points)
 	 */
 	public static int createScoreBase(String gameLevel) {
 

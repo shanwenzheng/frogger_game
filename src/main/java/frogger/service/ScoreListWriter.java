@@ -29,8 +29,8 @@ import frogger.model.Score;
  * @author Wenzheng Shan
  * @version 1.0
  * @since 1.0
- * @See ScoreListController
- * @See Score
+ * @see frogger.controller.ScoreListController
+ * @see Score
  */
 public enum ScoreListWriter {
 	/** The shared instance for global use for whole project */

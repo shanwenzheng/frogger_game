@@ -33,12 +33,12 @@ import javafx.scene.layout.Pane;
  * @author Wenzheng Shan
  * @version 1.0
  * @since 1.0
- * @See Pane
- * @See Button
- * @See Label
- * @See Map
- * @See GameController
- * @See MapFactory
+ * @see Pane
+ * @see Button
+ * @see Label
+ * @see Map
+ * @see GameController
+ * @see MapFactory
  */
 public class GameView {
 	
@@ -59,7 +59,7 @@ public class GameView {
 	 * <p> Create the map by calling {@link MapFactory#createMap(String)} based on the given gameLevel String
 	 * 
 	 * @param gameLevel		A String represent the gameLevel of current game (e.g., "simpleMode", "NormalMode", "HardMode")
-	 * @throws Exception	Exception An exception from {@link MapReader#MapReader()} which refers to the {@link ClassNotFoundException}
+	 * @throws Exception	Exception An exception from {@link MapReader#MapReader(String)} which refers to the {@link ClassNotFoundException}
 	 */
 	public GameView(String gameLevel) throws Exception {
 		background = new Pane();
@@ -102,43 +102,43 @@ public class GameView {
 		return map;
 	}
 	
-	/** <p> Draws the {@link Log} from {@link Map} to {@link Pane} */
+	/** <p> Draws the {@link frogger.model.actor.movableActor.Log} from {@link Map} to {@link Pane} */
 	public void drawLog() {
 		background.getChildren().addAll(map.getLogs());
 	}
 	
-	/** <p> Draws the {@link Turtle} from {@link Map} to {@link Pane} */
+	/** <p> Draws the {@link frogger.model.actor.movableActor.Turtle} from {@link Map} to {@link Pane} */
 	public void drawTurtle() {
 		background.getChildren().addAll(map.getTurtles());
 	}
 	
-	/** <p> Draws the {@link WetTurtle} from {@link Map} to {@link Pane} */
+	/** <p> Draws the {@link frogger.model.actor.movableActor.WetTurtle} from {@link Map} to {@link Pane} */
 	public void drawWetTurtle() {
 		background.getChildren().addAll(map.getWetTurtles());
 	}
 	
-	/** <p> Draws the {@link End} from {@link Map} to {@link Pane} */
+	/** <p> Draws the {@link frogger.model.actor.staticActor.End} from {@link Map} to {@link Pane} */
 	public void drawEnd() {
 		background.getChildren().addAll(map.getEnds());
 	}
 	
-	/** <p> Draws the {@link Frog} from {@link Map} to {@link Pane} */
+	/** <p> Draws the {@link frogger.model.actor.movableActor.Frog} from {@link Map} to {@link Pane} */
 	public void drawAnimal() {
 		background.getChildren().add(map.getAnimal());
 	}
 	
-	/** <p> Draws the {@link Obstacle} from {@link Map} to {@link Pane} */
+	/** <p> Draws the {@link frogger.model.actor.movableActor.Obstacle} from {@link Map} to {@link Pane} */
 	public void drawObstacle() {
 		background.getChildren().addAll(map.getObstacles());
 	}
 	
-	/** <p> Draws the life {@link ImageView} from {@link Map} to {@link Pane} */
+	/** <p> Draws the life {@link javafx.scene.image.ImageView} from {@link Map} to {@link Pane} */
 	public void drawLifeImage() {
 		background.getChildren().addAll(map.getLifeImage());
 	}
 	
-	/** <p> Draws the scoreBoard which contains three {@link Digit} from {@link Map} to {@link Pane} 
-	 *	<p> Also draws the related label("C-SCORE") to {@link Pane} by calling {@link #createLabel(str, xPos, yPos)} 	
+	/** <p> Draws the scoreBoard which contains three {@link frogger.model.actor.staticActor.Digit} from {@link Map} to {@link Pane} 
+	 *	<p> Also draws the related label("C-SCORE") to {@link Pane} by calling {@link #createLabel(String, int, int)} 	
 	 */
 	public void drawScoreBoard() {
 		background.getChildren().add(createLabel("C-SCORE", 504, 742));

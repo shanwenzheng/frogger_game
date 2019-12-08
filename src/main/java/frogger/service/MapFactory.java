@@ -24,8 +24,8 @@ import frogger.model.Map;
  * @author Wenzheng Shan
  * @version 1.0
  * @since 1.0
- * @See Map
- * @See MapReader
+ * @see Map
+ * @see MapReader
  */
 public class MapFactory {
 	
@@ -34,7 +34,7 @@ public class MapFactory {
 	 *  
 	 * @param MapType	The MapType(gameLevel) of current game (generated from frogger.controller.SelectController)
 	 * @return	A {@link Map} corresponding to the map type 
-	 * @throws Exception An exception from {@link MapReader#MapReader()} which refers to the {@link ClassNotFoundException}
+	 * @throws Exception An exception from {@link MapReader#MapReader(String)} which refers to the {@link ClassNotFoundException}
 	 */
 	public static Map createMap(String MapType) throws Exception {
 		

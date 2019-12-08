@@ -12,7 +12,7 @@ import javafx.scene.image.Image;
  * 
  * <p> The {@link Turtle} class is used to create the Turtle object.
  * 
- * <p> A {@link Turtle} object is set in {@link Map}. It can move with the constant speed and change the image as time goes on.
+ * <p> A {@link Turtle} object is set in {@link frogger.model.Map}. It can move with the constant speed and change the image as time goes on.
  * In each frame, this object also check the wall touch and check whether there are animal intersect with it.
  * When it touches the {@link Frog}, it will ask {@link GameController} to handle some consequences.
  *
@@ -21,10 +21,10 @@ import javafx.scene.image.Image;
  * @author Wenzheng Shan
  * @version 1.0
  * @since 1.0
- * @See Map
- * @See MovableActor
- * @See GameController
- * @See Frog
+ * @see frogger.model.Map
+ * @see MovableActor
+ * @see GameController
+ * @see Frog
  */
 public class Turtle extends MovableActor{
 	
@@ -34,14 +34,14 @@ public class Turtle extends MovableActor{
 	/**
 	 * <p> The constructor of {@link Turtle} class to generate instance
 	 * 
-	 * <p> This constructor sets the {@link Turtle} in the given position {@code x} and {@code y} in the {@link Map}.
+	 * <p> This constructor sets the {@link Turtle} in the given position {@code x} and {@code y} in the {@link frogger.model.Map}.
 	 * Set the constant speed in the given {@code speed}.
 	 * Set the initial image with the given {@code size}. 
 	 * And initialize the {@link ArrayList} image which contains all the different shapes of {@link Turtle}
 	 * 
 	 * @param size		The size of the image
-	 * @param xpos		The position of x in the {@link Map} where digit stays
-	 * @param ypos		The position of y in the {@link Map} where digit stays
+	 * @param xpos		The position of x in the {@link frogger.model.Map} where digit stays
+	 * @param ypos		The position of y in the {@link frogger.model.Map} where digit stays
 	 * @param s			The speed of {@link Turtle} movement
 	 */
 	public Turtle(int size, double  xpos, double  ypos, double  s) {
@@ -61,7 +61,7 @@ public class Turtle extends MovableActor{
 	 *  3. check whether {@link Turtle} has touched the right or left wall
 	 *  4. check whether {@link Turtle} has touched the {@link Frog}
 	 *  
-	 * <p> This method that will be called by {@link ActAnimation} in every frame to execute all above tasks.
+	 * <p> This method that will be called by {@link frogger.service.ActAnimation} in every frame to execute all above tasks.
 	 */
 	@Override
 	public void act(long now) {

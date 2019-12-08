@@ -12,9 +12,9 @@ import frogger.model.actor.Actor;
  * @author Wenzheng Shan
  * @version 1.0
  * @since 1.0
- * @See Actor
- * @See End
- * @See Digit
+ * @see Actor
+ * @see End
+ * @see Digit
  */
 public abstract class StaticActor extends Actor{
 	

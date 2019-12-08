@@ -30,22 +30,22 @@ import javafx.scene.image.ImageView;
  *
  *	public static final double SPEED_OF_TURTLE = -1;
  *	
- *	public static final HashMap&ltInteger, Integer&gt POS_OF_LONG_TRUCK = new HashMap&ltInteger, Integer&gt(){{
+ *	public static final HashMap&lt;Integer, Integer&gt; POS_OF_LONG_TRUCK = new HashMap&lt;Integer, Integer&gt;(){{
  *		put(0,540);
  *		put(500,540);
  *	}};
  *	
- *	public static final HashMap&ltInteger, Integer&gt POS_OF_LONG_LOG = new HashMap&ltInteger, Integer&gt(){{
+ *	public static final HashMap&lt;Integer, Integer&gt; POS_OF_LONG_LOG = new HashMap&lt;Integer, Integer&gt;(){{
  *		put(0,276);
  *		put(400,276);
  *	}};
  *	
- *	public static final LinkedHashMap&ltInteger, Integer&gt POS_OF_LIFE_IMAGE = new LinkedHashMap&ltInteger, Integer&gt(){{
+ *	public static final LinkedHashMap&lt;Integer, Integer&gt; POS_OF_LIFE_IMAGE = new LinkedHashMap&lt;Integer, Integer&gt;(){{
  *		put(10,750);
  *		put(60,750);
  *	}};
  *	
- *	public static final HashMap&ltInteger, Integer&gt POS_OF_TURTLE = new HashMap&ltInteger, Integer&gt(){{
+ *	public static final HashMap&lt;Integer, Integer&gt; POS_OF_TURTLE = new HashMap&lt;Integer, Integer&gt;(){{
  *		put(500,376);
  *		put(300,376);
  *	}};
@@ -56,7 +56,7 @@ import javafx.scene.image.ImageView;
  * <pre>
  * 		Class levelConst = Class.forName("frogger.constant." + gameLevel);
  * 		double speed = levelConst.getField("SPEED_OF_" + actorStr).get(null);
- * 		HashMap&ltInteger, Integer&gt position = levelConst.getField("POS_OF_" + actorStr).get(null);
+ * 		HashMap&lt;Integer, Integer&gt; position = levelConst.getField("POS_OF_" + actorStr).get(null);
  * 
  * 		for(Integer xPos : position.keySet()) {
  *			map.getActors().add(new Actor(ImageLink, ImageSize, xPos, position.get(xPos), speed));
@@ -78,8 +78,8 @@ import javafx.scene.image.ImageView;
  * @author Wenzheng Shan
  * @version 1.0
  * @since 1.0
- * @See MapFactory
- * @See Map
+ * @see MapFactory
+ * @see Map
  *
  */
 public class MapReader {
@@ -110,7 +110,7 @@ public class MapReader {
 	}
 	
 	/**
-	 * <p> Call all single create {@link Actor} class to generate the {@link Map}.
+	 * <p> Call all single create {@link frogger.model.actor.Actor} class to generate the {@link Map}.
 	 */
 	public void createMap(){
 		createEnd();
@@ -191,7 +191,7 @@ public class MapReader {
 	}
 	
 	/**
-	 * <p>Read the constant class and create corresponding {@link Actor} objects based on the actor String input 
+	 * <p>Read the constant class and create corresponding {@link frogger.model.actor.Actor} objects based on the actor String input 
 	 * 
 	 * <p> This method first read the position and speed of corresponding actor from constant class. 
 	 * And then using switch statement to select which object should be generated.

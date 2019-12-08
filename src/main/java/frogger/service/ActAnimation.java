@@ -23,9 +23,9 @@ import javafx.scene.layout.Pane;
  * @author Wenzheng Shan
  * @version 1.0
  * @since 1.0
- * @See Pane
- * @See AnimationTimer
- * @See MovableActor
+ * @see Pane
+ * @see AnimationTimer
+ * @see MovableActor
  */
 public enum ActAnimation {
 	/** The shared instance for global use for whole project */
