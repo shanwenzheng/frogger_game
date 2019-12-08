@@ -1,5 +1,8 @@
 package frogger.controller;
 
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+
 import frogger.model.Life;
 import frogger.model.Map;
 import frogger.model.Score;
@@ -74,6 +77,9 @@ public enum GameController {
 	/** The number of end position has reached for current game */
 	private int endCount;
 	
+	/** A temporary {@link LinkedHashMap} store the high score of each round. */
+	private LinkedHashMap<Integer, Score> popupScoreList;
+	
     /** 
      *  <p> Initializes the game properties based on the given {@link GameView},{@code nickName} and {@code gameLevel}. 
      *  
@@ -90,6 +96,12 @@ public enum GameController {
 		this.score = new Score();
 		this.life = new Life(map.getLifeImage().size());
 		ActAnimation.INSTANCE.init(background);
+		
+		popupScoreList = new LinkedHashMap<Integer, Score>() {{
+			for(int i = 0; i < life.getTotalLife(); i++) {
+				put(i, new Score());
+			}
+		}};
 	}
 	
 	/** <p>Starts the game
@@ -211,12 +223,16 @@ public enum GameController {
 	 * @param points	The changed point based on the event
 	 */
 	public void handleScoreChanged(int points) {
+		int changePoints = 0;
 		if(points > 0) {
 			score.addScore(points);
+			changePoints = points;
 		} else if (score.getScore() > 50) {
 			score.subScore(Math.abs(points));
+			changePoints = points;
 		}
 		ScoreBoardUpdater.INSTANCE.updateScore(score.getScore(), map.getScoreBoard());
+		handlePopupScoreListChanged(changePoints);
 	}
 
 	/**
@@ -227,6 +243,7 @@ public enum GameController {
 		life.loseLife();
 		int index = life.getRemainingLife();
 		background.getChildren().remove(map.getLifeImage().get(index));
+		SceneSwitch.INSTANCE.switchToPopup(popupScoreList);
 		
 		if(life.getRemainingLife() == 0) {endGame(1);}
 	}
@@ -260,5 +277,15 @@ public enum GameController {
 		
 		String gameStatus = endCount == 5 ? "Win" : "Lose";
 		SceneSwitch.INSTANCE.switchToScoreList(gameStatus, score);
+	}
+	
+	public void handlePopupScoreListChanged(int points) {
+		int index = life.getTotalLife() - life.getRemainingLife();
+		
+		if(points > 0) {
+			popupScoreList.get(index).addScore(points);
+		}else{
+			popupScoreList.get(index).subScore(Math.abs(points));
+		}
 	}
 }

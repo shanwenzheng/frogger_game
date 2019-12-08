@@ -77,6 +77,7 @@ public class FileName {
 	public static final String VIEW_SELECT = "view/select.fxml";
 	public static final String VIEW_INSTRUCTION = "view/instruction.fxml";
 	public static final String VIEW_HIGHSCORELIST = "view/highScoreList.fxml";
+	public static final String VIEW_POPUP = "view/popup.fxml";
 	
 	public static final String MUSIC_START = "music/startScreen.mp3";
 	public static final String MUSIC_SELECT = "music/select.mp3";

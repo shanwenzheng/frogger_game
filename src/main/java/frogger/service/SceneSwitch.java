@@ -1,9 +1,13 @@
 package frogger.service;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+
 import frogger.Main;
 import frogger.constant.FileName;
 import frogger.controller.GameController;
+import frogger.controller.PopupController;
 import frogger.model.Score;
 import frogger.view.GameView;
 import javafx.scene.Scene;
@@ -51,6 +55,7 @@ import javafx.fxml.FXMLLoader;
  * @See ScoreListController
  * @See SelectController
  * @See StartScreenController
+ * @See PopupController
  */
 public enum SceneSwitch {
 	/** The shared instance for global use for whole project */
@@ -66,13 +71,14 @@ public enum SceneSwitch {
 	
 	/**
 	 * <p>Initializes the primaryStage of application based on the given {@link Stage} from {@link Main#start()}
-	 * and create instructionStage using new Stage().
+	 * and create instructionStage and popoupStage using new Stage().
 	 * 
 	 * @param primaryStage the primaryStage of application
 	 */
 	public void init(Stage primaryStage) {
 		this.primaryStage = primaryStage;
 		instructionStage = new Stage();
+		popupStage = new Stage();
 	}
 	
 	/**
@@ -122,7 +128,7 @@ public enum SceneSwitch {
 	 * <p>Switch the current scene to StartScreen
 	 */
 	public void switchToSelect() {
-		try {
+		try {			
 			MusicPlayer.INSTANCE.playSelectMusic();
 			Pane root = FXMLLoader.load(Main.class.getResource(FileName.VIEW_SELECT));
 			Scene scene = new Scene(root);
@@ -144,6 +150,28 @@ public enum SceneSwitch {
 	        instructionStage.setResizable(false);
 	        instructionStage.setScene(scene);
 	        instructionStage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * <p> Open the Popup stage
+	 * 
+	 * @param popupScoreList	A temporary {@link ArrayList} store the high score of each round.
+	 */
+	public void switchToPopup(LinkedHashMap<Integer, Score> popupScoreList) {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(FileName.VIEW_POPUP));
+			Pane root = fxmlLoader.load();
+			PopupController popupController = fxmlLoader.getController();
+			popupController.setPopupScoreList(popupScoreList);
+			
+			Scene scene = new Scene(root);
+			instructionStage.setTitle("Instruction");
+			instructionStage.setResizable(false);
+			instructionStage.setScene(scene);
+			instructionStage.show();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -211,6 +239,15 @@ public enum SceneSwitch {
 	 */
 	public Stage getInstructionStage() {
 		return instructionStage;
+	}
+
+	/**
+	 * Returns the popup stage of the application
+	 * 
+	 * @return	the popup stage of the application
+	 */
+	public Stage getPopupStage() {
+		return popupStage;
 	}
 }
 

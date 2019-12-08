@@ -52,19 +52,3 @@
 .list-cell:filled:selected .label {
 	-fx-text-fill: #fff;
 }
-
-.button{
-	-fx-background-color: grey;
-	-fx-background-radius:50%;
-	-fx-font-size:10px;
-	-fx-text-fill:black;
-	-fx-font-weight:bold;
-}
-
-.button:hover{
-	-fx-font-size:15px;
-}
-
-.button:pressed{
-	-fx-font-size:13px;
-}
