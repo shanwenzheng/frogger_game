@@ -168,7 +168,7 @@ public enum SceneSwitch {
 			popupController.setPopupScoreList(popupScoreList);
 			
 			Scene scene = new Scene(root);
-			instructionStage.setTitle("Instruction");
+			instructionStage.setTitle("Pop up");
 			instructionStage.setResizable(false);
 			instructionStage.setScene(scene);
 			instructionStage.show();
