@@ -1,0 +1,4 @@
+testPlayer
+300
+HighScorePlayer
+800

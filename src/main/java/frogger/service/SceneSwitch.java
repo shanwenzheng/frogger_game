@@ -1,7 +1,6 @@
 package frogger.service;
 
 import java.io.IOException;
-
 import frogger.Main;
 import frogger.constant.FileName;
 import frogger.controller.GameController;
@@ -17,16 +16,68 @@ import javafx.stage.Stage;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 
+/**
+ * 
+ * <h2>SceneSwitch</h2>
+ * 
+ * <p>The {@link SceneSwitch} class is an singleton class of utility to provide some methods to switch between
+ * different scenes in the primary Stage ({@link SceneSwitch#getPrimaryStage()}). Moreover, this class also create a new 
+ * instructionStage({@link SceneSwitch#getInstructionStage()}) to show the instruction.
+ * 
+ * <p><strong>Note:</strong> this class is implemented as an {@link Enum} thus to be a singleton class.
+ * 
+ * <p><strong>Main Functionality:</strong>
+ * 
+ * <pre>
+ * 		SceneSwitch.INSTANCE.switchToHome();
+ * 		SceneSwitch.INSTANCE.switchToSelect();
+ * 		SceneSwitch.INSTANCE.switchToGame(nickName, gameLevel);
+ * 		SceneSwitch.INSTANCE.switchToInstruction();
+ * 		SceneSwitch.INSTANCE.switchToScoreList(gameStatus, Score);
+ * </pre>
+ * 
+ * <p><strong>Use:</strong>
+ * 
+ * <pre>
+ * 		SceneSwitch.INSTANCE.{METHOD}()
+ * </pre>
+ * 
+ * @author Wenzheng Shan
+ * @version 1.0
+ * @since 1.0
+ * @See MusicPlayer
+ * @See GameController
+ * @See InstructionController
+ * @See ScoreListController
+ * @See SelectController
+ * @See StartScreenController
+ */
 public enum SceneSwitch {
+	/** The shared instance for global use for whole project */
 	INSTANCE;
 	
+	/** The primary stage of the application */
 	private Stage primaryStage;
+	/** The instruction stage of the application */
 	private Stage instructionStage;
+	/** The high score popup stage of the application */
+	private Stage popupStage;
 	
+	
+	/**
+	 * <p>Initializes the primaryStage of application based on the given {@link Stage} from {@link Main#start()}
+	 * and create instructionStage using new Stage().
+	 * 
+	 * @param primaryStage the primaryStage of application
+	 */
 	public void init(Stage primaryStage) {
 		this.primaryStage = primaryStage;
+		instructionStage = new Stage();
 	}
 	
+	/**
+	 * <p>Switch the current scene to StartScreen
+	 */
 	public void switchToStartScreen() {
 		try {
 			MusicPlayer.INSTANCE.playStartScreenMusic();
@@ -39,6 +90,14 @@ public enum SceneSwitch {
 		}
 	}
 	
+	/**
+	 * <p>Switch the current scene to game Page
+	 * 
+	 * <p>The {@link GameView} will changed depend on the gameLevel and this method also addEventHandler to scene and add CSS styleSheet.
+	 * 
+	 * @param nickName The name of current player (passed from {@link frogger.controller.SelectController})
+	 * @param gameLevel The leve; of current game (passed from {@link frogger.controller.SelectController});
+	 */
 	public void switchToGame(String nickName, String gameLevel) {
 		try {
 			GameView gameView = new GameView(gameLevel);
@@ -59,6 +118,9 @@ public enum SceneSwitch {
 		}
 	}
 	
+	/**
+	 * <p>Switch the current scene to StartScreen
+	 */
 	public void switchToSelect() {
 		try {
 			MusicPlayer.INSTANCE.playSelectMusic();
@@ -71,9 +133,11 @@ public enum SceneSwitch {
 		}
 	}
 	
+	/**
+	 * <p>Open the instruction stage
+	 */
 	public void switchToInstruction() {
 		try {
-	        instructionStage = new Stage();
 	        Pane root = FXMLLoader.load(Main.class.getResource(FileName.VIEW_INSTRUCTION)); 
 	        Scene scene = new Scene(root);
 	        instructionStage.setTitle("Instruction");
@@ -85,6 +149,15 @@ public enum SceneSwitch {
 		}
 	}
 	
+	/**
+	 * <p>Switch the current scene to ScoreList
+	 * 
+	 * <p>Show the different image of game status and play different music depend on status parameters 
+	 * and show the score of this currentGame
+	 * 
+	 * @param	status status == "Win" if game victory, == "Lose" if game defeat (passed from {@link frogger.controller.GameController#handleGameEnd()})
+	 * @param	score The score of currentGame (passed from {@link frogger.controller.GameController#handleGameEnd()}
+	 */
 	public void switchToScoreList(String status, Score score) {
 		try {
 			ImageView statusImage = new ImageView();
@@ -115,14 +188,27 @@ public enum SceneSwitch {
 		}
 	}
 	
+	/**
+	 * Exit the application
+	 */
 	public void exitProgram() {
 		Platform.exit();
 	}
 	
+	/**
+	 * Returns the primary stage of the application
+	 * 
+	 * @return	the primary stage of the application
+	 */
 	public Stage getPrimaryStage() {
 		return primaryStage;
 	}
 	
+	/**
+	 * Returns the instruction stage of the application
+	 * 
+	 * @return	the instruction stage of the application
+	 */
 	public Stage getInstructionStage() {
 		return instructionStage;
 	}

@@ -1,4 +1,4 @@
-package frogger.constant;
+ package frogger.constant;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -84,5 +84,5 @@ public class FileName {
 	public static final String MUSIC_VICTORY = "music/victory.mp3";
 	public static final String MUSIC_DEFEAT = "music/defeat.mp3";
 	
-	public static final String FILE_SCORE_LIST = "scoreFile/highScore.txt";
+	public static final String FILE_SCORE_LIST = System.getProperty("user.dir") + "\\src\\main\\resources\\frogger\\scoreFile\\highScore.txt";
 }

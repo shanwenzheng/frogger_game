@@ -1,6 +1,7 @@
 package frogger.controller;
 
 import frogger.model.Life;
+import frogger.model.Map;
 import frogger.model.Score;
 import frogger.model.actor.movableActor.MovableActor;
 import frogger.model.actor.staticActor.End;
@@ -11,127 +12,248 @@ import frogger.service.ScoreBaseFactory;
 import frogger.service.ScoreBoardUpdater;
 import frogger.service.ScoreListWriter;
 import frogger.view.GameView;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Pane;
 
+/**
+ * <h2> GameController </h2>
+ * 
+ * <p> The {@link GameController} class is used to manage the process and status of game and reflect the game results to the view
+ * 
+ * <p><strong>Note:</strong> this class is implemented as an {@link Enum} thus to be a singleton class.
+ * 
+ * <p> <strong> Main Functionality: </strong>
+ * <pre>
+ * 		GameController.INSTANCE.startGame();
+ * 		GameController.INSTANCE.endGame();
+ *		GameController.INSTANCE.handleKeyEvent();
+ *		GameController.INSTANCE.handleTouchEvent();
+ *		GameController.INSTANCE.handleEndEvent();
+ *		GameController.INSTANCE.handleButtonEvent();
+ *		GameController.INSTANCE.handleScoreEvent();
+ *		GameController.INSTANCE.handleLifeEvent();
+ * </pre>
+ * 
+ * @author Wenzheng Shan
+ * @version 1.0
+ * @since 1.0
+ * @See SceneSwitch
+ * @See GameView
+ * @See Map
+ * @See Pane
+ * @See Life
+ * @See Score
+ * @See ActAnimation
+ * @See MusicPlayer
+ * @See ScoreListWriter
+ * @See ScoreBoardUpdater
+ * @See ScoreBaseFactory
+ */
 public enum GameController {
+	/** The shared instance for global use for whole project */
 	INSTANCE;
 	
-	private GameView gameView;
+	/** The game playing {@link Map} */
+	private Map map;
+	
+	/** The game playing {@link Pane} */
+	private Pane background;
+	
+	/** The {@link Life} of current game */
 	private Life life;
+	
+	/** The {@link Score} of current game */
 	private Score score;
-	private Score highScore;
+	
+	/** The nickName of current game */
 	private String nickName;
+	
+	/** The gameLevel of current game */
 	private String gameLevel;
+	
+	/** The number of end position has reached for current game */
 	private int endCount;
 	
+    /** 
+     *  <p> Initializes the game properties based on the given {@link GameView},{@code nickName} and {@code gameLevel}. 
+     *  
+     *  @param gameView		The current game playing {@link GameView}
+     *  @param nickName		The nickName of current game
+     *  @param gameLevel 	The gameLevel of current game
+     */
 	public void init(GameView gameView, String nickName, String gameLevel) {
 		endCount = 0;
 		this.nickName = nickName;
 		this.gameLevel = gameLevel;
-		this.gameView = gameView;	
+		this.map = gameView.getMap();
+		this.background = gameView.getBackground();
 		this.score = new Score();
-		this.highScore = new Score();
-		this.life = new Life(gameView.getMap().getLifeImage().size());
-		ActAnimation.INSTANCE.init(gameView.getBackground());
+		this.life = new Life(map.getLifeImage().size());
+		ActAnimation.INSTANCE.init(background);
 	}
 	
+	/** <p>Starts the game
+	 *
+	 * <p> This method start the {@link MediaPlayer} and {@link ActAnimation} 
+	 */
 	public void startGame() {
 		musicStart();
 		animationStart();
 	}
 	
-	/* 0 means end game by pressing button. 1 means end game by reach all the end position or lose all life) */
+	/**
+	 * <p> Ends the game
+	 * 
+	 * <p> This method stop the {@link MediaPlayer} and {@link ActAnimation}
+	 * And if the {@link #life} is used up or {@link #endCount} equals to 5 then call {@link #handleGameEnd()}.
+	 * 
+	 * @param status	The status of ending game. 0 means end game by pressing button and 1 means end game by reach all the end position or lose all life and then call {@link #handleGameEnd()}.
+	 */
 	public void endGame(int status) {
 		musicStop();
 		animationStop();
 		if(status == 1) {handleGameEnd();}
 	}
 	
+	/** <p> Start playing the music by calling {@link MusicPlayer#playGameMusic()} */
 	public void musicStart() {
 		MusicPlayer.INSTANCE.playGameMusic();
 	}
 	
+	/** <p> Stop playing the music by calling {@link MusicPlayer#stopMusic()} */
 	public void musicStop() {
 		MusicPlayer.INSTANCE.stopMusic();
 	}
 	
+	/** <p> Start {@link ActAnimation} timer by calling {@link ActAnimation#actStart()} */
 	private void animationStart() {
 		ActAnimation.INSTANCE.actStart();
 	}
 	
+	/** <p> Stop {@link ActAnimation} timer by calling {@link ActAnimation#actStop()} */
 	private void animationStop() {
 		ActAnimation.INSTANCE.actStop();
 	}
 	
+	/**
+	 * <p> This method call {@link frogger.model.actor.movableActor.Frog#moveKeyPressed(String)} when player presses a key.
+	 * 
+	 * <p> This method is added into {@link Scene} in {@link SceneSwitch} and called when player presses a key.
+	 *  
+	 * @param event		Player pressed key event
+	 */
 	public void handleKeyPressedEvent(KeyEvent event) {
-		gameView.getMap().getAnimal().moveKeyPressed(event.getText());
+		map.getAnimal().moveKeyPressed(event.getText());
 	}
 	
+	/**
+	 * <p> This method call {@link frogger.model.actor.movableActor.Frog#moveKeyReleased(String)} when player releases a key.
+	 * 
+	 * <p> This method is added into {@link Scene} in {@link SceneSwitch} and called when player releases a key.
+	 *  
+	 * @param event		Player pressed key event
+	 */
 	public void handleKeyReleasedEvent(KeyEvent event) {
-		gameView.getMap().getAnimal().moveKeyReleased(event.getText());
+		map.getAnimal().moveKeyReleased(event.getText());
 	}
 	
+	/**
+	 * <p> This method is called by {@link frogger.model.actor.movableActor.Turtle} or {@link frogger.model.actor.movableActor.Log} when they touch {@link frogger.model.actor.movableActor.Frog}.
+	 * <p> This method calls {@link frogger.model.actor.movableActor.Frog#move(double, double)} to let frog move with input {@code actor} speed.
+	 *  
+	 * @param actor		The {@link MovableActor} who call this method
+	 */
 	public void handleLogTurtleTouched(MovableActor actor) {
-		gameView.getMap().getAnimal().move(actor.getSpeed(), 0);
+		map.getAnimal().move(actor.getSpeed(), 0);
 	}
 	
+	/**
+	 * <p> This method is called by {@link frogger.model.actor.movableActor.Obstacle} when they touch {@link frogger.model.actor.movableActor.Frog}.
+	 * <p> This method calls {@link frogger.model.actor.movableActor.Frog#setDeathType(String)} to set frog deathType to carDeath.
+	 *  
+	 * @param actor		The {@link MovableActor} who call this method
+	 */
 	public void handleObstacleTouched(MovableActor actor) {
-		gameView.getMap().getAnimal().setDeathType("carDeath");
+		map.getAnimal().setDeathType("carDeath");
 	}
 	
+	/**
+	 * <p> This method is called by {@link frogger.model.actor.movableActor.WetTurtle} or {@link frogger.model.actor.movableActor.Frog} when frog sunk into pool.
+	 * <p> This method calls {@link frogger.model.actor.movableActor.Frog#setDeathType(String)} to set frog deathType to waterDeath.
+	 *  
+	 * @param actor		The {@link MovableActor} who call this method
+	 */
 	public void handlePoolTouched(MovableActor actor) {
-		gameView.getMap().getAnimal().setDeathType("waterDeath");
+		map.getAnimal().setDeathType("waterDeath");
 	}
 	
+	/**
+	 * <p> This method is called by {@link frogger.model.actor.movableActor.Frog} when frog enter into terminal point.
+	 * <p> This method will check whether the entered end position is activated. If is not activated, then handle score event and reset the property of frog
+	 *  
+	 * @param actor		The {@link MovableActor} who call this method
+	 */
 	public void handleEndTouched(MovableActor actor) {
 		if(!actor.getIntersectingObjects(End.class).get(0).isActivated()) {
 			actor.getIntersectingObjects(End.class).get(0).setEnd();
 			handleScoreChanged(50);
-			gameView.getMap().getAnimal().setOrigin(1);
+			map.getAnimal().setOrigin(1);
 			endCount++;
 		}
 		
 		if(endCount == 5) { endGame(1);}
 	}
 
+	/**
+	 * <p>	This method handle the {@link Score} add or subtract based on the given input {@code points} and call {@link ScoreBoardUpdater#updateScore(int, java.util.ArrayList)}
+	 * to update scoreBoard view in {@link Map}.
+	 * 
+	 * @param points	The changed point based on the event
+	 */
 	public void handleScoreChanged(int points) {
 		if(points > 0) {
 			score.addScore(points);
 		} else if (score.getScore() > 50) {
 			score.subScore(Math.abs(points));
 		}
-		ScoreBoardUpdater.INSTANCE.updateScore(score.getScore(), gameView.getMap().getScoreBoard());
-		
-		if(score.getScore() > highScore.getScore()) {
-			highScore.setScore(score.getScore());
-			ScoreBoardUpdater.INSTANCE.updateScore(highScore.getScore(), gameView.getMap().getHighScoreBoard());
-		}
+		ScoreBoardUpdater.INSTANCE.updateScore(score.getScore(), map.getScoreBoard());
 	}
 
+	/**
+	 * <p> This method handle the {@link Life} lose situation and remove the corresponding imageView in {@link Map}
+	 * <p> This method also check if {@link Life#getRemainingLife()} equals to 0, then call {@link #endGame(int)}
+	 */
 	public void handleLifeLosed() {
 		life.loseLife();
 		int index = life.getRemainingLife();
-		gameView.getBackground().getChildren().remove(gameView.getMap().getLifeImage().get(index));
+		background.getChildren().remove(map.getLifeImage().get(index));
 		
 		if(life.getRemainingLife() == 0) {endGame(1);}
 	}
 	
+    /** <p> Called when the home {@link Button} is clicked and back to the start screen as well as {@link #endGame(int)} */
 	public void handleHomeButtonPressed() {
 		endGame(0);
 		SceneSwitch.INSTANCE.switchToStartScreen();
 	}
 	
+	/** <p> Called when the restart {@link Button} is clicked and restart the game */
 	public void handleRestartButtonPressed() {
 		endGame(0);
 		SceneSwitch.INSTANCE.switchToGame(nickName, gameLevel);
 	}
 	
+	/** <p> Called when the instruction {@link Button} is clicked and show the instruction screen */
 	public void handleInstructionButtonPressed() {
 		SceneSwitch.INSTANCE.switchToInstruction();
 	}
 	
+	/** 
+	 * <p> This method is called when the remaining life is zero or the {@link #endCount} is five.
+	 * <p> After calling this method, it write the {@link Score} and corresponding nickName into file by calling {@link ScoreListWriter#writeInFile(String, Score)}
+	 * and call {@link SceneSwitch#switchToScoreList(String, Score)} to show the high score list to player. 
+	 * Moreover, this method also create an additional score points based on the {@link #gameLevel} by calling {@link ScoreBaseFactory#createScoreBase(String)}. 
+	 */
 	public void handleGameEnd() {
 		score.addScore(ScoreBaseFactory.createScoreBase(gameLevel));
 		ScoreListWriter.INSTANCE.writeInFile(nickName, score);
