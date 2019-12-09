@@ -1,55 +1,211 @@
 # <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1574904535284&di=813c323d940e990abd930b9162c49178&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201802%2F06%2F20180206082802_nmqet.thumb.700_0.jpg" alt="frog logo" width="50"/> Frogger
 
-> This is a Frogger game project written in JavaFX.<br>
+> This is a Frogger game project written in JavaFX and maintain as well as extend the [existing code](https://github.com/hirish99/Frogger-Arcade-Game).<br>
 
-## Refactor Log
+## Directory
 
-#### ① Model Refactor
+- [Screenshots](#screenshots)
+- [Version Requirement](#version-requirement)
+- [Compiling & Running](#compiling-running)
+- [File Structure](#file-structure)
+- [Maintaining Work](#maintaining-work)
+- [Extending Work](#extending-work)
+- [About](#about)
 
-* Rmove `setOnKeyPressed` && `setOnKeyReleased` and add `handleKeyPressed` && `handleKeyReleased` method
-* Create `Map` Abstract class
-* Create `SimpleMode` `NormalMode` `HardMode` class abstract from `Map` Class as game Level
-* Solve Digit Bug
-* Split `Actor` class into `StaticActor` and `MovableActor`
-* Split Model classes to inherit from different actor
-* Refactor `WetTurtle` class
-* Refactor `Turtle` class
-* Refactor `Obstacle` class
-* Refactor `Log` class
-* Refactor `End` class
-* Refactor `BackgroundImage` class
-* Refactor `Animal` Class
-* Uniform `Turtle` Class
-* Uniform `Obstacle` Class
-* Uniform `Log` Class
-* Delete `BackgroundImage` Class
-* Uniform `Digit` Class
-* Uniform `End` Class
-* Change digit as instance (Not create new digit everytime update score)
-* Uniform `Animal` Class
-* Make Intersect related method into animal abstract class
+## Screenshots
+# <img src="https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/raw/master/screenshots/home.jpg" alt="home" width="350" height="400"/>  <img src="https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/raw/master/screenshots/select.png" alt="select" width="350" height="400"/>  <img src="https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/raw/master/screenshots/instruction.png" alt="instruction" width="350" height="400"/>  <img src="https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/raw/master/screenshots/normal.png" alt="normal" width="350" height="400"/>  <img src="https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/raw/master/screenshots/hard.jpg" alt="hard" width="350" height="400"/>  <img src="https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/raw/master/screenshots/simple.jpg" alt="simple" width="350" height="400"/>  <img src="https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/raw/master/screenshots/victory.png" alt="victory" width="350" height="400"/>  <img src="https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/raw/master/screenshots/defeat.png" alt="defeat" width="350" height="400"/>  <img src="https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/raw/master/screenshots/popup.jpg" alt="popup" width="350" height="400"/>
+
+## Version Requirement
+> Compatible with:
+>
+> - Java 10 or higher
+> - JavaFX 10 or higher
+> - Maven
+
+## Compiling & Running
+
+You can launch this application either by running as normal `JavaFX application` or using `maven` to build this project.
+
+For example, in Eclipse, Click <kbd>Run</kbd> -> <kbd>Run As</kbd> -> <kbd>Java Application</kbd> || <kbd>Maven build</kbd>
+
+## File Structure
+
+```
+src
+└── main
+|   ├── java
+|   |   └── frogger
+|   |       ├── constant
+|   |       ├── controller
+|   |       ├── model
+|   |       ├── service
+|   |       └── Main.java
+|   └── resources
+|       └── frogger
+|           ├── css
+|           ├── image
+|           ├── scoreFile
+|           ├── music
+|           └── view
+|── test
+    ├── java
+    |   └── frogger
+    └── resources
+        └── frogger
+```
+
+## Maintaining Work
+
+### Breaking up large classes in a meaningful way 
+
+For example, breaking the original `Main` class into `GameController` class and `GameView` class. Moreover, the `GameController` class can be split into `ActAnimation` class, `MusicPlayer` class, `ScoreBoardUpdater` class, etc.
+
+### Breaking up large methods in a meaningful way
+
+For example, instead of adding all object in one function in `GameView` class, I use seperate method such as `drawObstacle()` or `drawLog()` to accomplish the same thing.
+
+### Improving Encapsulation
+
+Making all public field into `private` and create `getter` and `setter` method to access these fields
+
+### Splitting Animal Class
+
+Instead of checking frog whether touch other actors, in my refactor, I create method `checkTouch()` for each actor to check whether they touch frog. And if ture, then call the `GameController` to handle such consequences.
+
+For example, in `Log` class, if `getIntersectingObjects(Frog.class).size() >= 1`, then will call `GameController.INSTANCE.handleLogTurtleTouched(this);` which call `move` method in frog to move with log.
+
+### Splitting Actor Class
+
+Break up the `Actor` class to `MovableActor` and `StaticActor` and only `MovableActor` have the move and act method.
+
+### Add design patterns
+
+* MVC (Controller + View + Model)
+* Singleton (`MusicPlayer`, `ScoreListReader`, etc)
+* Factory (`ScoreBaseFactory`, `MapFactory`)
+* Observer
+
+### Refactor inner method of class
+
+Almost every class's intrinsic function has been recreated (Redcue if statement, extract common method, etc.)
+
+### Using Constant Java Class
+
+`FileName`, `GameLevel`, `NormalMode`... Every time you want to change the image path or speed of one actor, only need to do is open these class and change the corresponding value.
+
+### Organising files in a meaningful way
+
+Deatils in [File Structure](#file-structure)
+
+### Add meaningful JavaDocs
+
+Deatils in [docs folder](https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/tree/master/doc)
 
 
-#### ② View Refactor
+</br>
 
-* Split `gameView` from main class
-* Remove `MyStage` class (Change to `MusicPlayer` class)
-* Remove Actor acts related code from World (change to `Animation` class)
-* Remove `World` class (The function is implemented in `gameController`)
+## Extending Work
 
-#### ③ Util Refactor
+### GameLevel
 
-* Create `MusicPlayer` class
-* Create `Animation` class for Actor acts
-* Create `ScoreBoardUpdater` class
-* Change `MusicPlayer` to singleton pattern
-* Create `MapLoader` class to load view
-* Create `MapFactory` class to generate view
-* Change `ScoreBoardupdater` class to singleton pattern
+A new level can be easily added by creating a new class under `/src/main/java/frogger/constant` which contain the constant of `SPEED` and `POSITION`
 
-#### ④ Controller Refactor
+##### Step 1: create constant java class:
 
-* Split `gameController` from main class
-* Split functoin in `gameController` to match single responsiblity
-* Rename Timer to EndDetecter to match single responsibility
-* Move scene eventHandler into `gameController`
+An example of part of `NormalMode.java` defining the game property in normal level.
+
+```java
+	
+	public static final double SPEED_OF_LONG_TRUCK = 1
+	public static final double SPEED_OF_LONG_LOG = -1;
+	public static final double SPEED_OF_TURTLE = -1;
+	
+	public static final HashMap<Integer, Integer> POS_OF_LONG_TRUCK = new HashMap<Integer, Integer>(){{
+		put(0,540);
+		put(500,540);
+	}};
+	
+	public static final HashMap<Integer, Integer> POS_OF_LONG_LOG = new HashMap<Integer, Integer>(){{
+		put(0,276);
+		put(400,276);
+	}};
+	
+	public static final HashMap<Integer, Integer> POS_OF_TURTLE = new HashMap<Integer, Integer>(){{
+		put(500,376);
+		put(300,376);
+	}};
+```
+##### step 2: Using MapReader to create Map
+
+`MapReader` class receives the gameLevel and read the corresponding constant class to generate appropriate `Map`.
+
+An example of usage MapReader:
+
+```java
+    Class levelConst = Class.forName("frogger.constant." + gameLevel);
+    double speed = levelConst.getField("SPEED_OF_" + actor_string).get(null);
+    HashMap<Integer, Integer> position = levelConst.getField("POS_OF_" + actorStr).get(null);
+
+    for(Integer xPos : position.keySet()){
+        map.getActors().add(new Actor(ImageLink, ImageSize, xPos, position.get(xPos), speed));
+    }
+```
+
+##### step 3: Using MapFactory to get Map and return to gameView
+
+`MapFactory` pass the gamelevel to `MapReader` and get the map from it. Then return the map to `GameView` who add it to background.
+
+```java
+    if(MapType.equals("NormalMode")){
+        mapReader = new MapReader("NormalMode");
+    }
+
+    mapReader.createMap();
+    return mapReader.getMap();
+```
+
+Done! A new Level and new map is created.
+
+### StartScreen
+
+A home page contains three buttons, `start button` switch to select page, `instruction button` open the instruction stage and `exit button` exit the application
+
+### SelectScreen
+
+A select page ask players to select `gameLevel` and enter `nickname`. The nickname cannot be null and max length is 12.
+
+### gameScreen
+
+In addition to the original function, I add three button: `restart, instruction and home`. Moreover, I also add the `life` system and when life runs out, the game end. Finally, the `pop up` stage, appearing at the end of each round, showing the scores from each round, highest at the top.
+
+### highScoreList
+
+This appears when ending game. If lose, play the lose music and show the defeat image. If win, play the victory music and show the victory image. In addition, this show a `permanent high score list` stored in file. Finally, `three button: restart, home, exit` plays corresponding function.
+
+<br>
+
+## About
+
+### Requirements:
+
+Click [here](https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/blob/master/COMP2013%20Coursework02%202019%20TaskDescription%20v07.pdf) to know requirements.
+
+### Class Diagram:
+
+[class diagram](https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/raw/master/screenshots/ClassDiagram.jpg)
+
+### Video illustration:
+
+Click [here](https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/blob/master/Shan_Wenzheng.mp4)
+
+### ChangeLog:
+
+Click [here](https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/blob/master/CHANGELOG.md) to know the changelog and version information.
+
+### Credits:
+
+All music & images are derived from internet and free to use for non-commercial use.
+
+### License:
+
+This project use [MIT license](https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/blob/master/LICENSE).
