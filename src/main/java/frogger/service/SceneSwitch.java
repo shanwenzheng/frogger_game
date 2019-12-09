@@ -102,7 +102,7 @@ public enum SceneSwitch {
 	 * <p>The {@link GameView} will changed depend on the gameLevel and this method also addEventHandler to scene and add CSS styleSheet.
 	 * 
 	 * @param nickName The name of current player (passed from {@link frogger.controller.SelectController})
-	 * @param gameLevel The leve; of current game (passed from {@link frogger.controller.SelectController});
+	 * @param gameLevel The level; of current game (passed from {@link frogger.controller.SelectController});
 	 */
 	public void switchToGame(String nickName, String gameLevel) {
 		try {

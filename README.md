@@ -8,7 +8,7 @@
 - [Version Requirement](#version-requirement)
 - [Compiling & Running](#compiling-running)
 - [File Structure](#file-structure)
-- [Maintaining Work](#maintaing-work)
+- [Maintaining Work](#maintaining-work)
 - [Extending Work](#extending-work)
 - [About](#about)
 
@@ -188,15 +188,19 @@ This appears when ending game. If lose, play the lose music and show the defeat 
 
 ### Requirements:
 
-Click [here](https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/blob/release/COMP2013%20Coursework02%202019%20TaskDescription%20v07.pdf) to know requirements.
+Click [here](https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/blob/master/COMP2013%20Coursework02%202019%20TaskDescription%20v07.pdf) to know requirements.
 
 ### Class Diagram:
 
+[class diagram](https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/raw/master/screenshots/ClassDiagram.jpg)
+
 ### Video illustration:
+
+Click [here](https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/blob/master/Shan_Wenzheng.mp4)
 
 ### ChangeLog:
 
-Click [here] https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/blob/master/CHANGELOG.md to know the changelog and version information.
+Click [here](https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/blob/master/CHANGELOG.md) to know the changelog and version information.
 
 ### Credits:
 
@@ -204,4 +208,4 @@ All music & images are derived from internet and free to use for non-commercial 
 
 ### License:
 
-This project use MIT license.
+This project use [MIT license](https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/blob/master/LICENSE).
