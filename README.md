@@ -192,11 +192,11 @@ Click [here](https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/blob/master
 
 ### Class Diagram:
 
-[class diagram](https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/raw/master/screenshots/ClassDiagram.jpg)
+<img src="https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/raw/master/screenshots/ClassDiagram.png" alt="class diagram"/> 
 
 ### Video illustration:
 
-Click [here](https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/blob/master/Shan_Wenzheng.mp4)
+Click [here](https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/blob/master/Shan_Wenzheng.mp4) to download the video documentation about game running and illustration of refactor and addition works.
 
 ### ChangeLog:
 
