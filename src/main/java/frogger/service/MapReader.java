@@ -218,6 +218,7 @@ public class MapReader {
 		HashMap<Integer, Integer> position = null;
 		double speed = 0;
 
+		//Read the constants from class
 		try {
 			position = (HashMap<Integer, Integer>) levelConst.getField("POS_OF_" + actorStr).get(null);
 			if(!actorStr.equals("LIFE_IMAGE")) 	{speed = (double) levelConst.getField("SPEED_OF_" + actorStr).get(null);}
@@ -225,6 +226,7 @@ public class MapReader {
 			e.printStackTrace();
 		}
 		
+		//Generate corresponding actors
 		switch(actorStr) {
 		case "LONG_TRUCK":
 			for(Integer xPos : position.keySet()) {

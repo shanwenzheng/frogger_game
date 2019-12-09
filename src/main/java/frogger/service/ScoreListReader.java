@@ -3,7 +3,6 @@ package frogger.service;
 import java.io.File;
 import java.util.LinkedHashMap;
 import java.util.Scanner;
-import frogger.constant.FileName;
 import frogger.model.Score;
 
 /**
@@ -48,9 +47,9 @@ public enum ScoreListReader {
 	/**
 	 * <p> Read all the score and nickname pair from socreList file.
 	 */
-	public void readFromFile() {
+	public void readFromFile(String fileURL) {
 		try {
-			File f = createFile(FileName.FILE_SCORE_LIST);
+			File f = createFile(fileURL);
 			
 			Scanner read = new Scanner(f);
 			while(read.hasNextLine()) {

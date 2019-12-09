@@ -2,6 +2,7 @@ package frogger.controller;
 
 import java.util.LinkedHashMap;
 
+import frogger.constant.FileName;
 import frogger.model.Life;
 import frogger.model.Map;
 import frogger.model.Score;
@@ -272,7 +273,7 @@ public enum GameController {
 	 */
 	public void handleGameEnd() {
 		score.addScore(ScoreBaseFactory.createScoreBase(gameLevel));
-		ScoreListWriter.INSTANCE.writeInFile(nickName, score);
+		ScoreListWriter.INSTANCE.writeInFile(nickName, score, FileName.FILE_SCORE_LIST);
 		
 		String gameStatus = endCount == 5 ? "Win" : "Lose";
 		SceneSwitch.INSTANCE.switchToPopup(popupScoreList);

@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import frogger.constant.FileName;
 import frogger.model.Score;
 import frogger.service.SceneSwitch;
 import frogger.service.ScoreListReader;
@@ -46,7 +47,7 @@ public class ScoreListController {
     @FXML
     public void initialize() {
     	ScoreListReader.INSTANCE.init();
-    	ScoreListReader.INSTANCE.readFromFile();
+    	ScoreListReader.INSTANCE.readFromFile(FileName.FILE_SCORE_LIST);
         ObservableList<String> options = FXCollections.observableArrayList();
         scoreList = sortScoreList(ScoreListReader.INSTANCE.getScoreList());
     	
