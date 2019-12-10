@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" styleClass="root" stylesheets="@../css/select.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frogger.controller.SelectController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" styleClass="root" stylesheets="@../css/select.css" xmlns="http://javafx.com/javafx/10.0.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frogger.controller.SelectController">
    <top>
       <Pane prefHeight="345.0" prefWidth="600.0" styleClass="top" BorderPane.alignment="CENTER" />
    </top>

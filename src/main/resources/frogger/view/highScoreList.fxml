@@ -6,7 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" stylesheets="@../css/highScoreList.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frogger.controller.ScoreListController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" stylesheets="@../css/highScoreList.css" xmlns="http://javafx.com/javafx/10.0.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frogger.controller.ScoreListController">
    <children>
       <AnchorPane layoutX="27.0" layoutY="21.0" prefHeight="747.0" prefWidth="558.0" styleClass="board">
          <children>
