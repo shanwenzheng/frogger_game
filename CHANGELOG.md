@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.8.0] - 2019-12-10
+
+### Added
+
+- Add `unit test` case for part of the classes which are testable without launching application.
+- Add meaningful `JavaDoc` which is useful for users to understand the program 
+- Add `MIT License`
+- Add `Class Diagram` for the whole project
+- Add demonstration `video` to show the game running and explain the refactor and addition works
+- Update `README.md` File to add more information about project, including screenshots, java version requirement, compile and running, file structure, refactor work, extension work, credits for this project, etc.
+
 ## [0.7.1] - 2019-12-04
 
 ### Added
@@ -178,4 +189,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [0.6.2]: https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/-/tags/v0.6.2
 [0.7.0]: https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/-/tags/v0.7.0
 [0.7.1]: https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/-/tags/v0.7.1
+[0.8.0]: https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/-/tags/v0.8.0
 [Unreleased]: https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/compare/v0.0.1...master#
