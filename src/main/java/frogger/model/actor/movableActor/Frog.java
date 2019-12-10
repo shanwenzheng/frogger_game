@@ -46,7 +46,7 @@ public class Frog extends MovableActor{
 	private boolean noMove;	
 	
 	/** The deathType of frog death. This can be set to carDeath when touching {@link Obstacle} or waterDeath when sunk into water */
-	public String deathType;
+	private String deathType;
 	
 	/** An integer recording which images should display when death happen */
 	private int carD;
@@ -257,5 +257,14 @@ public class Frog extends MovableActor{
 	 */
 	public void setDeathType(String str) {
 		deathType = str;
+	}
+	
+	/**
+	 * <p> This method returns the current {@link #deathType} of {@link Frog} and mainly used for unit test.
+	 * 
+	 * @return	The current {@link #deathType}
+	 */
+	public String getDeathType() {
+		return deathType;
 	}
 }
