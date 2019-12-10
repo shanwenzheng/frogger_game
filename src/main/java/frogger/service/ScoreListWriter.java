@@ -40,6 +40,7 @@ public enum ScoreListWriter {
 	 * 
 	 * @param nickName	The nickname to be written to file (passed from {@link frogger.controller.GameController});
 	 * @param score		The score{@link Score} to be written to file (passed from {@link frogger.controller.GameController});
+	 * @param fileURL	The path of file which to be written
 	 */
 	public void writeInFile(String nickName, Score score, String fileURL) {
 		try {

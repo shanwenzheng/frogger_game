@@ -46,6 +46,8 @@ public enum ScoreListReader {
 	
 	/**
 	 * <p> Read all the score and nickname pair from socreList file.
+	 * 
+	 * @param fileURL	The path of file which to be read
 	 */
 	public void readFromFile(String fileURL) {
 		try {

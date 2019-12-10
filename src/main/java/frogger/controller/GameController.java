@@ -267,7 +267,7 @@ public enum GameController {
 	
 	/** 
 	 * <p> This method is called when the remaining life is zero or the {@link #endCount} is five.
-	 * <p> After calling this method, it write the {@link Score} and corresponding nickName into file by calling {@link ScoreListWriter#writeInFile(String, Score)}
+	 * <p> After calling this method, it write the {@link Score} and corresponding nickName into file by calling {@link ScoreListWriter#writeInFile(String, Score, String)}
 	 * and call {@link SceneSwitch#switchToScoreList(String, Score)} to show the high score list to player. 
 	 * Moreover, this method also create an additional score points based on the {@link #gameLevel} by calling {@link ScoreBaseFactory#createScoreBase(String)}. 
 	 */
