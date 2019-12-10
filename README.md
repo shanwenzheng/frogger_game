@@ -50,8 +50,13 @@ src
 |── test
     ├── java
     |   └── frogger
+    |       ├── constant
+    |       ├── controller
+    |       ├── model
+    |       └── service
     └── resources
         └── frogger
+            └── file
 ```
 
 ## Maintaining Work
@@ -181,6 +186,10 @@ In addition to the original function, I add three button: `restart, instruction 
 ### highScoreList
 
 This appears when ending game. If lose, play the lose music and show the defeat image. If win, play the victory music and show the victory image. In addition, this show a `permanent high score list` stored in file. Finally, `three button: restart, home, exit` plays corresponding function.
+
+### popupScreen
+
+This appears when frog lose its life and shows the scores from each round, highest at the top.
 
 <br>
 
