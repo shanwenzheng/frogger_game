@@ -54,6 +54,8 @@ public class NormalMode {
 	
 	public static final double SPEED_OF_TURTLE = -1;
 	public static final double SPEED_OF_WETTURTLE = -1;
+
+	public static final double SPEED_OF_SNAKE = 3;
 	
 	public static final HashMap<Integer, Integer> POS_OF_LONG_TRUCK = new HashMap<Integer, Integer>(){{
 		put(0,540);
@@ -103,6 +105,10 @@ public class NormalMode {
 		put(600,217);
 		put(400,217);
 		put(200,217);
+	}};
+
+	public static final HashMap<Integer, Integer> POS_OF_SNAKE = new HashMap<Integer, Integer>(){{
+		put(200,435);
 	}};
 	
 	public static final LinkedHashMap<Integer, Integer> POS_OF_LIFE_IMAGE = new LinkedHashMap<Integer, Integer>(){{

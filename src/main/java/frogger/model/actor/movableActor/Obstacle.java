@@ -66,7 +66,7 @@ public class Obstacle extends MovableActor {
 	@Override
 	public void checkTouch() {
 		if(getIntersectingObjects(Frog.class).size() >= 1) {
-			GameController.INSTANCE.handleObstacleTouched(this);
+			GameController.INSTANCE.handleObstacleSnakeTouched(this);
 		}
 	}
 }

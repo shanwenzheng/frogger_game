@@ -28,6 +28,8 @@ public class FileName {
 	
 	public static final String IMAGE_END = "images/end/End.png";
 	public static final String IMAGE_END_FROG = "images/end/FrogEnd.png";
+
+	public static final String IMAGE_SNAKE = "images/snake/snake.png";
 	
 	public static final ArrayList<String> IMAGE_TURTLE = new ArrayList<String>(
 			Arrays.asList(

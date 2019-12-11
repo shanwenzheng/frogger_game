@@ -4,11 +4,7 @@ import java.util.HashMap;
 import frogger.Main;
 import frogger.constant.FileName;
 import frogger.model.Map;
-import frogger.model.actor.movableActor.Frog;
-import frogger.model.actor.movableActor.Log;
-import frogger.model.actor.movableActor.Obstacle;
-import frogger.model.actor.movableActor.Turtle;
-import frogger.model.actor.movableActor.WetTurtle;
+import frogger.model.actor.movableActor.*;
 import frogger.model.actor.staticActor.Digit;
 import frogger.model.actor.staticActor.End;
 import javafx.scene.image.Image;
@@ -120,6 +116,7 @@ public class MapReader {
 		createLog();
 		createTurtles();
 		createWetTurtles();
+		createSnake();
 		createLifeImage();
 	}
 	
@@ -168,6 +165,13 @@ public class MapReader {
 		readConstantClass("MEDIUM_LOG");
 		readConstantClass("SHORT_LOG");
 	}
+
+	/**
+	 * <p> Create {@link Snake} objects.
+	 */
+	public void createSnake(){
+		readConstantClass("SNAKE");
+	}
 	
 	/**
 	 * <p> Create {@link Turtle} objects.
@@ -208,6 +212,7 @@ public class MapReader {
 	 * 	"SHORT_LOG" - Log + size:150;
 	 * 	"TURTLE" - Turtle + size:130;
 	 * 	"WETTURTLE" - WetTurtle + size:130;
+	 * 	"SNAKE" - Snake + size: 100;
 	 * 	"LIFE_IMAGE" - ImageView + size: 50;
 	 * </pre>
 	 * 
@@ -228,61 +233,66 @@ public class MapReader {
 		
 		//Generate corresponding actors
 		switch(actorStr) {
-		case "LONG_TRUCK":
-			for(Integer xPos : position.keySet()) {
-				map.getObstacles().add(new Obstacle((speed < 0 ? FileName.IMAGE_LONG_TRUCK_LEFT : FileName.IMAGE_LONG_TRUCK_RIGHT), 200, xPos, position.get(xPos), speed));
-			}
-			break;
-		case "SHORT_TRUCK":
-			for(Integer xPos : position.keySet()) {
-				map.getObstacles().add(new Obstacle((speed < 0 ? FileName.IMAGE_SHORT_TRUCK_LEFT : FileName.IMAGE_SHORT_TRUCK_RIGHT), 120, xPos, position.get(xPos), speed));
-			}
-			break;
-		case "QUICK_CAR":
-			for(Integer xPos : position.keySet()) {
-				map.getObstacles().add(new Obstacle((speed < 0 ? FileName.IMAGE_CAR_LEFT : FileName.IMAGE_CAR_RIGHT), 50, xPos, position.get(xPos), speed));
-			}
-			break;
-		case "SLOW_CAR":
-			for(Integer xPos : position.keySet()) {
-				map.getObstacles().add(new Obstacle((speed < 0 ? FileName.IMAGE_CAR_LEFT : FileName.IMAGE_CAR_RIGHT), 50, xPos, position.get(xPos), speed));
-			}
-			break;
-		case "LONG_LOG":
-			for(Integer xPos : position.keySet()) {
-				map.getLogs().add(new Log(FileName.IMAGE_LONG_LOG, 300, xPos, position.get(xPos), speed));
-			}
-			break;
-		case "MEDIUM_LOG":
-			for(Integer xPos : position.keySet()) {
-				map.getLogs().add(new Log(FileName.IMAGE_MEDIUM_LOG, 225, xPos, position.get(xPos), speed));
-			}
-			break;
-		case "SHORT_LOG":
-			for(Integer xPos : position.keySet()) {
-				map.getLogs().add(new Log(FileName.IMAGE_SHORT_LOG, 150, xPos, position.get(xPos), speed));
-			}
-			break;
-		case "TURTLE":
-			for(Integer xPos : position.keySet()) {
-				map.getTurtles().add(new Turtle(130, xPos, position.get(xPos), speed));
-			}
-			break;
-		case "WETTURTLE":
-			for(Integer xPos : position.keySet()) {
-				map.getWetTurtles().add(new WetTurtle(130, xPos, position.get(xPos), speed));
-			}
-			break;
-		case "LIFE_IMAGE":
-			for(Integer xPos : position.keySet()) {
-				ImageView temp = new ImageView(new Image(Main.class.getResourceAsStream(FileName.IMAGE_LIFE), 50, 50, true, true));
-				temp.setX(xPos);
-				temp.setY(position.get(xPos));
-				map.getLifeImage().add(temp);
-			}
-			break;
-		default:
-			break;
+			case "LONG_TRUCK":
+				for(Integer xPos : position.keySet()) {
+					map.getObstacles().add(new Obstacle((speed < 0 ? FileName.IMAGE_LONG_TRUCK_LEFT : FileName.IMAGE_LONG_TRUCK_RIGHT), 200, xPos, position.get(xPos), speed));
+				}
+				break;
+			case "SHORT_TRUCK":
+				for(Integer xPos : position.keySet()) {
+					map.getObstacles().add(new Obstacle((speed < 0 ? FileName.IMAGE_SHORT_TRUCK_LEFT : FileName.IMAGE_SHORT_TRUCK_RIGHT), 120, xPos, position.get(xPos), speed));
+				}
+				break;
+			case "QUICK_CAR":
+				for(Integer xPos : position.keySet()) {
+					map.getObstacles().add(new Obstacle((speed < 0 ? FileName.IMAGE_CAR_LEFT : FileName.IMAGE_CAR_RIGHT), 50, xPos, position.get(xPos), speed));
+				}
+				break;
+			case "SLOW_CAR":
+				for(Integer xPos : position.keySet()) {
+					map.getObstacles().add(new Obstacle((speed < 0 ? FileName.IMAGE_CAR_LEFT : FileName.IMAGE_CAR_RIGHT), 50, xPos, position.get(xPos), speed));
+				}
+				break;
+			case "LONG_LOG":
+				for(Integer xPos : position.keySet()) {
+					map.getLogs().add(new Log(FileName.IMAGE_LONG_LOG, 300, xPos, position.get(xPos), speed));
+				}
+				break;
+			case "MEDIUM_LOG":
+				for(Integer xPos : position.keySet()) {
+					map.getLogs().add(new Log(FileName.IMAGE_MEDIUM_LOG, 225, xPos, position.get(xPos), speed));
+				}
+				break;
+			case "SHORT_LOG":
+				for(Integer xPos : position.keySet()) {
+					map.getLogs().add(new Log(FileName.IMAGE_SHORT_LOG, 150, xPos, position.get(xPos), speed));
+				}
+				break;
+			case "TURTLE":
+				for(Integer xPos : position.keySet()) {
+					map.getTurtles().add(new Turtle(130, xPos, position.get(xPos), speed));
+				}
+				break;
+			case "WETTURTLE":
+				for(Integer xPos : position.keySet()) {
+					map.getWetTurtles().add(new WetTurtle(130, xPos, position.get(xPos), speed));
+				}
+				break;
+			case "SNAKE":
+				for(Integer xPos : position.keySet()){
+					map.getSnakes().add(new Snake(FileName.IMAGE_SNAKE, 50, xPos, position.get(xPos), speed));
+				}
+				break;
+			case "LIFE_IMAGE":
+				for(Integer xPos : position.keySet()) {
+					ImageView temp = new ImageView(new Image(Main.class.getResourceAsStream(FileName.IMAGE_LIFE), 50, 50, true, true));
+					temp.setX(xPos);
+					temp.setY(position.get(xPos));
+					map.getLifeImage().add(temp);
+				}
+				break;
+			default:
+				break;
 		}
 	}
 }

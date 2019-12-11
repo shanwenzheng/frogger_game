@@ -180,14 +180,12 @@ public enum GameController {
 	}
 	
 	/**
-	 * <p> This method is called by {@link frogger.model.actor.movableActor.Obstacle} when they touch {@link frogger.model.actor.movableActor.Frog}.
+	 * <p> This method is called by {@link frogger.model.actor.movableActor.Obstacle} or {@link frogger.model.actor.movableActor.Snake} when they touch {@link frogger.model.actor.movableActor.Frog}.
 	 * <p> This method calls {@link frogger.model.actor.movableActor.Frog#setDeathType(String)} to set frog deathType to carDeath.
 	 *  
 	 * @param actor		The {@link MovableActor} who call this method
 	 */
-	public void handleObstacleTouched(MovableActor actor) {
-		map.getAnimal().setDeathType("carDeath");
-	}
+	public void handleObstacleSnakeTouched(MovableActor actor) {map.getAnimal().setDeathType("carSnakeDeath");}
 	
 	/**
 	 * <p> This method is called by {@link frogger.model.actor.movableActor.WetTurtle} or {@link frogger.model.actor.movableActor.Frog} when frog sunk into pool.

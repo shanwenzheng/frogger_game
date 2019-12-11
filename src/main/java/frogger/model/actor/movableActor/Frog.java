@@ -180,10 +180,10 @@ public class Frog extends MovableActor{
 	}
 	
 	/**
-	 * <p> This method is called when {@link Frog} touch {@link Obstacle} or sunk into pool to handle the death situation.
+	 * <p> This method is called when {@link Frog} touch {@link Obstacle}, {@link Snake} or sunk into pool to handle the death situation.
 	 * 
 	 * <p> This method sets the {@link #noMove} to true to prohibit {@link Frog} move and incremental {@link #carD} which is used as index to change death image,
-	 * And it calls {@link #handleCarDeath()} or {@link #handleWaterDeath()} based on the {@link #deathType} which is changed by {@link GameController}.
+	 * And it calls {@link #handleCarOrSnakeDeath()} Death()} or {@link #handleWaterDeath()} based on the {@link #deathType} which is changed by {@link GameController}.
 	 *
 	 * @param now	The long type variable which will be used to calculate {@link #carD}
 	 */
@@ -193,8 +193,8 @@ public class Frog extends MovableActor{
 			carD++;
 		}
 		
-		if(deathType.equals("carDeath")) {
-			handleCarDeath();
+		if(deathType.equals("carSnakeDeath")) {
+			handleCarOrSnakeDeath();
 		}else if (deathType.equals("waterDeath")){
 			handleWaterDeath();
 		}
@@ -217,12 +217,12 @@ public class Frog extends MovableActor{
 	}
 	
 	/**
-	 * <p> This method is called by {@link #handleDeath(long)} when the {@link #deathType} is set to "carDeath" to handle the car death situation.
+	 * <p> This method is called by {@link #handleDeath(long)} when the {@link #deathType} is set to "carSnakeDeath" to handle the car death situation.
 	 * 
 	 * <p> This methods sets the death image depend on the index {@link #carD} and {@link #imageSize}. And if {@link #carD} is equal to 4,
 	 * it will call {@link #setOrigin(int)} function to reset {@link Frog} and call {@link frogger.controller.GameController} to handle the socreChanged and lifeLosed consequences.
 	 */
-	public void handleCarDeath() {
+	public void handleCarOrSnakeDeath() {
 		if(carD == 4) {
 			setOrigin(0);
 			GameController.INSTANCE.handleScoreChanged(-50);
@@ -250,10 +250,10 @@ public class Frog extends MovableActor{
 	}
 
 	/**
-	 * <p> This method is called by {@link GameController#handlePoolTouched(MovableActor)} or {@link GameController#handleObstacleTouched(MovableActor)} when death happens.
-	 * <p> deathType is set to carDeather when touch the {@link Obstacle} or set to waterDeath when touch the pool
+	 * <p> This method is called by {@link GameController#handlePoolTouched(MovableActor)} or {@link GameController#handleObstacleSnakeTouched(MovableActor)} when death happens.
+	 * <p> deathType is set to carSnakeDeather when touch the {@link Obstacle} or set to waterDeath when touch the pool
 	 * 
-	 * @param str	An string of {@link deathType} is set to {@code str}
+	 * @param str	An string of {@link #deathType} is set to {@code str}
 	 */
 	public void setDeathType(String str) {
 		deathType = str;
