@@ -110,10 +110,19 @@ public class NormalMode {
 	public static final HashMap<Integer, Integer> POS_OF_SNAKE = new HashMap<Integer, Integer>(){{
 		put(200,435);
 	}};
+
+	public static final HashMap<Integer, Integer> POS_OF_CHOMPER = new HashMap<Integer, Integer>(){{
+		put(20,85);
+//		put(150,85);
+//		put(275,85);
+//		put(405,85);
+		put(535,85);
+	}};
 	
 	public static final LinkedHashMap<Integer, Integer> POS_OF_LIFE_IMAGE = new LinkedHashMap<Integer, Integer>(){{
 		put(10,750);
 		put(60,750);
 		put(110,750);
+		//The position of x is added by 50
 	}};
 }

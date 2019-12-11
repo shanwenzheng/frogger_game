@@ -193,8 +193,8 @@ public enum GameController {
 	 *  
 	 * @param actor		The {@link MovableActor} who call this method
 	 */
-	public void handlePoolTouched(MovableActor actor) {
-		map.getAnimal().setDeathType("waterDeath");
+	public void handlePoolChomperTouched(MovableActor actor) {
+		map.getAnimal().setDeathType("waterChomperDeath");
 	}
 	
 	/**
@@ -210,8 +210,12 @@ public enum GameController {
 			map.getAnimal().setOrigin(1);
 			endCount++;
 		}
-		
-		if(endCount == 5) { endGame(1);}
+
+		if (endCount == 5) {
+			endGame(1);
+		} else if(endCount >= 5 - map.getChompers().size()){
+			background.getChildren().remove(map.getChompers().get(5-endCount-1));
+		}
 	}
 
 	/**

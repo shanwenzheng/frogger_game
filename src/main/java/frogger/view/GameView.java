@@ -79,6 +79,7 @@ public class GameView {
 		drawObstacle();
 		drawScoreBoard();
 		drawSnake();
+		drawChomper();
 		drawLifeImage();
 		drawHomeButton();
 		drawInstructionButton();
@@ -140,6 +141,9 @@ public class GameView {
 
 	/** <p> Draws the life {@link frogger.model.actor.movableActor.Snake} from {@link Map} to {@link Pane} */
 	public void drawSnake() {background.getChildren().addAll(map.getSnakes()); }
+
+	/** <p> Draws the life {@link frogger.model.actor.staticActor.Chomper} from {@link Map} to {@link Pane} */
+	public void drawChomper() {background.getChildren().addAll(map.getChompers()); }
 
 	/** <p> Draws the scoreBoard which contains three {@link frogger.model.actor.staticActor.Digit} from {@link Map} to {@link Pane}
 	 *	<p> Also draws the related label("C-SCORE") to {@link Pane} by calling {@link #createLabel(String, int, int)} 	

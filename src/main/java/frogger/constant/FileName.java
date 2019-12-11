@@ -30,6 +30,7 @@ public class FileName {
 	public static final String IMAGE_END_FROG = "images/end/FrogEnd.png";
 
 	public static final String IMAGE_SNAKE = "images/snake/snake.png";
+	public static final String IMAGE_CHOMPER = "images/chomper/Chomper.jpg";
 	
 	public static final ArrayList<String> IMAGE_TURTLE = new ArrayList<String>(
 			Arrays.asList(
@@ -57,13 +58,13 @@ public class FileName {
 					"images/digit/8.png",
 					"images/digit/9.png" ));
 	
-	public static final ArrayList<String> IMAGE_CAR_DEATH = new ArrayList<String>(
+	public static final ArrayList<String> IMAGE_CAR_SNAKE__DEATH = new ArrayList<String>(
 			Arrays.asList(
 					"images/death/cardeath1.png",
 					"images/death/cardeath2.png",
 					"images/death/cardeath3.png" ));
 	
-	public static final ArrayList<String> IMAGE_WATER_DEATH = new ArrayList<String>(
+	public static final ArrayList<String> IMAGE_WATER_CHOMPER_DEATH = new ArrayList<String>(
 			Arrays.asList(
 					"images/death/waterdeath1.png",
 					"images/death/waterdeath2.png",

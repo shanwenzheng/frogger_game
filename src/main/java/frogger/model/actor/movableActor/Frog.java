@@ -4,6 +4,7 @@ import java.util.HashMap;
 import frogger.Main;
 import frogger.constant.FileName;
 import frogger.controller.GameController;
+import frogger.model.actor.staticActor.Chomper;
 import frogger.model.actor.staticActor.End;
 import javafx.scene.image.Image;
 
@@ -45,7 +46,7 @@ public class Frog extends MovableActor{
 	/** The flag recording whether {@link Frog} can continue moving. (When death this will be set to false) */
 	private boolean noMove;	
 	
-	/** The deathType of frog death. This can be set to carDeath when touching {@link Obstacle} or waterDeath when sunk into water */
+	/** The deathType of frog death. This can be set to carSnakerDeath when touching {@link Obstacle} or {@link Snake} or waterChomperDeath when sunk into water or touching {@link Chomper}*/
 	private String deathType;
 	
 	/** An integer recording which images should display when death happen */
@@ -152,17 +153,19 @@ public class Frog extends MovableActor{
 	}
 	
 	/**
-	 * <p> This method checks whether {@link Frog} has touched the {@link End} or pool and call {@link GameController} to handle consequences.
+	 * <p> This method checks whether {@link Frog} has touched the {@link Chomper}, {@link End} or pool and call {@link GameController} to handle consequences.
 	 * 
 	 * <p> When the {@link Frog} is intersected with {@link End}, it will call {@link GameController#handleEndTouched(MovableActor)}
-	 * <br> When the {@link Frog} is sunk into pool, it will call {@link GameController#handlePoolTouched(MovableActor)}.
+	 * <br> When the {@link Frog} is sunk into pool or intersected with {@link Chomper}, it will call {@link GameController#handlePoolChomperTouched(MovableActor)}.
 	 */
 	@Override
 	public void checkTouch() {
-		if (getIntersectingObjects(End.class).size() >= 1) {
+		if (getIntersectingObjects(Chomper.class).size() >= 1){
+			GameController.INSTANCE.handlePoolChomperTouched(this);
+		} else if (getIntersectingObjects(End.class).size() >= 1) {
 			GameController.INSTANCE.handleEndTouched(this);
 		} else if(getY() < 438 && getIntersectingObjects(MovableActor.class).size() == 1) {
-			GameController.INSTANCE.handlePoolTouched(this);		
+			GameController.INSTANCE.handlePoolChomperTouched(this);
 		}
 	}
 
@@ -180,10 +183,10 @@ public class Frog extends MovableActor{
 	}
 	
 	/**
-	 * <p> This method is called when {@link Frog} touch {@link Obstacle}, {@link Snake} or sunk into pool to handle the death situation.
+	 * <p> This method is called when {@link Frog} touch {@link Obstacle}, {@link Snake}, {@link Chomper} or sunk into pool to handle the death situation.
 	 * 
 	 * <p> This method sets the {@link #noMove} to true to prohibit {@link Frog} move and incremental {@link #carD} which is used as index to change death image,
-	 * And it calls {@link #handleCarOrSnakeDeath()} Death()} or {@link #handleWaterDeath()} based on the {@link #deathType} which is changed by {@link GameController}.
+	 * And it calls {@link #handleCarOrSnakeDeath()} or {@link #handleWaterChomperDeath()} based on the {@link #deathType} which is changed by {@link GameController}.
 	 *
 	 * @param now	The long type variable which will be used to calculate {@link #carD}
 	 */
@@ -195,29 +198,29 @@ public class Frog extends MovableActor{
 		
 		if(deathType.equals("carSnakeDeath")) {
 			handleCarOrSnakeDeath();
-		}else if (deathType.equals("waterDeath")){
-			handleWaterDeath();
+		}else if (deathType.equals("waterChomperDeath")){
+			handleWaterChomperDeath();
 		}
 	}
 	
 	/**
-	 * <p> This method is called by {@link #handleDeath(long)} when the {@link #deathType} is set to "waterDeath" to handle the water death situation.
+	 * <p> This method is called by {@link #handleDeath(long)} when the {@link #deathType} is set to "waterChomperDeath" to handle the corresponding death situation.
 	 * 
 	 * <p> This methods sets the death image depend on the index {@link #carD} and {@link #imageSize}. And if {@link #carD} is equal to 5,
 	 * it will call {@link #setOrigin(int)} function to reset {@link Frog} and call {@link frogger.controller.GameController} to handle the socreChanged and lifeLosed consequences.
 	 */
-	public void handleWaterDeath() {
+	public void handleWaterChomperDeath() {
 		if(carD == 5) {
 			setOrigin(0);
 			GameController.INSTANCE.handleScoreChanged(-50);
 			GameController.INSTANCE.handleLifeLosed();
 		}else if (carD > 0) {
-			setImage(new Image(Main.class.getResourceAsStream(FileName.IMAGE_WATER_DEATH.get(carD-1)), imageSize, imageSize, true, true));
+			setImage(new Image(Main.class.getResourceAsStream(FileName.IMAGE_WATER_CHOMPER_DEATH.get(carD-1)), imageSize, imageSize, true, true));
 		}
 	}
 	
 	/**
-	 * <p> This method is called by {@link #handleDeath(long)} when the {@link #deathType} is set to "carSnakeDeath" to handle the car death situation.
+	 * <p> This method is called by {@link #handleDeath(long)} when the {@link #deathType} is set to "carSnakeDeath" to handle the corresponding death situation.
 	 * 
 	 * <p> This methods sets the death image depend on the index {@link #carD} and {@link #imageSize}. And if {@link #carD} is equal to 4,
 	 * it will call {@link #setOrigin(int)} function to reset {@link Frog} and call {@link frogger.controller.GameController} to handle the socreChanged and lifeLosed consequences.
@@ -228,7 +231,7 @@ public class Frog extends MovableActor{
 			GameController.INSTANCE.handleScoreChanged(-50);
 			GameController.INSTANCE.handleLifeLosed();
 		}else if(carD > 0) {
-			setImage(new Image(Main.class.getResourceAsStream(FileName.IMAGE_CAR_DEATH.get(carD-1)), imageSize, imageSize, true, true));
+			setImage(new Image(Main.class.getResourceAsStream(FileName.IMAGE_CAR_SNAKE__DEATH.get(carD-1)), imageSize, imageSize, true, true));
 		}
 	}
 
@@ -250,8 +253,8 @@ public class Frog extends MovableActor{
 	}
 
 	/**
-	 * <p> This method is called by {@link GameController#handlePoolTouched(MovableActor)} or {@link GameController#handleObstacleSnakeTouched(MovableActor)} when death happens.
-	 * <p> deathType is set to carSnakeDeather when touch the {@link Obstacle} or set to waterDeath when touch the pool
+	 * <p> This method is called by {@link GameController#handlePoolChomperTouched(MovableActor)} Touched(MovableActor)} or {@link GameController#handleObstacleSnakeTouched(MovableActor)} when death happens.
+	 * <p> deathType is set to carSnakeDeather when touch the {@link Obstacle} or {@link Snake} or set to waterChomperDeath when touch the pool or {@link Chomper}.
 	 * 
 	 * @param str	An string of {@link #deathType} is set to {@code str}
 	 */

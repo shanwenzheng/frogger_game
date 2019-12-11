@@ -5,6 +5,7 @@ import frogger.Main;
 import frogger.constant.FileName;
 import frogger.model.Map;
 import frogger.model.actor.movableActor.*;
+import frogger.model.actor.staticActor.Chomper;
 import frogger.model.actor.staticActor.Digit;
 import frogger.model.actor.staticActor.End;
 import javafx.scene.image.Image;
@@ -117,6 +118,7 @@ public class MapReader {
 		createTurtles();
 		createWetTurtles();
 		createSnake();
+		createChompers();
 		createLifeImage();
 	}
 	
@@ -193,6 +195,11 @@ public class MapReader {
 	public void createLifeImage(){
 		readConstantClass("LIFE_IMAGE");
 	}
+
+	/**
+	 * <p> Create {@link Chomper} objects.
+	 */
+	public void createChompers() {readConstantClass("CHOMPER"); }
 	
 	/**
 	 * <p>Read the constant class and create corresponding {@link frogger.model.actor.Actor} objects based on the actor String input 
@@ -213,6 +220,7 @@ public class MapReader {
 	 * 	"TURTLE" - Turtle + size:130;
 	 * 	"WETTURTLE" - WetTurtle + size:130;
 	 * 	"SNAKE" - Snake + size: 100;
+	 * 	"CHOMPER" - Chomper + size:60;
 	 * 	"LIFE_IMAGE" - ImageView + size: 50;
 	 * </pre>
 	 * 
@@ -226,7 +234,7 @@ public class MapReader {
 		//Read the constants from class
 		try {
 			position = (HashMap<Integer, Integer>) levelConst.getField("POS_OF_" + actorStr).get(null);
-			if(!actorStr.equals("LIFE_IMAGE")) 	{speed = (double) levelConst.getField("SPEED_OF_" + actorStr).get(null);}
+			if(!actorStr.equals("LIFE_IMAGE") && !actorStr.equals("CHOMPER")) 	{speed = (double) levelConst.getField("SPEED_OF_" + actorStr).get(null);}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -268,6 +276,11 @@ public class MapReader {
 					map.getLogs().add(new Log(FileName.IMAGE_SHORT_LOG, 150, xPos, position.get(xPos), speed));
 				}
 				break;
+			case "SNAKE":
+				for(Integer xPos : position.keySet()){
+					map.getSnakes().add(new Snake(FileName.IMAGE_SNAKE, 50, xPos, position.get(xPos), speed));
+				}
+				break;
 			case "TURTLE":
 				for(Integer xPos : position.keySet()) {
 					map.getTurtles().add(new Turtle(130, xPos, position.get(xPos), speed));
@@ -278,9 +291,9 @@ public class MapReader {
 					map.getWetTurtles().add(new WetTurtle(130, xPos, position.get(xPos), speed));
 				}
 				break;
-			case "SNAKE":
+			case "CHOMPER":
 				for(Integer xPos : position.keySet()){
-					map.getSnakes().add(new Snake(FileName.IMAGE_SNAKE, 50, xPos, position.get(xPos), speed));
+					map.getChompers().add(new Chomper(60, xPos, position.get(xPos)));
 				}
 				break;
 			case "LIFE_IMAGE":

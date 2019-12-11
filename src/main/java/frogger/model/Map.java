@@ -3,6 +3,7 @@ package frogger.model;
 import java.util.ArrayList;
 
 import frogger.model.actor.movableActor.*;
+import frogger.model.actor.staticActor.Chomper;
 import frogger.model.actor.staticActor.Digit;
 import frogger.model.actor.staticActor.End;
 import javafx.scene.image.ImageView;
@@ -32,6 +33,7 @@ import javafx.scene.image.ImageView;
  * @see ImageView
  * @see Frog
  * @see Snake
+ * @see Chomper
  * @see frogger.view.GameView
  * @see frogger.service.MapReader
  * @see frogger.service.MapFactory
@@ -53,6 +55,8 @@ public class Map {
 	private ArrayList<Digit> scoreBoard;
 	/** The {@link Snake} arraylist set in {@link Map} */
 	private ArrayList<Snake> snakes;
+	/** The {@link Chomper} arrayList set in {@link Map} */
+	private ArrayList<Chomper> chompers;
 	/** The life {@link ImageView} arraylist set in {@link Map} */
 	private ArrayList<ImageView> lifeImage;
 	/** The {@link Frog} set in {@link Map} */
@@ -70,6 +74,7 @@ public class Map {
 		scoreBoard = new ArrayList<Digit>();
 		lifeImage = new ArrayList<ImageView>();
 		snakes = new ArrayList<Snake>();
+		chompers = new ArrayList<Chomper>();
 	}
 
 	/**
@@ -127,11 +132,18 @@ public class Map {
 	}
 
 	/**
-	 * Returns the scoreBoard in this {@link Map}.
+	 * Returns the {@link Snake} in this {@link Map}.
 	 *
-	 * @return the scoreBoard in this {@link Map}
+	 * @return the {@link Snake} in this {@link Map}
 	 */
 	public ArrayList<Snake> getSnakes() {return snakes;}
+
+	/**
+	 * Returns the {@link Chomper} in this {@link Map}.
+	 *
+	 * @return the {@link Chomper} in this {@link Map}
+	 */
+	public ArrayList<Chomper> getChompers() {return chompers;}
 
 	/** 
 	 * Returns the life image in this {@link Map}. 

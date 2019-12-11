@@ -81,14 +81,14 @@ public class WetTurtle extends MovableActor{
 	/**
 	 * <p> This method checks whether {@link WetTurtle} has touched the {@link Frog} and call {@link GameController} to handle consequences.
 	 * 
-	 * <p> When the {@link WetTurtle} is sunk, it will call {@link GameController#handlePoolTouched(MovableActor)}
+	 * <p> When the {@link WetTurtle} is sunk, it will call {@link GameController#handlePoolChomperTouched(MovableActor)}
 	 * <br> When the {@link WetTurtle} is not sunk, it will call {@link GameController#handleLogTurtleTouched(MovableActor)}.
 	 */
 	@Override
 	public void checkTouch() {
 		if(getIntersectingObjects(Frog.class).size() >= 1) {
 			if(sunk) {
-				GameController.INSTANCE.handlePoolTouched(this);
+				GameController.INSTANCE.handlePoolChomperTouched(this);
 			}else {
 				GameController.INSTANCE.handleLogTurtleTouched(this);
 			}
