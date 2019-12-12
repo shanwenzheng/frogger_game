@@ -15,8 +15,12 @@ import frogger.service.ScoreBaseFactory;
 import frogger.service.ScoreBoardUpdater;
 import frogger.service.ScoreListWriter;
 import frogger.view.GameView;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import javafx.animation.Timeline;
+import javafx.util.Duration;
 
 /**
  * <h2> GameController </h2>
@@ -51,6 +55,7 @@ import javafx.scene.layout.Pane;
  * @see ScoreListWriter
  * @see ScoreBoardUpdater
  * @see ScoreBaseFactory
+ * @see Timeline
  */
 public enum GameController {
 	/** The shared instance for global use for whole project */
@@ -79,6 +84,9 @@ public enum GameController {
 	
 	/** A temporary {@link LinkedHashMap} store the high score of each round. */
 	private LinkedHashMap<Integer, Score> popupScoreList;
+
+	/** A {@link Timeline} that shows the remaining time of game */
+	private Timeline timeLine;
 	
     /** 
      *  <p> Initializes the game properties based on the given {@link GameView},{@code nickName} and {@code gameLevel}. 
@@ -102,13 +110,19 @@ public enum GameController {
 				put(i, new Score());
 			}
 		}};
+
+		timeLine = new Timeline(
+				new KeyFrame(Duration.ZERO, new KeyValue(gameView.getProgressBar().progressProperty(), 0)),
+				new KeyFrame(Duration.seconds(120), new KeyValue(gameView.getProgressBar().progressProperty(), 1)));
+		timeLine.setOnFinished(event -> endGame(1));
 	}
 	
 	/** <p>Starts the game
 	 *
-	 * <p> This method start the {@link MusicPlayer} and {@link ActAnimation} 
+	 * <p> This method start the {@link MusicPlayer}, {@link ActAnimation} and {@link #timeLine}.
 	 */
 	public void startGame() {
+		timeLineStart();
 		musicStart();
 		animationStart();
 	}
@@ -116,17 +130,18 @@ public enum GameController {
 	/**
 	 * <p> Ends the game
 	 * 
-	 * <p> This method stop the {@link MusicPlayer} and {@link ActAnimation}
+	 * <p> This method stop the {@link MusicPlayer}, {@link ActAnimation} and {@link #timeLine}
 	 * And if the {@link #life} is used up or {@link #endCount} equals to 5 then call {@link #handleGameEnd()}.
 	 * 
 	 * @param status	The status of ending game. 0 means end game by pressing button and 1 means end game by reach all the end position or lose all life and then call {@link #handleGameEnd()}.
 	 */
 	public void endGame(int status) {
+		timeLineStop();
 		musicStop();
 		animationStop();
 		if(status == 1) {handleGameEnd();}
 	}
-	
+
 	/** <p> Start playing the music by calling {@link MusicPlayer#playGameMusic()} */
 	public void musicStart() {
 		MusicPlayer.INSTANCE.playGameMusic();
@@ -146,7 +161,13 @@ public enum GameController {
 	private void animationStop() {
 		ActAnimation.INSTANCE.actStop();
 	}
-	
+
+	/** <p> Start {@link #timeLine} by calling {@link Timeline#playFromStart()} */
+	private void timeLineStart() {timeLine.playFromStart();}
+
+	/** <p> Stop {@link #timeLine} by calling {@link Timeline#stop()} */
+	private void timeLineStop() {timeLine.stop();}
+
 	/**
 	 * <p> This method call {@link frogger.model.actor.movableActor.Frog#moveKeyPressed(String)} when player presses a key.
 	 * 
@@ -180,14 +201,12 @@ public enum GameController {
 	}
 	
 	/**
-	 * <p> This method is called by {@link frogger.model.actor.movableActor.Obstacle} when they touch {@link frogger.model.actor.movableActor.Frog}.
+	 * <p> This method is called by {@link frogger.model.actor.movableActor.Obstacle} or {@link frogger.model.actor.movableActor.Snake} when they touch {@link frogger.model.actor.movableActor.Frog}.
 	 * <p> This method calls {@link frogger.model.actor.movableActor.Frog#setDeathType(String)} to set frog deathType to carDeath.
 	 *  
 	 * @param actor		The {@link MovableActor} who call this method
 	 */
-	public void handleObstacleTouched(MovableActor actor) {
-		map.getAnimal().setDeathType("carDeath");
-	}
+	public void handleObstacleSnakeTouched(MovableActor actor) {map.getAnimal().setDeathType("carSnakeDeath");}
 	
 	/**
 	 * <p> This method is called by {@link frogger.model.actor.movableActor.WetTurtle} or {@link frogger.model.actor.movableActor.Frog} when frog sunk into pool.
@@ -195,8 +214,8 @@ public enum GameController {
 	 *  
 	 * @param actor		The {@link MovableActor} who call this method
 	 */
-	public void handlePoolTouched(MovableActor actor) {
-		map.getAnimal().setDeathType("waterDeath");
+	public void handlePoolChomperTouched(MovableActor actor) {
+		map.getAnimal().setDeathType("waterChomperDeath");
 	}
 	
 	/**
@@ -212,8 +231,12 @@ public enum GameController {
 			map.getAnimal().setOrigin(1);
 			endCount++;
 		}
-		
-		if(endCount == 5) { endGame(1);}
+
+		if (endCount == 5) {
+			endGame(1);
+		} else if(endCount >= 5 - map.getChompers().size()){
+			background.getChildren().remove(map.getChompers().get(5-endCount-1));
+		}
 	}
 
 	/**

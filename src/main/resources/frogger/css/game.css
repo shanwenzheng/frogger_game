@@ -13,15 +13,19 @@
 .button{
 	-fx-background-color: orange;
 	-fx-background-radius:50%;
-	-fx-font-size:17px;
+	-fx-font-size:12px;
 	-fx-text-fill:black;
 	-fx-font-weight:bold;
 }
 
 .button:hover{
-	-fx-font-size:22px;
+	-fx-font-size:15px;
 }
 
 .button:pressed{
-	-fx-font-size:19px;
+	-fx-font-size:13px;
+}
+
+.progress-bar > .bar {
+	-fx-background-color:forestgreen;
 }

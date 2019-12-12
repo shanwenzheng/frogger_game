@@ -54,6 +54,8 @@ public class HardMode {
 	
 	public static final double SPEED_OF_TURTLE = -1.5;
 	public static final double SPEED_OF_WETTURTLE = -1.5;
+
+	public static final double SPEED_OF_SNAKE = 4;
 	
 	public static final HashMap<Integer, Integer> POS_OF_LONG_TRUCK = new HashMap<Integer, Integer>(){{
 		put(0,540);
@@ -103,6 +105,19 @@ public class HardMode {
 		put(200,217);
 		put(500,376);
 		put(300,376);
+	}};
+
+	public static final HashMap<Integer, Integer> POS_OF_SNAKE = new HashMap<Integer, Integer>(){{
+		put(200,435);
+		put(500,435);
+	}};
+
+	public static final HashMap<Integer, Integer> POS_OF_CHOMPER = new HashMap<Integer, Integer>(){{
+		put(20,85);
+//		put(150,85);
+		put(275,85);
+//		put(405,85);
+		put(535,85);
 	}};
 	
 	public static final LinkedHashMap<Integer, Integer> POS_OF_LIFE_IMAGE = new LinkedHashMap<Integer, Integer>(){{

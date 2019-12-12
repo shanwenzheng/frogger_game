@@ -4,7 +4,7 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="300.0" stylesheets="@../css/popup.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frogger.controller.PopupController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="300.0" stylesheets="@../css/popup.css" xmlns="http://javafx.com/javafx/10.0.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frogger.controller.PopupController">
    <children>
       <AnchorPane layoutX="27.0" layoutY="21.0" prefHeight="256.0" prefWidth="246.0" styleClass="board">
          <children>
