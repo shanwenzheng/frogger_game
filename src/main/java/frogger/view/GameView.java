@@ -6,6 +6,7 @@ import frogger.service.MapFactory;
 import frogger.service.MapReader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.Pane;
 
 /**
@@ -36,6 +37,7 @@ import javafx.scene.layout.Pane;
  * @see Pane
  * @see Button
  * @see Label
+ * @see ProgressBar
  * @see Map
  * @see GameController
  * @see MapFactory
@@ -52,9 +54,11 @@ public class GameView {
 	private Button restartButton;
 	/** The instruction {@link Button} that show the instruction of game when clicked */
 	private Button instructionButton;
+	/** The {@link ProgressBar} to show the time counter of game */
+	private ProgressBar progressBar;
 
 	/** 
-	 * <p>Initialize the background, home button, restart button and instruction button with the operation of new.
+	 * <p>Initialize the background, home button, restart button,instruction button and progressBar with the operation of new.
 	 * 
 	 * <p> Create the map by calling {@link MapFactory#createMap(String)} based on the given gameLevel String
 	 * 
@@ -63,6 +67,7 @@ public class GameView {
 	 */
 	public GameView(String gameLevel) throws Exception {
 		background = new Pane();
+		progressBar = new ProgressBar();
 		homeButton = new Button("🏠");
 		restartButton = new Button("🔄");
 		instructionButton = new Button("❓");
@@ -84,25 +89,33 @@ public class GameView {
 		drawHomeButton();
 		drawInstructionButton();
 		drawRestartButton();
+		drawProgressBar();
 	}
 	
 	/** 
-	 * <p>return the background with the map on it
+	 * <p>return the {@link #background} with the map on it
 	 * 
-	 * @return	the background with the map on it
+	 * @return	the {@link #background} with the map on it
 	 */
 	public Pane getBackground() {
 		return background;
 	}
 	
 	/**
-	 * <p> return the map
+	 * <p> return the {@link #map}
 	 *  
-	 * @return return the map
+	 * @return return the {@link #map}
 	 */
 	public Map getMap() {
 		return map;
 	}
+
+	/**
+	 * <p> return the {@link #progressBar}
+	 *
+	 * @return return the {@link #progressBar}
+	 */
+	public ProgressBar getProgressBar() {return progressBar; };
 	
 	/** <p> Draws the {@link frogger.model.actor.movableActor.Log} from {@link Map} to {@link Pane} */
 	public void drawLog() {
@@ -140,32 +153,18 @@ public class GameView {
 	}
 
 	/** <p> Draws the life {@link frogger.model.actor.movableActor.Snake} from {@link Map} to {@link Pane} */
-	public void drawSnake() {background.getChildren().addAll(map.getSnakes()); }
+	public void drawSnake() {
+		background.getChildren().addAll(map.getSnakes());
+	}
 
 	/** <p> Draws the life {@link frogger.model.actor.staticActor.Chomper} from {@link Map} to {@link Pane} */
-	public void drawChomper() {background.getChildren().addAll(map.getChompers()); }
-
-	/** <p> Draws the scoreBoard which contains three {@link frogger.model.actor.staticActor.Digit} from {@link Map} to {@link Pane}
-	 *	<p> Also draws the related label("C-SCORE") to {@link Pane} by calling {@link #createLabel(String, int, int)} 	
-	 */
-	public void drawScoreBoard() {
-		background.getChildren().add(createLabel("C-SCORE", 504, 742));
-		background.getChildren().addAll(map.getScoreBoard());
+	public void drawChomper() {
+		background.getChildren().addAll(map.getChompers());
 	}
-	
-	/**  
-	 * <p> Create the label depend on the input String, X position and Y position.
-	 * 
-	 * @param str	The message of label
-	 * @param xPos	The X position of label
-	 * @param yPos	The Y position of label
-	 * @return		The label with given message and the position is (xPos,yPos)
-	 */
-	public Label createLabel(String str, int xPos, int yPos) {
-		Label label = new Label(str);
-		label.setLayoutX(xPos);
-		label.setLayoutY(yPos);
-		return label;
+
+	/** <p> Draws the scoreBoard which contains three {@link frogger.model.actor.staticActor.Digit} from {@link Map} to {@link Pane} */
+	public void drawScoreBoard() {
+		background.getChildren().addAll(map.getScoreBoard());
 	}
 	
 	/** <p> Creates the {@link Button} and set the position as well as the action.
@@ -173,8 +172,8 @@ public class GameView {
 	 *  <p> Draws this {@link Button} to {@link Pane}.
 	 */
 	public void drawHomeButton() {
-		homeButton.setLayoutX(420);
-		homeButton.setLayoutY(25);
+		homeButton.setLayoutX(450);
+		homeButton.setLayoutY(750);
 		homeButton.setOnAction(event -> {GameController.INSTANCE.handleHomeButtonPressed();});
 		background.getChildren().add(homeButton);
 		
@@ -185,8 +184,8 @@ public class GameView {
 	 *  <p> Draws this {@link Button} to {@link Pane}.
 	 */
 	public void drawRestartButton() {
-		restartButton.setLayoutX(540);
-		restartButton.setLayoutY(25);
+		restartButton.setLayoutX(550);
+		restartButton.setLayoutY(750);
 		restartButton.setOnAction(event -> {GameController.INSTANCE.handleRestartButtonPressed();});
 		background.getChildren().add(restartButton);
 	}
@@ -196,9 +195,22 @@ public class GameView {
 	 *  <p> Draws this {@link Button} to {@link Pane}.
 	 */
 	public void drawInstructionButton() {
-		instructionButton.setLayoutX(480);
-		instructionButton.setLayoutY(25);
+		instructionButton.setLayoutX(500);
+		instructionButton.setLayoutY(750);
 		instructionButton.setOnAction(event -> {GameController.INSTANCE.handleInstructionButtonPressed();});
 		background.getChildren().add(instructionButton);
+	}
+
+	/**
+	 * <p> Creates the {@link ProgressBar} and set the position and style
+	 * <p> This progressbar will be used to show the remaining time of game
+	 * and after the remaining time is zero, the game ends.
+	 */
+	public void drawProgressBar(){
+		progressBar.setLayoutX(300);
+		progressBar.setLayoutY(780);
+		progressBar.setPrefWidth(300);
+		progressBar.setProgress(0);
+		background.getChildren().add(progressBar);
 	}
 }

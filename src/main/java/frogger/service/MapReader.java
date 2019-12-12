@@ -137,9 +137,9 @@ public class MapReader {
 	 * <p> Create scoreBoard which contains three {@link Digit} objects
 	 */
 	public void createScoreBoard() {
-		map.getScoreBoard().add(new Digit(0, 30, 565, 770));
-		map.getScoreBoard().add(new Digit(0, 30, 535, 770));
-		map.getScoreBoard().add(new Digit(0, 30, 505, 770));
+		map.getScoreBoard().add(new Digit(0, 30, 565, 25));
+		map.getScoreBoard().add(new Digit(0, 30, 535, 25));
+		map.getScoreBoard().add(new Digit(0, 30, 505, 25));
 	}
 	
 	/**
