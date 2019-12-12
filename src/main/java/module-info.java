@@ -16,4 +16,5 @@ module frogger {
 	requires transitive javafx.fxml;
 	requires transitive javafx.graphics;
 	requires transitive javafx.media;
+	requires junit;
 }

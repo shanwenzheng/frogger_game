@@ -106,6 +106,8 @@ public class SimpleMode {
 	
 	public static final HashMap<Integer, Integer> POS_OF_WETTURTLE = new HashMap<Integer, Integer>(){};
 
+	public static final HashMap<Integer, Integer> POS_OF_SNAKE = new HashMap<Integer, Integer>(){{ }};
+
 	public static final HashMap<Integer, Integer> POS_OF_CHOMPER = new HashMap<Integer, Integer>(){{
 //		put(20,85);
 //		put(150,85);

@@ -13,7 +13,7 @@
 - [About](#about)
 
 ## Screenshots
-# <img src="https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/raw/master/screenshots/home.jpg" alt="home" width="350" height="400"/>  <img src="https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/raw/master/screenshots/select.png" alt="select" width="350" height="400"/>  <img src="https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/raw/master/screenshots/instruction.png" alt="instruction" width="350" height="400"/>  <img src="https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/raw/master/screenshots/normal.png" alt="normal" width="350" height="400"/>  <img src="https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/raw/master/screenshots/hard.jpg" alt="hard" width="350" height="400"/>  <img src="https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/raw/master/screenshots/simple.jpg" alt="simple" width="350" height="400"/>  <img src="https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/raw/master/screenshots/victory.png" alt="victory" width="350" height="400"/>  <img src="https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/raw/master/screenshots/defeat.png" alt="defeat" width="350" height="400"/>  <img src="https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/raw/master/screenshots/popup.jpg" alt="popup" width="350" height="400"/>
+# <img src="https://i.loli.net/2019/12/13/jm21GspU8bVodKI.jpg" alt="home" width="350" height="400"/>  <img src="https://i.loli.net/2019/12/13/RSMoI6D5krLCYGn.png" alt="select" width="350" height="400"/>  <img src="https://i.loli.net/2019/12/13/jxhnQbFu4UTGCz6.png" alt="instruction" width="350" height="400"/>  <img src="https://i.loli.net/2019/12/13/FXpIEanmbYfHDhi.png" alt="normal" width="350" height="400"/>  <img src="https://i.loli.net/2019/12/13/5Z9GOdlXYS8xaTy.png" alt="hard" width="350" height="400"/>  <img src="https://i.loli.net/2019/12/13/QFHLhxAifo24TRZ.png" alt="simple" width="350" height="400"/>  <img src="https://i.loli.net/2019/12/13/tuRyPqZwgUNEe2L.png" alt="victory" width="350" height="400"/>  <img src="https://i.loli.net/2019/12/13/Z1as6RHJlzjQ54w.png" alt="defeat" width="350" height="400"/>  <img src="https://i.loli.net/2019/12/13/h2G7BTs3YvWJZ81.jpg" alt="popup" width="350" height="400"/>
 
 ## Version Requirement
 > Compatible with:
@@ -201,7 +201,7 @@ Click [here](https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/blob/master
 
 ### Class Diagram:
 
-<img src="https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/raw/master/screenshots/ClassDiagram.png" alt="class diagram"/> 
+<img src="https://i.loli.net/2019/12/13/gCfPQMstuiqZ6N1.png" alt="class diagram"/> 
 
 ### Video illustration:
 
