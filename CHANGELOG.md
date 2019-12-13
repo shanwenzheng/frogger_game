@@ -5,7 +5,22 @@ All notable chanegs to the project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [Released]
+
+## [1.0.0] - 2019-12-13
+
+### Added
+
+- Add `Snake` actor class in the middle of passage and handle the situation similar as obstacle
+- Add `Chomper` actor class in the end position and restrict the frog enter into terminal point. And when there are no empty end position, one of the chompers will be removed
+- Add `TimeLine` to show the remaining time of game and when there are no remaining time, the game ends
+
+### Changed
+
+- Update `Readme` File
+- Update `JavaDoc` File
+- Update `Class Diagram`
+- Update `Video`
 
 ## [0.8.0] - 2019-12-10
 
@@ -34,7 +49,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Add `scoreListReader` class to read socreList from file
+- Add `scoreListReader` class to read scoreList from file
 - Add `scoreListWriter` class to write current score into file
 
 ## [0.6.1] - 2019-12-03
@@ -42,7 +57,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Add `highScoreList.fxml` to show the select page
-- Add `highScoreListConrtoller` Controller to hanlde the initialize event and button event in ScoreList page
+- Add `highScoreListConrtoller` Controller to handle the initialize event and button event in ScoreList page
 
 ## [0.6.0] - 2019-12-03
 
@@ -190,4 +205,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [0.7.0]: https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/-/tags/v0.7.0
 [0.7.1]: https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/-/tags/v0.7.1
 [0.8.0]: https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/-/tags/v0.8.0
-[Unreleased]: https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/compare/v0.0.1...master#
+[1.0.0]: https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/-/tags/v1.0.0
+[Unreleased]: https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/-/tags/v1.0.0
