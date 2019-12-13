@@ -61,7 +61,7 @@ public class Obstacle extends MovableActor {
 	/**
 	 * <p> This method checks whether {@link Obstacle} has touched the {@link Frog} and call {@link GameController} to handle consequences.
 	 * 
-	 * <p> When the {@link Obstacle} is intersected with {@link Frog}, it will call {@link GameController#handleObstacleTouched(MovableActor)}
+	 * <p> When the {@link Obstacle} is intersected with {@link Frog}, it will call {@link GameController#handleObstacleSnakeTouched(MovableActor)}
 	 */
 	@Override
 	public void checkTouch() {

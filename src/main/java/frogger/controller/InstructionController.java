@@ -37,6 +37,10 @@ public class InstructionController {
     /** The score {@link TextArea} contains the information about the score of game */
     @FXML
     private TextArea scoreText;
+
+    /** The end condition {@link TextArea} contains the information about the situation of ending game */
+    @FXML
+    private TextArea endText;
     
     /** <p> This method is called when the scene is initialized and set all the {@link TextArea} un-editable. */
     @FXML
@@ -45,6 +49,7 @@ public class InstructionController {
     	controlText.setEditable(false);
     	actorText.setEditable(false);
     	scoreText.setEditable(false);
+    	endText.setEditable(false);
     }
 
     /** 

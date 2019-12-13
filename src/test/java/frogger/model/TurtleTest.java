@@ -1,8 +1,8 @@
 package frogger.model;
 
 import static org.junit.Assert.*;
-import org.junit.Test;
 import frogger.model.actor.movableActor.Turtle;
+import org.junit.Test;
 
 /**
  * <h2> TurtleTest </h2>
