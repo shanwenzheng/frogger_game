@@ -1,6 +1,8 @@
 # <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1574904535284&di=813c323d940e990abd930b9162c49178&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201802%2F06%2F20180206082802_nmqet.thumb.700_0.jpg" alt="frog logo" width="50"/> Frogger
 
 > This is a Frogger game project written in JavaFX and maintain as well as extend the [existing code](https://github.com/hirish99/Frogger-Arcade-Game).<br>
+> Tested on `Lab Machine` or `Windows Java 10` in `Intellij`.<br>
+> Build script in `Maven` project. (More information look at [Compiling & Running](#compiling-running))
 
 ## Directory
 
@@ -10,6 +12,7 @@
 - [File Structure](#file-structure)
 - [Maintaining Work](#maintaining-work)
 - [Extending Work](#extending-work)
+- [Unit Test](#unit-test)
 - [About](#about)
 
 ## Screenshots
@@ -21,12 +24,17 @@
 > - Java 10 or higher
 > - JavaFX 10 or higher
 > - Maven
+> - Junit 4
 
 ## Compiling & Running
 
 You can launch this application either by running as normal `JavaFX application` or using `maven` to build this project.
 
-For example, in Eclipse, Click <kbd>Run</kbd> -> <kbd>Run As</kbd> -> <kbd>Java Application</kbd> || <kbd>Maven build</kbd>
+> In intellij (run using Java 10):
+> - Import as `Maven` project
+> - Click <kbd>Lifecycle</kbd> -> <kbd>compile</kbd>
+> - Click <kbd>Plugins</kbd> -> <kbd>exec:java</kbd>
+> - <strong>Note:</strong> If the version of Java is 11 or higher, first to do is to uncomment in `pom.xml` file to let the maven installed to get the required sources since `JavaFX 11` is dropped from `Java 11`
 
 ## File Structure
 
@@ -47,7 +55,7 @@ src
 |           ├── scoreFile
 |           ├── music
 |           └── view
-|── test
+└── test
     ├── java
     |   └── frogger
     |       ├── constant
@@ -104,7 +112,7 @@ Deatils in [File Structure](#file-structure)
 
 ### Add meaningful JavaDocs
 
-Deatils in [docs folder](https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/tree/master/doc)
+Deatils in [docs folder](https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/tree/master/docs)
 
 
 </br>
@@ -191,7 +199,26 @@ This appears when ending game. If lose, play the lose music and show the defeat 
 
 This appears when frog lose its life and shows the scores from each round, highest at the top.
 
+### New Actors
+
+Adding `Snake` actor in the middle of passage and when frog touching with it, carDeath related funtion will be called.<br>
+Adding `Chomper` actor in the end position to restrict the frog enter in. This actor will be removed when there are no empty end position
+
+### Time Line
+
+Add a remaining time counter and the maximum time is 120 seconds. When there are no remaining time, player will lose the game.
+
 <br>
+
+## Unit Test:
+
+Add some unit tests for part of the classes and are useful for the future refactoring.
+
+> To execute the test:
+> - Click <kbd>Lifecycle</kbd> -> <kbd>test</kbd>
+> - The result of testing will be shown in the format: <kbd>Tests run: 48, Failures: 0, Errors: 0, Skipped: 0</kbd>
+
+Click [here](https://projects.cs.nott.ac.uk/scyws1/g52swm_cw2_scyws1/tree/master/docs) to see more information through reading JavaDoc
 
 ## About
 
